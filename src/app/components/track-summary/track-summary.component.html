@@ -1,16 +1,19 @@
 
 <section class="container">
-
-  <article class="card row">
-        <div class="card-img-container-square col">
-          <img class="card-img-top " src="https://burgerjointhtx.com/wp-content/uploads/2015/07/burger-icon-tight-white.png" alt="Hambuerger">
+<div *ngIf='trackArray' class="row">
+  <article *ngFor='let track of trackArray' class="col-lg-3 col-md-6 col-12">
+      <div class="card">
+        <div class="card-img-container-square">
+          <img class="card-img-top" src="https://burgerjointhtx.com/wp-content/uploads/2015/07/burger-icon-tight-white.png" alt="Hambuerger">
           <p>American</p> 
         </div>
-      <div class="card-body row">
+      <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <p class="card-duration"><span class="bold-text">Duration: </span> 3 weeks</p>
       </div>
+    </div>
   </article>
+</div>
 </section>
 
 <!-- Usar svg para las barras de porcentaje -->
