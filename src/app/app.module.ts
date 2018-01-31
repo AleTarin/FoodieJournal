@@ -33,10 +33,11 @@ import { ListaPathsComponent } from './lista-paths/lista-paths.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    PathModule
   ],
   providers: [
     YelpService,
-    GoogleMapsService
+    GoogleMapsService,
     PathModule
 
   ],
