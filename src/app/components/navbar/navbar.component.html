@@ -1,0 +1,17 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand" >FoodieJournal</a>
+      <a class="nav-link" (click)="showLogin()" role="button">
+        Login
+  </a>
+</nav>
+
+<div *ngIf="login" class="row justify-content-end">
+    <div class="col-12 col-lg-3">
+        <form class="form-inline">
+            <input class="form-control" type="username" placeholder="Email or Username" aria-label="Username"><br>
+            <input class="form-control" type="password" placeholder="Password" aria-label="password">
+            <button type="button" class="btn btn-lg btn-block btn-login">Login</button>
+            <div class= "bet">or login with</div> 
+        </form>
+    </div>
+</div>

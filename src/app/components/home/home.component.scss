@@ -1,0 +1,97 @@
+h1 { text-align: center}
+
+p{ text-align: center}
+
+.text2 {
+
+  text-align: center;
+  color: aliceblue;
+  background-color: rgba(32, 24, 24, 0.5);
+}
+
+.Startbutton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  background-color: rgb(235, 13, 13);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.text {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  }
+
+.information{
+  margin: 20px 0;
+}
+.point{
+  font-style: normal;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.info-logo{
+  background-color: #ff0000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 100px;
+  margin-bottom: 50px;
+  .logo{
+    width: 90px;
+    margin: 20px;
+  }
+}
+
+.header {
+
+  background: #000;
+  background-image: url(http://wallpaperstock.net/coffe-break_wallpapers_6969_1024x768.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  margin: 0px;
+
+}
+
+.background {
+  background-image: url(../../../assets/images/pasta.jpg);
+  min-height: 100px;
+  max-width: 100%;
+  margin: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.devby {
+  font-family: cursive;
+}
+.accenture-logo{
+  display:flex;
+  padding: 5px 10px 5px 10px;
+  margin:2px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+.accenture-logo img{
+  margin: 0 10px;
+}
