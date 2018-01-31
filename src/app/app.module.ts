@@ -14,13 +14,15 @@ import { HttpClient } from '@angular/common/http';
 // Services
 import { YelpService } from './services/yelp.service';
 import { GoogleMapsService } from './services/google-maps.service';
-
+import { TrackSummaryComponent } from './components/track-summary/track-summary.component';
+import { PathModule } from './components/path/path.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    TrackSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,8 @@ import { GoogleMapsService } from './services/google-maps.service';
   providers: [
     YelpService,
     GoogleMapsService
+    PathModule
+
   ],
   bootstrap: [AppComponent]
 })
