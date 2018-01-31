@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,13 +9,17 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TrackSummaryComponent } from './components/track-summary/track-summary.component';
 import { PathModule } from './components/path/path.module';
+import { PathsDropdownComponent } from './paths-dropdown/paths-dropdown.component';
+import { ListaPathsComponent } from './lista-paths/lista-paths.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    TrackSummaryComponent
+    TrackSummaryComponent,
+    ListaPathsComponent,
+    PathsDropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -25,3 +30,4 @@ import { PathModule } from './components/path/path.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
