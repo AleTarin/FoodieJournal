@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TrackSummaryComponent } from './components/track-summary/track-summary.component';
 import { PathModule } from './components/path/path.module';
+import { LoginService } from './services/login/login.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { PathModule } from './components/path/path.module';
     AppRoutingModule,
     PathModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
