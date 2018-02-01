@@ -1,0 +1,11 @@
+<div *ngIf="lat && lng">
+  <agm-map  [latitude]="latitude" [longitude]="longitude" [style.height]="height">
+    <agm-marker [latitude]="latitude" [longitude]="longitude">
+      <agm-info-window>
+        <p>Your next objetive</p>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+<div>
+
+  

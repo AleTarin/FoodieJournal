@@ -1,22 +1,22 @@
 .btn-login
-    color: #fff
-    background-color: #fe5140
-    border-color: #fe5140
+    color: #fff
+    background-color: #fe5140
+    border-color: #fe5140
     width: 100%
-    border-radius: 0
-    margin: auto
-    margin-bottom: 30px
-    font-size: 1rem
+    border-radius: 0
+    margin: auto
+    margin-bottom: 30px
+    font-size: 1rem
 
 .bet
-    margin: auto
-    font-size: .9rem
-    color: #495057 
+    margin: auto
+    font-size: .9rem
+    color: #495057 
 
 .form-login
-    margin: auto
-    margin-bottom: 8px
-    border-radius: 0 
+    margin: auto
+    margin-bottom: 8px
+    border-radius: 0 
     width: 100%
 
 /*Coloca la pequeña pestaña del menú
@@ -32,16 +32,67 @@
     border-color: transparent transparent #fff transparent
     z-index: 10
 
+.dropdown-menu::before 
+    border-bottom: 9px solid rgba(0, 0, 0, 0.2)
+    border-left: 9px solid rgba(0, 0, 0, 0)
+    border-right: 9px solid rgba(0, 0, 0, 0)
+    content: ""
+    display: inline-block
+    left: 86px
+    position: absolute
+    top: -8px
+
+.blue
+    color: #3b5998
+    padding-left: 30px
+    padding-right: 20px
+    padding-top: 7px
+    padding-bottom: 7px
+
+.lightblue
+    color: #08a0e9
+    padding-top: 7px
+    padding-bottom: 7px
+    width: 90px
+
+
+.red
+    color: #dd4b39
+    padding-left: 15px
+    padding-right: 15px
+    padding-top: 7px
+    padding-bottom: 7px
+
+.border
+    border-color: #495057
+    margin: 10px
+
+
+
+.dropdown-menu::after 
+    border-bottom: 8px solid #FFFFFF
+    border-left: 9px solid rgba(0, 0, 0, 0)
+    border-right: 9px solid rgba(0, 0, 0, 0)
+    content: ""
+    display: inline
+    left: 86px
+    position: absolute
+    width: 0
+    height: 0
+    left: 90%
+    top: -10px
+    border-style: solid
+    border-width: 0 12px 12px 12px
+    border-color: transparent transparent #fff transparent
+    z-index: 10
 a, a:not([href]):not([tabindex]), .navbar-light .navbar-brand
     color: #ffffff
     padding-bottom: 0
-
 .bg-light
     background-color: #FE5140 !important
-
 /* Estilos del contenedor del login
 .row
-    position: relative
+    position: absolute
     margin-top: 10px
     margin-right: 15px
     margin-left: 15px
@@ -49,7 +100,6 @@ a, a:not([href]):not([tabindex]), .navbar-light .navbar-brand
     padding-right: 0px;
     padding-left: 0px
     z-index: 10
-
 .col-12
     padding: 20px
     background-color: #fff
@@ -57,8 +107,39 @@ a, a:not([href]):not([tabindex]), .navbar-light .navbar-brand
     -moz-box-shadow: 3px 3px 0 #e1e1e1
     box-shadow: 3px 3px 0 #e1e1e1
 
-//Falta completar media query para mover posicion del triangulo
-//$bp-large: 992px 	
-//@media (min-width: $bp-large)
-//    .row
-        
+span.input-error
+    color: red
+
+div.input-error-box
+    border: red
+    
+#prueba
+    display: inline
+
+.btn 
+    color: #fff
+    background-color: #fe5140
+    border-color: #fe5140
+    width: 96%
+    border-radius: 0
+    margin: auto
+    margin-bottom: 30px
+    font-size: 1rem
+
+.bet
+    margin: auto
+    font-size: .9rem
+    color: #495057
+    margin-bottom: 8px
+
+
+.form-control
+    width: 96%
+    margin: auto
+    margin-bottom: 8px
+    border-radius: 0
+
+.social-icons
+    margin:auto 
+    text-align: center
+    font-size: 2rem

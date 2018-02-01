@@ -4,5 +4,17 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyBLIvaDEcpRWdXPH7jmVURF0Abu3YUOPUM',
+    authDomain: 'foodiejournal-1517415680278.firebaseapp.com',
+    databaseURL: 'https://foodiejournal-1517415680278.firebaseio.com',
+    projectId: 'foodiejournal-1517415680278',
+    storageBucket: '',
+    messagingSenderId: '174146762373'
+  },
+  googleMapsKey: 'AIzaSyD_z0Hhy3U-h9og7UKuLtOvM4UxUdDThS0',
+  yelpKey:  'Bearer FUNofMVIf4wZoh3SwQ0pGttt08P97wC3Ooz0xuqsy5HY6mavQoXvxA8dUHh7nNdPZ' +
+            '-yHtomdWH-edmpgdOZvF6E9I2zvB_PKyuZxGWc_ygyOhPcACUzv3Vtm6kxyWnYx'
 };
+

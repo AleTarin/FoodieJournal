@@ -6,14 +6,16 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import { Console } from '@angular/core/src/console';
+import { environment } from '../../environments/environment';
+import { Review } from '../interfaces/review';
+import { Business } from '../interfaces/business';
 
 @Injectable()
 export class YelpService {
 
 
   // Token de la yelp de API exclusivo para la aplicacion
-  private API_KEY = 'Bearer ' + 'SNrlSaWjkv-cHZf_17PQTSbw3gNgahP3lOzmgDVydL7GvxD2r8sf32FMA8' +
-  '_Oerlg3BoQLQfIMxx0kfZ4zd4BayzRqIliex5PUeTf4x2ZVg0vLLrqSe-_hGfjVqRvWnYx';
+  private API_KEY = 'Bearer ' + 'FUNofMVIf4wZoh3SwQ0pGttt08P97wC3Ooz0xuqsy5HY6mavQoXvxA8dUHh7nNdPZ-yHtomdWH-edmpgdOZvF6E9I2zvB_PKyuZxGWc_ygyOhPcACUzv3Vtm6kxyWnYx';
 
   private  url_yelp: string;
   private myHeaders: HttpHeaders;
@@ -36,26 +38,42 @@ export class YelpService {
     .catch(this.handleError);
   }
 
-  YelpSearch(lat: number , long: number , cat: string, radius: number ) {
-    this.setLocation();
+  YelpSearch(lat: number , long: number , cat: string, radius: number ): Observable<Business[]> {
     this.url_yelp = 'https://api.yelp.com/v3/businesses/search';
     this.myParams = new HttpParams().append('term', '"food","restaurants"')
-    .append('categories', cat)
-    .append('limit', '10')
-    .append('radius', String(radius))
-    .append('latitude', String(lat))
-    .append('longitude', String(long));
+      .append('categories', cat)
+      .append('limit', '10')
+      .append('radius', String(radius))
+      .append('latitude', String(lat))
+      .append('longitude', String(long));
 
-    return this.http.get(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
+    return this.http.get(this.url_yelp , { params: this.myParams, headers: this.myHeaders})
     .map(res => {
-      console.log(res);
-      return res;
+      return <Business[]>res['businesses'];
     })
     .catch(this.handleError);
   }
 
-  setLocation() {
+  YelpBusiness(id: string): Observable<Business> {
+    this.url_yelp = 'https://api.yelp.com/v3/businesses/' + id;
+    this.myParams = new HttpParams();
+    return this.http.get<Business>(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
+    .map(res => {
+      console.log(res);
+      return <Business>res;
+    })
+    .catch(this.handleError);
+  }
 
+  YelpReviews(id: string): Observable<Review> {
+    this.url_yelp = 'https://api.yelp.com/v3/businesses/' + id + '/reviews';
+    this.myParams = new HttpParams();
+    return this.http.get<Review>(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
+    .map(review => {
+      console.log(review);
+      return <Review>review['reviews'][0];
+    })
+    .catch(this.handleError);
   }
 
   private handleError(err: HttpErrorResponse) {
