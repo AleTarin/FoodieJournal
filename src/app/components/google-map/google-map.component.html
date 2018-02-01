@@ -1,9 +1,8 @@
 <div *ngIf="lat && lng">
-  <agm-map  [latitude]="lat" [longitude]="lng" [style.height]="height">
-    <agm-marker [latitude]="lat" [longitude]="lng">
+  <agm-map  [latitude]="latitude" [longitude]="longitude" [style.height]="height">
+    <agm-marker [latitude]="latitude" [longitude]="longitude">
       <agm-info-window>
-        <h3><strong>Howdy!</strong></h3>
-        <p>You are here!</p>
+        <p>Your next objetive</p>
       </agm-info-window>
     </agm-marker>
   </agm-map>

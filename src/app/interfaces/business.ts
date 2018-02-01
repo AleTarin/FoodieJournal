@@ -1,4 +1,4 @@
-export interface Business {
+export class Business {
     id: string;
     name: string;
     phone: string;
@@ -14,12 +14,12 @@ export interface Business {
     url?: string;
 }
 
-export interface Categories {
+export class Categories {
     alias?: string;
     title: string;
 }
 
-export interface Locat {
+export class Locat {
     address1: string;
     address2?: string;
     address3?: string;
@@ -28,7 +28,7 @@ export interface Locat {
     cross_stress?: string;
 }
 
-export interface Coord {
+export class Coord {
     latitude: number;
     longitude: number;
 }

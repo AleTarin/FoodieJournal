@@ -23,8 +23,11 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ModalComponent } from './components/modal/modal.component';
 import { PathsDropdownComponent } from './paths-dropdown/paths-dropdown.component';
 import { ListaPathsComponent } from './lista-paths/lista-paths.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { ListaPathsComponent } from './lista-paths/lista-paths.component';
     NavbarComponent,
     TrackSummaryComponent,
     GoogleMapComponent,
+    CarouselComponent,
+    ModalComponent,
     ListaPathsComponent,
     PathsDropdownComponent
   ],

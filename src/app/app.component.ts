@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
 
   review: Review;
   businesses: Business[];
-  business: Business[];
+  business: Business;
+  latitude: number;
+  longitude: number;
 
   constructor(private yelpService: YelpService, private mapsService: GoogleMapsService) {
   }
@@ -32,7 +34,9 @@ export class AppComponent implements OnInit {
   }
 
  private searchBusiness(location: Coordinates, category: string, radius: number) {
-  this.yelpService.YelpSearch(location.latitude, location.longitude, 'mexican', 10000)
+  this.latitude = location.latitude;
+  this.longitude = location.longitude;
+  this.yelpService.YelpSearch(this.latitude, this.longitude, 'mexican', 10000)
   .subscribe(res => {
       this.businesses = res;
       // console.log(this.businesses);
