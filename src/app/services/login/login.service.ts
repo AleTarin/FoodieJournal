@@ -35,9 +35,8 @@ export class LoginService {
     this.userStatus.next(data);
   }
 
-  verifyUserForLogin(usern: string, pass: string): boolean{
-    const isCorrect = usersList.filter(user => user.username === usern).length === 0;
-    console.log(isCorrect);
+  verifyUserForLogin(username: string, pass: string): boolean{
+    const isCorrect = usersList.filter(user => user.username === username && user.pass === pass).length !== 0;
       return isCorrect;
   }
 }

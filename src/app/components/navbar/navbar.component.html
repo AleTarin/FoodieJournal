@@ -10,10 +10,10 @@
                 novalidate
                 [formGroup]="loginForm">
             <div class="form-group"
-                    [ngClass]="{'input-error-box': (loginForm.get('userField').touched || 
+                    [ngClass]="{'': (loginForm.get('userField').touched || 
                                 loginForm.get('userField').dirty) &&
                                 !loginForm.get('userField').valid }">
-                <input class="form-control" type="username" placeholder="Username" 
+                <input style="width:100%" class="form-control" type="username" placeholder="Username" 
                 aria-label="Username" formControlName="userField"><br>
                 <span class="input-error" *ngIf="(loginForm.get('userField').touched || 
                                                             loginForm.get('userField').dirty) && 
