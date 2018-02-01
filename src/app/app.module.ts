@@ -1,12 +1,10 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
@@ -22,6 +20,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
+import { PathsDropdownComponent } from './paths-dropdown/paths-dropdown.component';
+import { ListaPathsComponent } from './lista-paths/lista-paths.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,9 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
     HomeComponent,
     NavbarComponent,
     TrackSummaryComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    ListaPathsComponent,
+    PathsDropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -49,3 +51,4 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

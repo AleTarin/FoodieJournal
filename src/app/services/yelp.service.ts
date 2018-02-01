@@ -15,7 +15,7 @@ export class YelpService {
 
 
   // Token de la yelp de API exclusivo para la aplicacion
-  private API_KEY = environment.yelpKey;
+  private API_KEY = 'Bearer ' + 'FUNofMVIf4wZoh3SwQ0pGttt08P97wC3Ooz0xuqsy5HY6mavQoXvxA8dUHh7nNdPZ-yHtomdWH-edmpgdOZvF6E9I2zvB_PKyuZxGWc_ygyOhPcACUzv3Vtm6kxyWnYx';
 
   private  url_yelp: string;
   private myHeaders: HttpHeaders;
@@ -41,13 +41,13 @@ export class YelpService {
   YelpSearch(lat: number , long: number , cat: string, radius: number ): Observable<Business[]> {
     this.url_yelp = 'https://api.yelp.com/v3/businesses/search';
     this.myParams = new HttpParams().append('term', '"food","restaurants"')
-    .append('categories', cat)
-    .append('limit', '10')
-    .append('radius', String(radius))
-    .append('latitude', String(lat))
-    .append('longitude', String(long));
+      .append('categories', cat)
+      .append('limit', '10')
+      .append('radius', String(radius))
+      .append('latitude', String(lat))
+      .append('longitude', String(long));
 
-    return this.http.get(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
+    return this.http.get(this.url_yelp , { params: this.myParams, headers: this.myHeaders})
     .map(res => {
       return <Business[]>res['businesses'];
     })
