@@ -1,6 +1,8 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +16,7 @@ import { YelpService } from './services/yelp.service';
 import { GoogleMapsService } from './services/google-maps.service';
 import { TrackSummaryComponent } from './components/track-summary/track-summary.component';
 import { PathModule } from './components/path/path.module';
+import { LoginService } from './services/login/login.service';
 import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -35,6 +38,7 @@ import { ListaPathsComponent } from './lista-paths/lista-paths.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     PathModule,
@@ -46,7 +50,8 @@ import { ListaPathsComponent } from './lista-paths/lista-paths.component';
   providers: [
     YelpService,
     GoogleMapsService,
-    PathModule
+    PathModule,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
