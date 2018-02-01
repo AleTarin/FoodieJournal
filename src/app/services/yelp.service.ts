@@ -36,6 +36,7 @@ export class YelpService {
   }
 
   YelpSearch(lat: number , long: number , cat: string, radius: number ) {
+    this.setLocation();
     this.url_yelp = 'https://api.yelp.com/v3/businesses/search';
     this.myParams = new HttpParams().append('term', '"food","restaurants"')
       .append('categories', cat)
