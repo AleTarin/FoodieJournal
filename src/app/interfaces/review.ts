@@ -7,7 +7,7 @@ export interface Review {
     user?: YelpUser;
 }
 
-export interface YelpUser {
+export class YelpUser {
     image_url: string;
     name: string;
 }

@@ -8,8 +8,8 @@ import { Component, OnInit, Input} from '@angular/core';
 export class GoogleMapComponent implements OnInit {
     lat: number;
     lng: number;
-    @Input() latitude: number;
-    @Input() longitude: number;
+    @Input() latitude = 0;
+    @Input() longitude = 0;
     @Input() height = '300px';
 
     constructor() { }
