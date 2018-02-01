@@ -1,30 +1,27 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
-  <a class="navbar-brand" href="#">FoodieJournal</a>
-  <ul class="nav navbar-nav navbar-right">
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="navbar-brand" href="#">FoodieJournal</a>
+      <a class="nav-link" (click)="showLogin()" role="button">
         Login
       </a>
-      <div class="dropdown-menu" #prueba aria-labelledby="navbarDropdown">
-        <form class="form-inline">
-          <input class="form-control" type="username" placeholder="Email or Username" aria-label="Username"><br>
-          <input class="form-control" type="password" placeholder="Password" aria-label="password">
-          <button type="button" class="btn btn-lg btn-block">Login</button> 
-          <div class= "bet">or login with</div> 
-        </form> 
-        <div class="social-icons">
-          <span class="blue border ">
-            <i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i>
-          </span>
-          <span class="lightblue border">
-            <i class="fab fa-twitter lightblue fa-lg"aria-hidden="true"width="30px"></i>
-          </span>
-          <span class="red border">
-            <i class="fab fa-google-plus-g fa-lg" aria-hidden="true"></i>
-          </span>
-        </div>
-
-      </div>
-    </li>
-  </ul>
 </nav>
+<div *ngIf="login" class="row justify-content-end">
+    <div class="col-12 col-lg-3">
+        <form class="form-inline">
+            <input class="form-control" type="username" placeholder="Email or Username" aria-label="Username"><br>
+            <input class="form-control" type="password" placeholder="Password" aria-label="password">
+            <button type="button" class="btn btn-lg btn-block btn-login">Login</button>
+            <div class= "bet">or login with</div> 
+        </form>
+        <div class="social-icons">
+            <span class="blue border ">
+              <i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i>
+            </span>
+            <span class="lightblue border">
+              <i class="fab fa-twitter lightblue fa-lg"aria-hidden="true"width="30px"></i>
+            </span>
+            <span class="red border">
+              <i class="fab fa-google-plus-g fa-lg" aria-hidden="true"></i>
+            </span>
+          </div>
+    </div>
+</div>
