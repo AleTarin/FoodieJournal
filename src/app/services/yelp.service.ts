@@ -36,13 +36,13 @@ export class YelpService {
   }
 
   YelpSearch(lat: number , long: number , cat: string, radius: number ) {
-    this.url_yelp = 'https://api.yelp.com/v3/businesses/search?term=%22food%22,%22restaurants%22&categories=mexican&limit=10&radius=1000&latitude=25.664669399999998&longitude=-100.3778741';
-    // this.myParams = new HttpParams().append('term', '"food","restaurants"')
-    // .append('categories', cat)
-    // .append('limit', '10')
-    // .append('radius', String(radius))
-    // .append('latitude', String(lat))
-    // .append('longitude', String(long));
+    this.url_yelp = 'https://api.yelp.com/v3/businesses/search';
+    this.myParams = new HttpParams().append('term', '"food","restaurants"')
+      .append('categories', cat)
+      .append('limit', '10')
+      .append('radius', String(radius))
+      .append('latitude', String(lat))
+      .append('longitude', String(long));
 
     return this.http.get(this.url_yelp , { headers: this.myHeaders})
     .map(res => {
