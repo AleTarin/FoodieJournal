@@ -7,10 +7,41 @@
 
 <div *ngIf="login" class="row justify-content-end">
     <div class="col-12 col-lg-5">
-        <form class="form-inline">
-            <input class="form-control" type="username" placeholder="Email or Username" aria-label="Username"><br>
-            <input class="form-control" type="password" placeholder="Password" aria-label="password">
-            <button type="button" class="btn btn-lg btn-block btn-login" (click)="loginTo()">Login</button>
+        <form class="form-inline"
+                novalidate
+                [formGroup]="loginForm">
+            <div class="form-group"
+                    [ngClass]="{'input-error-box': (loginForm.get('userField').touched || 
+                                loginForm.get('userField').dirty) &&
+                                !loginForm.get('userField').valid }">
+                <input class="form-control" type="username" placeholder="Username" 
+                aria-label="Username" formControlName="userField"><br>
+                <span class="input-error" *ngIf="(loginForm.get('userField').touched || 
+                                                            loginForm.get('userField').dirty) && 
+                                                            loginForm.get('userField').errors">
+                <span *ngIf="loginForm.get('userField').errors.required">
+                    Please enter your user name.
+                </span>
+                <span *ngIf="loginForm.get('userField').errors.minlength">
+                    The username must at least
+                    5 characters long.
+                </span>
+                </span>
+            </div>
+            <div class="form-group"
+                    [ngClass]="{'input-error-box': (loginForm.get('passField').touched || 
+                                              loginForm.get('passField').dirty) &&
+                                              !loginForm.get('passField').valid }">
+                <input class="form-control" type="password" placeholder="Password"
+                aria-label="password" formControlName="passField">
+                <span class="input-error" *ngIf="(loginForm.get('passField').touched || 
+                            loginForm.get('passField').dirty) && 
+                            loginForm.get('passField').errors">
+                    Please enter your password.
+                </span>
+            </div>
+            <button type="button" class="btn btn-lg btn-block btn-login"
+            [disabled]="!loginForm.valid" (click)="loginTo()">Login</button>
             <div class= "bet">or login with</div> 
         </form>
     </div>

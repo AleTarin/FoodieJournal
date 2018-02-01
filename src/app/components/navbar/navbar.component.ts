@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login/login.service';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -7,34 +8,46 @@ import { LoginService } from '../../services/login/login.service';
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent implements OnInit {
-
-
   login: boolean = false;
-  constructor(private loginServ: LoginService) {
+  loginForm: FormGroup;
+
+  constructor(private loginServ: LoginService, private formBuild: FormBuilder) {
    }
 
    public showLogin(){
      this.login = !this.login;
    }
 
-   loginTo(){
+   /* loginTo(loginForm: FormGroup){
      console.log("logueando");
-     this.loginServ.updateUserStatus({
-      loggedIn: true
-      //username: this.loginForm.get('email').value
-    });
-    this.loginServ.status.subscribe( () => {
-      console.log("redireccionando");
       //if (data.isLoggedIn === true) this.router.navigateByUrl('/admin/dashboard'):
+   } */
+   loginTo() {
+    console.log('doing login...');
+    this.loginServ.verifyUserStatus({
+        loggedIn: true,
+      });
+    this.loginServ.status.subscribe( (data) => {
+      if(data.loggedIn === true){
+         if(this.loginServ.verifyUserForLogin(this.loginForm.get('userField').value,
+         this.loginForm.get('passField').value)){
+          console.log(this.loginForm.get('userField').value);
+         }
+      }
+      //if (data.isLoggedIn === true) this.router.navigateByUrl('/admin/dashboard');
     });
-   }
+  }
 
     logout() {
       console.log('logout...');
-      this.loginServ.updateUserStatus({loggedIn: false});
+      //this.loginServ.updateUserStatus({loggedIn: false});
     }
 
   ngOnInit() {
+    this.loginForm = this.formBuild.group({
+      userField: ['', [Validators.required, Validators.minLength(5)]],
+      passField: ['', [Validators.required]]
+    });
   }
 
 }
