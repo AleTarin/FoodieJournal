@@ -1,0 +1,15 @@
+.circule{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    color: white;
+}
+.complet{
+    background-color: rgb(60, 183, 255);
+}
+.incomplet{
+    background-color: rgb(85, 85, 85);
+}
