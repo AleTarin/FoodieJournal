@@ -19,6 +19,8 @@ import { TrackSummaryComponent } from './components/track-summary/track-summary.
 import { PathModule } from './components/path/path.module';
 import { PathsDropdownComponent } from './paths-dropdown/paths-dropdown.component';
 import { ListaPathsComponent } from './lista-paths/lista-paths.component';
+// import { MapComponent } from './map/map.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { ListaPathsComponent } from './lista-paths/lista-paths.component';
     NavbarComponent,
     TrackSummaryComponent,
     ListaPathsComponent,
-    PathsDropdownComponent
+    PathsDropdownComponent,
+    // MapComponent
   ],
   imports: [
     BrowserModule,

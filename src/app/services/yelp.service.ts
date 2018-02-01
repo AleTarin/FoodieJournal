@@ -12,8 +12,8 @@ export class YelpService {
 
 
   // Token de la yelp de API exclusivo para la aplicacion
-  private API_KEY = 'Bearer ' + 'SNrlSaWjkv-cHZf_17PQTSbw3gNgahP3lOzmgDVydL7GvxD2r8sf32FMA8' +
-  '_Oerlg3BoQLQfIMxx0kfZ4zd4BayzRqIliex5PUeTf4x2ZVg0vLLrqSe-_hGfjVqRvWnYx';
+  private API_KEY = 'Bearer FUNofMVIf4wZoh3SwQ0pGttt08P97wC3Ooz0xuqsy5HY6mavQoXvxA8dUHh7nNdPZ-yHtomdWH' +
+  '-edmpgdOZvF6E9I2zvB_PKyuZxGWc_ygyOhPcACUzv3Vtm6kxyWnYx';
 
   private  url_yelp: string;
   private myHeaders: HttpHeaders;
@@ -30,14 +30,12 @@ export class YelpService {
     this.myParams = new HttpParams().set('phone', phone);
     return this.http.get(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
     .map(res => {
-      console.log(res);
       return res;
     })
     .catch(this.handleError);
   }
 
   YelpSearch(lat: number , long: number , cat: string, radius: number ) {
-    this.setLocation();
     this.url_yelp = 'https://api.yelp.com/v3/businesses/search';
     this.myParams = new HttpParams().append('term', '"food","restaurants"')
     .append('categories', cat)
@@ -48,13 +46,21 @@ export class YelpService {
 
     return this.http.get(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
     .map(res => {
-      console.log(res);
       return res;
     })
     .catch(this.handleError);
   }
 
-  setLocation() {
+  YelpSpfSearch(id: string) {
+    this.url_yelp = 'https://api.yelp.com/v3/businesses/' + id;
+    this.myParams = new HttpParams();
+
+    return this.http.get(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
+    .map(res => {
+      console.log(res);
+      return res;
+    })
+    .catch(this.handleError);
 
   }
 

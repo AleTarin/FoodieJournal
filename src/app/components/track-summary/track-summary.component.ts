@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Track } from '../../interfaces/track';
+import { YelpService } from '../../services/yelp.service';
 
 @Component({
   selector: 'app-track-summary',
@@ -7,10 +8,12 @@ import { Track } from '../../interfaces/track';
   styleUrls: ['./track-summary.component.sass']
 })
 export class TrackSummaryComponent implements OnInit {
+  longitude: number;
+  latitude: number;
 
   trackArray: Track[];
 
-  constructor() { }
+  constructor(private yelpService: YelpService) { }
 
   ngOnInit() {
     this.trackArray = <Track[]>[{
@@ -43,6 +46,7 @@ export class TrackSummaryComponent implements OnInit {
     }
 
   ];
+
   }
 }
 
