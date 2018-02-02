@@ -20,7 +20,7 @@
     width: 100%
 
 /*Coloca la pequeña pestaña del menú
-.row::before
+div.row::before
     content: ''
     position: absolute
     width: 0
@@ -31,16 +31,6 @@
     border-width: 0 12px 12px 12px
     border-color: transparent transparent #fff transparent
     z-index: 10
-
-.dropdown-menu::before 
-    border-bottom: 9px solid rgba(0, 0, 0, 0.2)
-    border-left: 9px solid rgba(0, 0, 0, 0)
-    border-right: 9px solid rgba(0, 0, 0, 0)
-    content: ""
-    display: inline-block
-    left: 86px
-    position: absolute
-    top: -8px
 
 .blue
     color: #3b5998
@@ -67,31 +57,15 @@
     border-color: #495057
     margin: 10px
 
-
-
-.dropdown-menu::after 
-    border-bottom: 8px solid #FFFFFF
-    border-left: 9px solid rgba(0, 0, 0, 0)
-    border-right: 9px solid rgba(0, 0, 0, 0)
-    content: ""
-    display: inline
-    left: 86px
-    position: absolute
-    width: 0
-    height: 0
-    left: 90%
-    top: -10px
-    border-style: solid
-    border-width: 0 12px 12px 12px
-    border-color: transparent transparent #fff transparent
-    z-index: 10
 a, a:not([href]):not([tabindex]), .navbar-light .navbar-brand
     color: #ffffff
     padding-bottom: 0
+
 .bg-light
     background-color: #FE5140 !important
 /* Estilos del contenedor del login
-.row
+
+div.row
     position: absolute
     margin-top: 10px
     margin-right: 15px
@@ -100,6 +74,7 @@ a, a:not([href]):not([tabindex]), .navbar-light .navbar-brand
     padding-right: 0px;
     padding-left: 0px
     z-index: 10
+
 .col-12
     padding: 20px
     background-color: #fff
@@ -113,9 +88,6 @@ span.input-error
 div.input-error-box
     border: red
     
-#prueba
-    display: inline
-
 .btn 
     color: #fff
     background-color: #fe5140
@@ -143,3 +115,29 @@ div.input-error-box
     margin:auto 
     text-align: center
     font-size: 2rem
+
+
+//Estilo del aside para el sidebar
+aside
+    background-color: #fff
+    position: absolute
+    z-index: 10
+    width: 40%
+
+aside>ul>li
+    list-style: none
+    height: 15px
+    
+
+//CSS izq a der
+
+.colapsing
+    height: auto
+    transition: left 0.3s ease
+    left: -100%
+
+.showing
+    background-color: #ffffff
+    left: 0
+    transition: left 0.3s ease-in
+        

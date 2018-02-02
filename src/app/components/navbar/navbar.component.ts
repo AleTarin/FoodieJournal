@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login/login.service';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray } from '@angular/forms';
+import { AppRoutingModule } from '../../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,12 +12,18 @@ import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, Valid
 export class NavbarComponent implements OnInit {
   login: boolean = false;
   loginForm: FormGroup;
+  sidebar: boolean = false;
 
-  constructor(private loginServ: LoginService, private formBuild: FormBuilder) {
+  constructor(private loginServ: LoginService, private router: RouterModule) {
   }
 
   public showLogin() {
     this.login = !this.login;
+  }
+
+  public showSidebar() {
+    this.sidebar = !this.sidebar;
+    console.log(this.sidebar);
   }
 
   /* loginTo(loginForm: FormGroup){
@@ -29,10 +37,14 @@ export class NavbarComponent implements OnInit {
     });
     this.loginServ.status.subscribe((data) => {
       if (data.loggedIn === true) {
+        
         if (this.loginServ.verifyUserForLogin(this.loginForm.get('userField').value,
           this.loginForm.get('passField').value)) {
-          // Mover a la otra página
-        }else{
+            localStorage.setItem('user', '{username:'+ this.loginForm.get('userField').value+'}');
+            localStorage.setItem('pass', '{password:'+ this.loginForm.get('passField').value+'}');
+            // Mover a la otra página
+           //this.router.navigateByUrl('/tracks');
+            }else{
           data.loggedIn = false;
         }
       }
@@ -46,7 +58,6 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    
     this.loginForm = new FormGroup({
       userField: new FormControl('', [Validators.required, Validators.minLength(5)]),
       passField: new FormControl('', Validators.required)

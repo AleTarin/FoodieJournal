@@ -1,9 +1,48 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
+<!-- <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
     <a class="navbar-brand" href="#">FoodieJournal</a>
       <a class="nav-link" (click)="showLogin()" role="button">
         Login
       </a>
-</nav>
+</nav> -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between ">
+            <a class="nav-link" (click)="showSidebar()" role="button">
+                <i class="fas fa-bars fa-lg"></i>
+            </a>
+            <a class="navbar-brand" href="#">FoodieJournal</a>
+            <a class="nav-link"  role="button">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+            </a>
+        </nav>
+
+<!--navbar left-->
+<!-- <nav class="navbar navbar-expand-sm navbar-light bg-light">
+	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand" href="#">FoodieJournal</a>
+	
+	<div class="collapse navbar-collapse bg-inverse" id="navbarCollapse">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			    item
+			</li>
+		</ul>
+	  </div>
+    </nav> -->
+
+    <aside [ngClass]="{'showing': sidebar, 'colapsing': false === sidebar}">
+        <ul>
+            <li></li>
+        </ul>
+    </aside>
+
 <div *ngIf="login" class="row justify-content-end">
     <div class="col-12 col-lg-5">
         <form class="form-inline"
