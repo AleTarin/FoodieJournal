@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PathsDropdownComponent } from './paths-dropdown.component';
+import { ListDropdownComponent } from './list-dropdown.component';
 
-describe('PathsDropdownComponent', () => {
-  let component: PathsDropdownComponent;
-  let fixture: ComponentFixture<PathsDropdownComponent>;
+describe('ListDropdownComponent', () => {
+  let component: ListDropdownComponent;
+  let fixture: ComponentFixture<ListDropdownComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PathsDropdownComponent ]
+      declarations: [ ListDropdownComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PathsDropdownComponent);
+    fixture = TestBed.createComponent(ListDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
