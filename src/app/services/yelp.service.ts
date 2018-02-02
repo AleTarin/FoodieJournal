@@ -59,7 +59,6 @@ export class YelpService {
     this.myParams = new HttpParams();
     return this.http.get<Business>(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
     .map(res => {
-      console.log(res);
       return res;
     })
     .catch(this.handleError);
@@ -70,7 +69,6 @@ export class YelpService {
     this.myParams = new HttpParams();
     return this.http.get<Review>(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
     .map(review => {
-      console.log(review);
       return review['reviews'][0];
     })
     .catch(this.handleError);
