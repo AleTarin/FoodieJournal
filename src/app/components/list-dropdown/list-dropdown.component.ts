@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import 'bootstrap';
-
-
 
 @Component({
-  selector: 'app-paths-dropdown',
-  templateUrl: './paths-dropdown.component.html',
-  styleUrls: ['./paths-dropdown.component.sass']
+  selector: 'app-list-dropdown',
+  templateUrl: './list-dropdown.component.html',
+  styleUrls: ['./list-dropdown.component.sass']
 })
-export class PathsDropdownComponent implements OnInit {
+export class ListDropdownComponent implements OnInit {
 
  //@Output() selectedPath= new EventEmitter();
   //@Input()pathList;
+  hide=true;
+  pathSelected="American";
+
   pathList =[
     {"name": "American" },
     {"name": "Korean" },
@@ -28,7 +28,17 @@ export class PathsDropdownComponent implements OnInit {
   }
   pathClicked(name){
 console.log(name);
+this.hide=true;
+this.pathSelected=name;
 
+
+  }
+  showPaths(){
+    if(this.hide==true)
+  this.hide=false;
+else{
+  this.hide=true;
+}
   }
 
 }
