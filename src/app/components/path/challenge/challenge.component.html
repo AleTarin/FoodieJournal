@@ -1,14 +1,25 @@
-<div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-      <h5 class="mb-0">
-        <app-challenge-status [id]="1" [status]="false"></app-challenge-status>
-      </h5>
-    </div>
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+<section *ngIf="ArrayBs" class="space-above">
+  <div id="accordion"  *ngFor="let business of ArrayBs; let i = index">
+    <div class="card space-above">
+      <div class="card-header inline" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <h5 class="mb-0">
+          <app-challenge-status class="inline" [id]="i + 1" [name]="business.name" [status]="false"></app-challenge-status>
+          <span class="inline"></span>
+        </h5>
+      </div>
+      <div id="collapseOne" class="collapse" [ngClass]="{'show': i===0 }" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body container">
+          <div class='row' >
+              <div class='col-lg-4 col-md-4 .d-sm-none .d-md-block' >
+                    <app-google-map [latitude]="latitude" [longitude]="longitude" [height]="'150px'" ></app-google-map>
+              </div>  
+              <div class='col-lg-4 col-md-4' >
+                  <img src="https://radiofelicidad.mx/wp-content/uploads/2016/12/Disfrute-una-tasita-de-cafe%CC%819-consejos-para-evitar-que-tu-hijo-se-involucre-en-el-Halloween-2.jpg" alt="" data-toggle="modal" data-target="#myModal">
+              </div>  
+          </div>
+          <app-modal [tipo]="'carousel'"></app-modal>
+        </div> 
       </div>
     </div>
   </div>
-</div>
+</section>

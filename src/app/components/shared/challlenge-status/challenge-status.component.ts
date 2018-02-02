@@ -9,10 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ChallengeStatusComponent implements OnInit {
   @Input('id') id: number;
   @Input('status') status: boolean;
+  @Input('name') name: string;
+
   constructor() { }
   ngOnInit() {
-    console.log(this.id);
-    console.log(this.status);
+
   }
 
 }

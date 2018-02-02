@@ -5,11 +5,12 @@ import { TrackSummaryComponent } from './components/track-summary/track-summary.
 import { PathComponent } from './components/path/path.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'tracks', component: TrackSummaryComponent},
-  {path: 'productos', component: PathComponent , children: [
+  {path: 'home', component: HomeComponent},
+  {path: 'paths', component: TrackSummaryComponent},
+  {path: 'paths/:id', component: PathComponent , children: [
     {path: '', component: PathComponent}
-  ]}
+  ]},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 @NgModule({
