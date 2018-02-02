@@ -12,6 +12,7 @@ export class Business {
     photos?: string[];
     review_count?: number;
     url?: string;
+    image_url?: string;
 }
 
 export class Categories {

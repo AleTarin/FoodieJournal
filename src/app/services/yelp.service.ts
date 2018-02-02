@@ -15,7 +15,8 @@ export class YelpService {
 
 
   // Token de la yelp de API exclusivo para la aplicacion
-  private API_KEY = 'Bearer ' + 'FUNofMVIf4wZoh3SwQ0pGttt08P97wC3Ooz0xuqsy5HY6mavQoXvxA8dUHh7nNdPZ-yHtomdWH-edmpgdOZvF6E9I2zvB_PKyuZxGWc_ygyOhPcACUzv3Vtm6kxyWnYx';
+  private API_KEY = 'Bearer FUNofMVIf4wZoh3SwQ0pGttt08P97wC3Ooz0xuqsy5HY6mavQoXvxA8dUHh7nNdPZ-yHtomdWH' +
+  '-edmpgdOZvF6E9I2zvB_PKyuZxGWc_ygyOhPcACUzv3Vtm6kxyWnYx';
 
   private  url_yelp: string;
   private myHeaders: HttpHeaders;
@@ -27,12 +28,11 @@ export class YelpService {
     this.myHeaders = new HttpHeaders().set('Authorization', this.API_KEY);
   }
 
-  YelpPhoneSearch(phone: string) {
+  YelpPhoneSearch(phone: string): Observable<Business> {
     this.url_yelp = 'https://api.yelp.com/v3/businesses/search/phone';
     this.myParams = new HttpParams().set('phone', phone);
-    return this.http.get(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
+    return this.http.get<Business>(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
     .map(res => {
-      console.log(res);
       return res;
     })
     .catch(this.handleError);
@@ -47,9 +47,9 @@ export class YelpService {
       .append('latitude', String(lat))
       .append('longitude', String(long));
 
-    return this.http.get(this.url_yelp , { params: this.myParams, headers: this.myHeaders})
+    return this.http.get<Business[]>(this.url_yelp , { params: this.myParams, headers: this.myHeaders})
     .map(res => {
-      return <Business[]>res['businesses'];
+      return res['businesses'];
     })
     .catch(this.handleError);
   }
@@ -59,8 +59,7 @@ export class YelpService {
     this.myParams = new HttpParams();
     return this.http.get<Business>(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
     .map(res => {
-      console.log(res);
-      return <Business>res;
+      return res;
     })
     .catch(this.handleError);
   }
@@ -70,8 +69,7 @@ export class YelpService {
     this.myParams = new HttpParams();
     return this.http.get<Review>(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
     .map(review => {
-      console.log(review);
-      return <Review>review['reviews'][0];
+      return review['reviews'][0];
     })
     .catch(this.handleError);
   }
@@ -80,5 +78,4 @@ export class YelpService {
     console.log(err.message);
     return Observable.throw(err.message);
   }
-
 }

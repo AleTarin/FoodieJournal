@@ -1,4 +1,4 @@
-* {
+ * {
     box-sizing: border-box;
   }
   body {
@@ -10,7 +10,7 @@
           width: 200px;
           height: 200px;
           position: absolute;
-          z-index: 31;
+          z-index: 60;
       }
   }
 
@@ -26,7 +26,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: red;
+    background: #CB3729;
+
     border-radius: 100px 0 0 100px;
     opacity: 0;
     animation: fill 5s steps(1, end) 1;
@@ -38,7 +39,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    background: red;
+    background: #CB3729;
     border-radius: 0 100px 100px 0;
     opacity: 1;
     animation: mask 5s steps(1, end) 1;
@@ -76,5 +77,5 @@
   .wrapper:hover .left,
   .wrapper:hover .right,
   .wrapper:hover .rotate {
-    animation-play-state: paused;
+  animation-play-state: paused;
   }

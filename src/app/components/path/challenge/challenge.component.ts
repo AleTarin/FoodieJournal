@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { YelpService } from '../../../services/yelp.service';
+import { Track } from '../../../interfaces/track';
+import { Business } from '../../../interfaces/business';
 
 @Component({
   selector: 'app-challenge',
@@ -9,20 +11,29 @@ import { YelpService } from '../../../services/yelp.service';
 export class ChallengeComponent implements OnInit {
   latitude: number;
   longitude: number;
+  ArrayBs: Business[];
+  @Input() path: Track;
+
   constructor(private yelpService: YelpService) { }
 
   ngOnInit() {
+
     if (window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(position => {
+        // Save the latitude to use
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        this.yelpService.YelpSearch(this.latitude, this.longitude, 'mexican', 1000)
+        console.log(this.path);
+
+        // Search by location and categorie, the radius can change
+        this.yelpService.YelpSearch(this.latitude, this.longitude, this.path.categories, 10000)
         .subscribe(res => {
-          console.log(res);
+          this.ArrayBs = res;
+          console.log(this.ArrayBs);
         });
       });
-   }
-   this.yelpService.YelpPhoneSearch('+14159083801').subscribe();
+    }
+
   }
 
 }
