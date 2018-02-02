@@ -11,6 +11,10 @@ export class GoogleMapsService {
   private myHeaders: HttpHeaders;
   private myParams: HttpParams;
 
+  private geolocation() {
+
+  }
+
   private handleError(err: HttpErrorResponse) {
     console.log(err.message);
     return Observable.throw(err.message);

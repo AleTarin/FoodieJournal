@@ -2,32 +2,43 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { PathModule } from './components/path/path.module';
+
+// Http
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
-// Services
-import { YelpService } from './services/yelp.service';
-import { GoogleMapsService } from './services/google-maps.service';
-import { TrackSummaryComponent } from './components/track-summary/track-summary.component';
-import { PathModule } from './components/path/path.module';
-import { LoginService } from './services/login/login.service';
+// Firebase
 import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
+// Services
+import { YelpService } from './services/yelp.service';
+import { GoogleMapsService } from './services/google-maps.service';
+import { PathsService } from './services/paths.service';
+import { LoginService } from './services/login/login.service';
+
+// Components
 import { environment } from '../environments/environment';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { PathsDropdownComponent } from './paths-dropdown/paths-dropdown.component';
-import { ListaPathsComponent } from './lista-paths/lista-paths.component';
 
+
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { ListPathsComponent } from './components/list-paths/list-paths.component';
+import { ListDropdownComponent } from './components/list-dropdown/list-dropdown.component';
+import { RecentDropdownComponent } from './components/recent-dropdown/recent-dropdown.component';
+
+
+import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { TrackSummaryComponent } from './components/track-summary/track-summary.component';
 
 @NgModule({
   declarations: [
@@ -35,11 +46,11 @@ import { ListaPathsComponent } from './lista-paths/lista-paths.component';
     HomeComponent,
     NavbarComponent,
     TrackSummaryComponent,
-    GoogleMapComponent,
-    CarouselComponent,
-    ModalComponent,
-    ListaPathsComponent,
-    PathsDropdownComponent
+
+    StarRatingComponent,
+    ListPathsComponent,
+    ListDropdownComponent,
+    RecentDropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -47,16 +58,13 @@ import { ListaPathsComponent } from './lista-paths/lista-paths.component';
     AppRoutingModule,
     HttpClientModule,
     PathModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsKey
-    })
   ],
   providers: [
     YelpService,
     GoogleMapsService,
     PathModule,
-    LoginService
+    LoginService,
+    PathsService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,36 @@
+[
+    {
+        "id":0,
+        "icon":"https://burgerjointhtx.com/wp-content/uploads/2015/07/burger-icon-tight-white.png",
+        "categories": "newamerican,tradamerican,chicken_wings,hotdogs",
+        "type":"American",
+        "description":"American track",
+        "duration":2,
+        "completenessPercentage":0},
+    {
+        "id":1,
+        "icon":"https://d30y9cdsu7xlg0.cloudfront.net/png/7914-200.png",
+        "categories": "italian",
+        "type":"Italian",
+        "description":"Italian track",
+        "duration":3,
+        "completenessPercentage":50},
+        
+    {
+        "id":2,
+        "icon":"https://openclipart.org/image/2400px/svg_to_png/283405/Japanese-Rice-Bowl---Monochrome.png",
+        "categories": "japanese",
+        "type":"Japanese",
+        "description":"Japanese track",
+        "duration":2,
+        "completenessPercentage":15},
+    {
+        "id":3,
+        "icon":"https://png.icons8.com/metro/1600/taco.png",
+        "categories": "mexican",
+        "type":"Mexican",
+        "description":"Mexican track",
+        "duration":1,
+        "completenessPercentage":60
+    }
+]

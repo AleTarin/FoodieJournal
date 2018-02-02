@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Track } from '../../interfaces/track';
+import { YelpService } from '../../services/yelp.service';
+import { PathsService } from '../../services/paths.service';
 
 @Component({
   selector: 'app-track-summary',
@@ -7,42 +9,15 @@ import { Track } from '../../interfaces/track';
   styleUrls: ['./track-summary.component.sass']
 })
 export class TrackSummaryComponent implements OnInit {
+  longitude: number;
+  latitude: number;
 
   trackArray: Track[];
 
-  constructor() { }
+  constructor(private yelpService: YelpService, private pathService: PathsService ) { }
 
   ngOnInit() {
-    this.trackArray = <Track[]>[{
-      icon: 'https://burgerjointhtx.com/wp-content/uploads/2015/07/burger-icon-tight-white.png' ,
-      type: '',
-      description: '',
-      duration: 5,
-      completenessPercentage: 5
-    },
-    {
-      icon: 'https://burgerjointhtx.com/wp-content/uploads/2015/07/burger-icon-tight-white.png' ,
-      type: '',
-      description: '',
-      duration: 5,
-      completenessPercentage: 5
-    },
-    {
-      icon: 'https://burgerjointhtx.com/wp-content/uploads/2015/07/burger-icon-tight-white.png' ,
-      type: '',
-      description: '',
-      duration: 5,
-      completenessPercentage: 5
-    },
-    {
-      icon: 'https://burgerjointhtx.com/wp-content/uploads/2015/07/burger-icon-tight-white.png' ,
-      type: '',
-      description: '',
-      duration: 5,
-      completenessPercentage: 5
+    this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
     }
-
-  ];
-  }
 }
 
