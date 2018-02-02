@@ -25,8 +25,12 @@ import { environment } from '../environments/environment';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { PathsDropdownComponent } from './paths-dropdown/paths-dropdown.component';
-import { ListaPathsComponent } from './lista-paths/lista-paths.component';
+
+
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { ListPathsComponent } from './components/list-paths/list-paths.component';
+import { ListDropdownComponent } from './components/list-dropdown/list-dropdown.component';
+import { RecentDropdownComponent } from './components/recent-dropdown/recent-dropdown.component';
 
 
 @NgModule({
@@ -38,8 +42,12 @@ import { ListaPathsComponent } from './lista-paths/lista-paths.component';
     GoogleMapComponent,
     CarouselComponent,
     ModalComponent,
-    ListaPathsComponent,
-    PathsDropdownComponent
+    
+    
+    StarRatingComponent,
+    ListPathsComponent,
+    ListDropdownComponent,
+    RecentDropdownComponent
   ],
   imports: [
     BrowserModule,
