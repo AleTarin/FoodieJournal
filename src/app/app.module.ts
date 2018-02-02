@@ -25,7 +25,6 @@ import { LoginService } from './services/login/login.service';
 // Components
 import { environment } from '../environments/environment';
 import { PathsDropdownComponent } from './paths-dropdown/paths-dropdown.component';
-import { ListaPathsComponent } from './lista-paths/lista-paths.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -38,7 +37,6 @@ import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pi
     HomeComponent,
     NavbarComponent,
     TrackSummaryComponent,
-    ListaPathsComponent,
     PathsDropdownComponent,
     PieProgressBarComponent
     // MapComponent
