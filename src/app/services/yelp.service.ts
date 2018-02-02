@@ -28,21 +28,17 @@ export class YelpService {
     this.myHeaders = new HttpHeaders().set('Authorization', this.API_KEY);
   }
 
-  YelpPhoneSearch(phone: string) {
+  YelpPhoneSearch(phone: string): Observable<Business> {
     this.url_yelp = 'https://api.yelp.com/v3/businesses/search/phone';
     this.myParams = new HttpParams().set('phone', phone);
-    return this.http.get(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
+    return this.http.get<Business>(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
     .map(res => {
       return res;
     })
     .catch(this.handleError);
   }
 
-<<<<<<< HEAD
-  YelpSearch(lat: number , long: number , cat: string, radius: number ) {
-=======
   YelpSearch(lat: number , long: number , cat: string, radius: number ): Observable<Business[]> {
->>>>>>> 4e4797978149db895172aa9396277bd58442e88c
     this.url_yelp = 'https://api.yelp.com/v3/businesses/search';
     this.myParams = new HttpParams().append('term', '"food","restaurants"')
       .append('categories', cat)
@@ -51,13 +47,9 @@ export class YelpService {
       .append('latitude', String(lat))
       .append('longitude', String(long));
 
-    return this.http.get(this.url_yelp , { params: this.myParams, headers: this.myHeaders})
+    return this.http.get<Business[]>(this.url_yelp , { params: this.myParams, headers: this.myHeaders})
     .map(res => {
-<<<<<<< HEAD
-      return res;
-=======
-      return <Business[]>res['businesses'];
->>>>>>> 4e4797978149db895172aa9396277bd58442e88c
+      return res['businesses'];
     })
     .catch(this.handleError);
   }
@@ -68,7 +60,7 @@ export class YelpService {
     return this.http.get<Business>(this.url_yelp , {params: this.myParams, headers: this.myHeaders})
     .map(res => {
       console.log(res);
-      return <Business>res;
+      return res;
     })
     .catch(this.handleError);
   }
@@ -88,5 +80,4 @@ export class YelpService {
     console.log(err.message);
     return Observable.throw(err.message);
   }
-
 }
