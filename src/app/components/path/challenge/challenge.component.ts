@@ -17,7 +17,6 @@ export class ChallengeComponent implements OnInit {
   constructor(private yelpService: YelpService) { }
 
   ngOnInit() {
-
     if (window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(position => {
         // Save the latitude to use
@@ -28,12 +27,11 @@ export class ChallengeComponent implements OnInit {
         // Search by location and categorie, the radius can change
         this.yelpService.YelpSearch(this.latitude, this.longitude, this.path.categories, 10000)
         .subscribe(res => {
+          // Save the bussinesses to use in the template
           this.ArrayBs = res;
           console.log(this.ArrayBs);
         });
       });
     }
-
   }
-
 }

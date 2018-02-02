@@ -18,6 +18,7 @@ export class TrackSummaryComponent implements OnInit {
 
   ngOnInit() {
     this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-    }
+    localStorage.setItem('paths', JSON.stringify(this.trackArray));
+  }
 }
 
