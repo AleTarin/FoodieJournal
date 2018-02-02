@@ -46,11 +46,7 @@ import { TrackSummaryComponent } from './components/track-summary/track-summary.
     HomeComponent,
     NavbarComponent,
     TrackSummaryComponent,
-    GoogleMapComponent,
-    CarouselComponent,
-    ModalComponent,
-    
-    
+
     StarRatingComponent,
     ListPathsComponent,
     ListDropdownComponent,
