@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
     <a class="navbar-brand" href="#">FoodieJournal</a>
-      <a class="nav-link" (click)="showLogin()" role="button">
+      <a class="nav-link" (click)="login()" role="button" ng-if="auth.isAuthenticated()">
         Login
       </a>
 </nav>
-<div *ngIf="login" class="row justify-content-end">
+<!-- <div *ngIf="login" class="row justify-content-end">
     <div class="col-12 col-lg-5">
         <form class="form-inline"
                 novalidate
@@ -55,4 +55,4 @@
             </span>
           </div>
     </div>
-</div>
+</div> -->
