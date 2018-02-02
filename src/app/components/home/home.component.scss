@@ -1,6 +1,9 @@
 h1 { text-align: center}
 
-p{ text-align: center}
+p{ text-align: center;
+  padding-bottom: 15%;
+}
+
 
 .text2 {
 
@@ -63,7 +66,7 @@ p{ text-align: center}
 .header {
 
   background: #000;
-  background-image: url(http://wallpaperstock.net/coffe-break_wallpapers_6969_1024x768.jpg);
+  background-image: url(../../../assets/images/more.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
