@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Track } from '../../../interfaces/track';
 
 @Component({
   selector: 'app-path-describe',
@@ -6,12 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./path-describe.component.scss']
 })
 export class PathDescribeComponent implements OnInit {
-  path = {
-    title: 'American',
-    // tslint:disable-next-line:max-line-length
-    description: 'One caracteristic of American cooking is the fusion of multiple ethinc or religon approches into completely new cooking stlye',
-    duration: '3 Weeks'
-  };
+  @Input() path: Track;
+
   constructor() { }
 
   ngOnInit() {

@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   private getBusiness(category: string, radius: number) {
     /// locate the user
     if (navigator.geolocation) {
+      //
       navigator.geolocation.getCurrentPosition(position => {
         this.searchBusiness(position.coords, category, radius);
       });
