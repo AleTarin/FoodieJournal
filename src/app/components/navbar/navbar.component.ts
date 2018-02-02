@@ -40,8 +40,11 @@ export class NavbarComponent implements OnInit {
         
         if (this.loginServ.verifyUserForLogin(this.loginForm.get('userField').value,
           this.loginForm.get('passField').value)) {
-            localStorage.setItem('user', '{username:'+ this.loginForm.get('userField').value+'}');
-            localStorage.setItem('pass', '{password:'+ this.loginForm.get('passField').value+'}');
+            localStorage.setItem('user', JSON.stringify(this.loginForm.get('userField').value));
+            localStorage.setItem('pass', JSON.stringify(this.loginForm.get('passField').value));
+            
+            console.log(JSON.parse(localStorage.getItem('user')));
+            
             // Mover a la otra página
            //this.router.navigateByUrl('/tracks');
             }else{

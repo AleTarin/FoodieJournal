@@ -39,4 +39,13 @@ export class LoginService {
     const isCorrect = usersList.filter(user => user.username === username && user.pass === pass).length !== 0;
       return isCorrect;
   }
+
+  isLogged(username: string): boolean{
+     let userExtracted = JSON.parse(localStorage.getItem('user'));
+     if(userExtracted !== ''){
+       return true;
+     }else{
+       return false;
+     }
+  }
 }
