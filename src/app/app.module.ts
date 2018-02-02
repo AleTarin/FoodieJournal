@@ -50,9 +50,7 @@ import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pi
     TrackSummaryComponent,
     StarRatingComponent,
     ListPathsComponent,
-    PathsDropdownComponent,
-    PieProgressBarComponent
-    ListDropdownComponent,
+    PieProgressBarComponent,
     RecentDropdownComponent
   ],
   imports: [
