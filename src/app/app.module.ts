@@ -1,4 +1,4 @@
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +21,7 @@ import { YelpService } from './services/yelp.service';
 import { GoogleMapsService } from './services/google-maps.service';
 import { PathsService } from './services/paths.service';
 import { LoginService } from './services/login/login.service';
-import  {AuthService} from './services/auth.service';
+import { AuthService} from './services/auth.service';
 
 // Components
 import { environment } from '../environments/environment';
@@ -59,6 +59,7 @@ import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pi
     AppRoutingModule,
     HttpClientModule,
     PathModule,
+    NgbModule.forRoot()
   ],
   providers: [
     YelpService,
@@ -66,8 +67,7 @@ import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pi
     PathModule,
     LoginService,
     PathsService,
-    AuthService    
-    
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })
