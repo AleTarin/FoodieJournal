@@ -40,9 +40,9 @@ export class LoginService {
       return isCorrect;
   }
 
-  isLogged(username: string): boolean{
+  isLogged(): boolean{
      let userExtracted = JSON.parse(localStorage.getItem('user'));
-     if(userExtracted !== ''){
+     if(userExtracted != null){
        return true;
      }else{
        return false;

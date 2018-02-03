@@ -1,52 +1,37 @@
-<!-- <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="!isUserLoggedIn()">
     <a class="navbar-brand" href="#">FoodieJournal</a>
       <a class="nav-link" (click)="showLogin()" role="button">
         Login
       </a>
-</nav> -->
-        <!-- <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <div>
-                <a class="nav-link" (click)="showSidebar()" role="button">
-                    <i class="fas fa-bars fa-lg"></i>
-                </a>
-                <a class="navbar-brand" href="#">FoodieJournal</a>
-            </div>
-            <div>
-                
-            </div>
-            <a class="nav-link"  role="button">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Username
-                </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item menu-right" href="#">Sign Out</a>
-                <a class="dropdown-item menu-right" href="#">Profile</a>
-            </div>
-        </nav> -->
+</nav>
 
-<!--navbar left-->
-<!-- <nav class="navbar navbar-expand-sm navbar-light bg-light">
-	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-	<span class="navbar-toggler-icon"></span>
-	</button>
-	<a class="navbar-brand" href="#">FoodieJournal</a>
-	
-	<div class="collapse navbar-collapse bg-inverse" id="navbarCollapse">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-			    item
-			</li>
-		</ul>
-	  </div>
-    </nav> -->
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="isUserLoggedIn()">
+    <div>
+        <a class="nav-link toggle-app" (click)="showSidebar()" role="button">
+            <i class="fas fa-bars fa-lg"></i>
+        </a>
+        <a class="navbar-brand title-app" href="#">FoodieJournal</a>
+    </div>
+    <div >
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hi teamuno !
+            <img src="https://vignette.wikia.nocookie.net/vsbattles/images/1/1e/135Jolteon_AG_anime_2.png/revision/latest?cb=20160927151641" class="img-rounded" alt="Cinque Terre">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item menu-right" >Sign Out</a>
+            <a class="dropdown-item menu-right" href="">Profile</a>
+        </div>
+    </div>
+</nav>
 
-    <aside [ngClass]="{'showing': sidebar, 'colapsing': false === sidebar}">
-        <ul>
-            <li></li>
-        </ul>
-    </aside>
 
-<div *ngIf="login" class="row justify-content-end">
+<aside [ngClass]="{'showing': sidebar, 'colapsing': false === sidebar}">
+    <ul>
+        <li></li>
+    </ul>
+</aside>
+
+<div *ngIf="login" class="row justify-content-end" [ngClass]="{'hideLogin' :isUserLoggedIn()}">
     <div class="col-12 col-lg-5">
         <form class="form-inline"
                 novalidate
@@ -90,7 +75,7 @@
               <i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i>
             </span>
             <span class="lightblue border">
-              <i class="fab fa-twitter lightblue fa-lg"aria-hidden="true"width="30px"></i>
+              <i class="fab fa-twitter lightblue fa-lg" aria-hidden="true" width="30px"></i>
             </span>
             <span class="red border">
               <i class="fab fa-google-plus-g fa-lg" aria-hidden="true"></i>

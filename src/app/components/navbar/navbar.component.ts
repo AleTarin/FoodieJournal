@@ -23,15 +23,9 @@ export class NavbarComponent implements OnInit {
 
   public showSidebar() {
     this.sidebar = !this.sidebar;
-    console.log(this.sidebar);
   }
 
-  /* loginTo(loginForm: FormGroup){
-    console.log("logueando");
-     //if (data.isLoggedIn === true) this.router.navigateByUrl('/admin/dashboard'):
-  } */
   loginTo() {
-    console.log('doing login...');
     this.loginServ.verifyUserStatus({
       loggedIn: true,
     });
@@ -43,7 +37,6 @@ export class NavbarComponent implements OnInit {
             localStorage.setItem('user', JSON.stringify(this.loginForm.get('userField').value));
             localStorage.setItem('pass', JSON.stringify(this.loginForm.get('passField').value));
             
-            console.log(JSON.parse(localStorage.getItem('user')));
             
             // Mover a la otra página
            //this.router.navigateByUrl('/tracks');
@@ -53,6 +46,10 @@ export class NavbarComponent implements OnInit {
       }
       //if (data.isLoggedIn === true) this.router.navigateByUrl('/admin/dashboard');
     });
+  }
+
+  isUserLoggedIn():boolean {
+    return this.loginServ.isLogged();
   }
 
   logout() {
