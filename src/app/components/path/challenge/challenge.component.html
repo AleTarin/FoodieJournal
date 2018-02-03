@@ -1,13 +1,13 @@
 <section *ngIf="ArrayBs" class="space-above">
   <div id="accordion"  *ngFor="let business of ArrayBs; let i = index">
     <div class="card space-above">
-      <div class="card-header inline" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+      <div class="card-header" id="headingOne" data-toggle="collapse" [attr.data-target]="'#' + business.id" aria-expanded="false" [attr.aria-controls]="business.id">
         <h5 class="mb-0">
           <app-challenge-status class="inline" [id]="i + 1" [name]="business.name" [status]="false"></app-challenge-status>
           <span class="inline">{{business.name}}</span>
         </h5>
       </div>
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div [id]="business.id" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body container">
           <div class='row' >
               <div class='col-lg-4 col-md-4'>
