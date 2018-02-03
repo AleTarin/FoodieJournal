@@ -21,6 +21,7 @@ import { YelpService } from './services/yelp.service';
 import { GoogleMapsService } from './services/google-maps.service';
 import { PathsService } from './services/paths.service';
 import { LoginService } from './services/login/login.service';
+import  {AuthService} from './services/auth.service';
 
 // Components
 import { environment } from '../environments/environment';
@@ -39,6 +40,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TrackSummaryComponent } from './components/track-summary/track-summary.component';
+import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pie-progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -46,10 +48,9 @@ import { TrackSummaryComponent } from './components/track-summary/track-summary.
     HomeComponent,
     NavbarComponent,
     TrackSummaryComponent,
-
     StarRatingComponent,
     ListPathsComponent,
-    ListDropdownComponent,
+    PieProgressBarComponent,
     RecentDropdownComponent
   ],
   imports: [
@@ -64,7 +65,9 @@ import { TrackSummaryComponent } from './components/track-summary/track-summary.
     GoogleMapsService,
     PathModule,
     LoginService,
-    PathsService
+    PathsService,
+    AuthService    
+    
   ],
   bootstrap: [AppComponent]
 })

@@ -1,21 +1,22 @@
 <section *ngIf="ArrayBs" class="space-above">
   <div id="accordion"  *ngFor="let business of ArrayBs; let i = index">
     <div class="card space-above">
-      <div class="card-header inline" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+      <div class="card-header" id="headingOne" data-toggle="collapse" [attr.data-target]="'#' + business.id" aria-expanded="false" [attr.aria-controls]="business.id">
         <h5 class="mb-0">
           <app-challenge-status class="inline" [id]="i + 1" [name]="business.name" [status]="false"></app-challenge-status>
-          <span class="inline"></span>
+          <span class="inline">{{business.name}}</span>
         </h5>
       </div>
-      <div id="collapseOne" class="collapse" [ngClass]="{'show': i===0 }" aria-labelledby="headingOne" data-parent="#accordion">
+      <div [id]="business.id" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body container">
           <div class='row' >
+              <div class='col-lg-4 col-md-4'>
+                  <app-google-map [latitude]="business.coordinates.latitude" [longitude]="business.coordinates.longitude" [height]="'150px'" ></app-google-map>
+              </div>  
               <div class='col-lg-4 col-md-4 .d-sm-none .d-md-block' >
-                    <app-google-map [latitude]="latitude" [longitude]="longitude" [height]="'150px'" ></app-google-map>
-              </div>  
-              <div class='col-lg-4 col-md-4' >
-                  <img src="https://radiofelicidad.mx/wp-content/uploads/2016/12/Disfrute-una-tasita-de-cafe%CC%819-consejos-para-evitar-que-tu-hijo-se-involucre-en-el-Halloween-2.jpg" alt="" data-toggle="modal" data-target="#myModal">
-              </div>  
+                  <img class="img-responsive" *ngIf='business.image_url' [src]="business.image_url" alt="business.name" data-toggle="modal" data-target="#myModal">
+                  <img class="img-responsive" *ngIf='!business.image_url' src="http://tutaki.org.nz/wp-content/uploads/2016/04/no-image-available.png" alt="business.name" data-toggle="modal" data-target="#myModal">
+              </div>
           </div>
           <app-modal [tipo]="'carousel'"></app-modal>
         </div> 

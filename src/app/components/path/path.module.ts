@@ -4,6 +4,7 @@ import { PathComponent } from './path.component';
 import { PathDescribeComponent } from './path-describe/path-describe.component';
 import { ChallengeComponent } from './challenge/challenge.component';
 import { ChallengeStatusComponent } from '../shared/challlenge-status/challenge-status.component';
+import { StatusButtonComponent } from '../shared/status-button/status-button.component';
 import { GoogleMapComponent } from '../google-map/google-map.component';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../../environments/environment';
@@ -24,6 +25,7 @@ import { CarouselComponent } from '../carousel/carousel.component';
     PathDescribeComponent,
     ChallengeComponent,
     ChallengeStatusComponent,
+    StatusButtonComponent,
     GoogleMapComponent,
     CarouselComponent,
     ModalComponent
