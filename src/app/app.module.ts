@@ -21,6 +21,7 @@ import { YelpService } from './services/yelp.service';
 import { GoogleMapsService } from './services/google-maps.service';
 import { PathsService } from './services/paths.service';
 import { LoginService } from './services/login/login.service';
+import  {AuthService} from './services/auth.service';
 
 // Components
 import { environment } from '../environments/environment';
@@ -64,7 +65,9 @@ import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pi
     GoogleMapsService,
     PathModule,
     LoginService,
-    PathsService
+    PathsService,
+    AuthService    
+    
   ],
   bootstrap: [AppComponent]
 })
