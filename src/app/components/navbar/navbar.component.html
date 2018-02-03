@@ -1,58 +1,61 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
-    <a class="navbar-brand" href="#">FoodieJournal</a>
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="!isUserLoggedIn()">
+    <a class="navbar-brand" href="">FoodieJournal</a>
       <a class="nav-link" (click)="login()" role="button" ng-if="auth.isAuthenticated()">
         Login
       </a>
 </nav>
-<!-- <div *ngIf="login" class="row justify-content-end">
-    <div class="col-12 col-lg-5">
-        <form class="form-inline"
-                novalidate
-                [formGroup]="loginForm">
-            <div class="form-group"
-                    [ngClass]="{'': (loginForm.get('userField').touched || 
-                                loginForm.get('userField').dirty) &&
-                                !loginForm.get('userField').valid }">
-                <input style="width:100%" class="form-control" type="username" placeholder="Username" 
-                aria-label="Username" formControlName="userField"><br>
-                <span class="input-error" *ngIf="(loginForm.get('userField').touched || 
-                                                            loginForm.get('userField').dirty) && 
-                                                            loginForm.get('userField').errors">
-                <span *ngIf="loginForm.get('userField').errors.required">
-                    Please enter your user name.
-                </span>
-                <span *ngIf="loginForm.get('userField').errors.minlength">
-                    The username must at least
-                    5 characters long.
-                </span>
-                </span>
-            </div>
-            <div class="form-group"
-                    [ngClass]="{'input-error-box': (loginForm.get('passField').touched || 
-                                              loginForm.get('passField').dirty) &&
-                                              !loginForm.get('passField').valid }">
-                <input class="form-control" type="password" placeholder="Password"
-                aria-label="password" formControlName="passField">
-                <span class="input-error" *ngIf="(loginForm.get('passField').touched || 
-                            loginForm.get('passField').dirty) && 
-                            loginForm.get('passField').errors">
-                    Please enter your password.
-                </span>
-            </div>
-            <button type="button" class="btn btn-lg btn-block btn-login"
-            [disabled]="!loginForm.valid" (click)="loginTo()">Login</button>
-            <div class= "bet">or login with</div> 
-        </form>
-        <div class="social-icons">
-            <span class="blue border ">
-              <i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i>
-            </span>
-            <span class="lightblue border">
-              <i class="fab fa-twitter lightblue fa-lg"aria-hidden="true"width="30px"></i>
-            </span>
-            <span class="red border">
-              <i class="fab fa-google-plus-g fa-lg" aria-hidden="true"></i>
-            </span>
-          </div>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="isUserLoggedIn()">
+    <!-- burguer button -->
+    <div>
+        <a class="nav-link toggle-app" (click)="showSidebar()" role="button">
+            <i class="fas fa-bars fa-lg"></i>
+        </a>
+            <a class="navbar-brand title-app" href="#">FoodieJournal</a>
     </div>
-</div> -->
+
+    <div class="dropdown .align-middle">
+
+        <div ngbDropdown class="d-inline-block pull-right .align-middle">
+            <a class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                Hi teamuno !
+                <img src="https://vignette.wikia.nocookie.net/vsbattles/images/1/1e/135Jolteon_AG_anime_2.png/revision/latest?cb=20160927151641" class="img-rounded" alt="Cinque Terre">
+            </a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item" (click)="logout()">Sign out</button>
+                <button class="dropdown-item">Profile</button>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+<aside [ngClass]="{'showing': sidebar, 'colapsing': false === sidebar}">
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+</aside>
+
+                 
+<!-- <div >
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hi teamuno !
+            <img src="https://vignette.wikia.nocookie.net/vsbattles/images/1/1e/135Jolteon_AG_anime_2.png/revision/latest?cb=20160927151641" class="img-rounded" alt="Cinque Terre">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item menu-right" >Sign Out</a>
+            <a class="dropdown-item menu-right" href="">Profile</a>
+        </div>
+    </div> -->
