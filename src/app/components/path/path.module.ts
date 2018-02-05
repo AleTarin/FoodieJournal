@@ -11,6 +11,9 @@ import { environment } from '../../../environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { ModalComponent } from '../modal/modal.component';
 import { CarouselComponent } from '../carousel/carousel.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { ContactInfoComponent } from '../contact-info/contact-info.component';
 
 @NgModule({
   imports: [
@@ -18,7 +21,8 @@ import { CarouselComponent } from '../carousel/carousel.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
-    })
+    }),
+    NgbModule,
   ],
   declarations: [
     PathComponent,
@@ -28,8 +32,12 @@ import { CarouselComponent } from '../carousel/carousel.component';
     StatusButtonComponent,
     GoogleMapComponent,
     CarouselComponent,
-    ModalComponent
+    ModalComponent,
+    StarRatingComponent,
+    ContactInfoComponent,
   ],
-  exports: [PathComponent]
+  exports: [PathComponent],
+  entryComponents: [CarouselComponent]
+
 })
 export class PathModule { }
