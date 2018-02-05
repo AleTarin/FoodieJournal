@@ -11,6 +11,11 @@ import { environment } from '../../../environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { ModalComponent } from '../modal/modal.component';
 import { CarouselComponent } from '../carousel/carousel.component';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { ListPathsComponent } from '../list-paths/list-paths.component';
+import { PieProgressBarComponent } from '../shared/pie-progress-bar/pie-progress-bar.component';
+import { RecentDropdownComponent } from '../recent-dropdown/recent-dropdown.component';
+import { ListDropdownComponent } from '../list-dropdown/list-dropdown.component';
 
 @NgModule({
   imports: [
@@ -28,7 +33,12 @@ import { CarouselComponent } from '../carousel/carousel.component';
     StatusButtonComponent,
     GoogleMapComponent,
     CarouselComponent,
-    ModalComponent
+    ModalComponent,
+    StarRatingComponent,
+    ListPathsComponent,
+    ListDropdownComponent,
+    PieProgressBarComponent,
+    RecentDropdownComponent
   ],
   exports: [PathComponent]
 })

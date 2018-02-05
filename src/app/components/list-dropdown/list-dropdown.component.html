@@ -1,26 +1,15 @@
-
-
-
 <button type="button" class="btn btn-danger btn-paths"  (click)="showPaths()"><label class="text-drop"   >{{pathSelected}}  <i class="fas fa-caret-down"></i> </label></button>
 <div *ngIf="!hide">
+  <div *ngFor="let path of pathList; let i = index;" (click)="pathClicked(path.name)" >     
+    <div  class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="pathSelected!=path.name" >  
 
+      <label class="btn btn-danger"  >
 
+        <input type="radio"  name="options" id="option{{i}}" autocomplete="off" checked="" *ngIf="pathSelected!=path.name"   > {{path.name}}
 
-<div *ngFor="let path of pathList; let i = index;" (click)="pathClicked(path.name)" > 
-
-  
-<div  class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="pathSelected!=path.name" >
-
-  
-
-  <label class="btn btn-danger"  >
-
-    <input type="radio"  name="options" id="option{{i}}" autocomplete="off" checked="" *ngIf="pathSelected!=path.name"   > {{path.name}}
-
-  </label>
-  
- 
-  
-</div> 
-</div>
+      </label>   
+    
+      
+    </div> 
+  </div>
 </div>

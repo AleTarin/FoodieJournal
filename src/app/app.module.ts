@@ -24,7 +24,6 @@ import { LoginService } from './services/login/login.service';
 
 // Components
 import { environment } from '../environments/environment';
-import { PathsDropdownComponent } from './paths-dropdown/paths-dropdown.component';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ModalComponent } from './components/modal/modal.component';
@@ -48,11 +47,6 @@ import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pi
     HomeComponent,
     NavbarComponent,
     TrackSummaryComponent,
-    StarRatingComponent,
-    ListPathsComponent,
-    PathsDropdownComponent,
-    PieProgressBarComponent,
-    RecentDropdownComponent
   ],
   imports: [
     BrowserModule,
