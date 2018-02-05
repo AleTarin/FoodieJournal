@@ -3,6 +3,7 @@ export class Business {
     name: string;
     phone: string;
     rating: number;
+    price?: string;
     display_phone?: string;
     categories?: Categories[];
     coordinates?: Coord[];
@@ -27,6 +28,7 @@ export class Locat {
     city?: string;
     country?: string;
     cross_stress?: string;
+    display_address?: string[];
 }
 
 export class Coord {
