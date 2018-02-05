@@ -1,4 +1,4 @@
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,12 +25,7 @@ import { AuthService} from './services/auth.service';
 
 // Components
 import { environment } from '../environments/environment';
-import { GoogleMapComponent } from './components/google-map/google-map.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { ModalComponent } from './components/modal/modal.component';
 
-
-import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { ListPathsComponent } from './components/list-paths/list-paths.component';
 import { ListDropdownComponent } from './components/list-dropdown/list-dropdown.component';
 import { RecentDropdownComponent } from './components/recent-dropdown/recent-dropdown.component';
@@ -48,7 +43,7 @@ import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pi
     HomeComponent,
     NavbarComponent,
     TrackSummaryComponent,
-    StarRatingComponent,
+
     ListPathsComponent,
     PieProgressBarComponent,
     RecentDropdownComponent
