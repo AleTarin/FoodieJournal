@@ -2,6 +2,13 @@ import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/cor
 import { YelpService } from '../../../services/yelp.service';
 import { Track } from '../../../interfaces/track';
 import { Business } from '../../../interfaces/business';
+import { NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { CarouselComponent } from '../../carousel/carousel.component';
+import 'rxjs/add/operator/concatMap';
+
+
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'app-challenge',
@@ -15,29 +22,35 @@ export class ChallengeComponent implements OnInit, OnChanges {
   ArrayBs: Business[];
   @Input() path: Track;
 
-  constructor(private yelpService: YelpService) { }
+  constructor(private yelpService: YelpService, private modalService: NgbModal) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  getLocation(changes: SimpleChanges): void {
     if (changes.path.currentValue !== undefined) {
       if (window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition(position => {
           // Save the latitude to use
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
-          console.log(this.path);
-          // Search by location and categorie, the radius can change
-          this.yelpService.YelpSearch(this.latitude, this.longitude, this.path.categories, 10000)
-          .subscribe(res => {
-            // Save the bussinesses to use in the template
-            this.ArrayBs = res;
-            console.log(this.ArrayBs);
-          });
+          this.yelpSearchAll();
         });
       }
     }
   }
 
-  ngOnInit() {
+  yelpSearchAll(): void {
+    // Save the bussinesses to use in the template
+    this.yelpService.YelpSearch(this.latitude, this.longitude, this.path.categories, 10000)
+    .subscribe(res => this.ArrayBs = res);
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getLocation(changes);
+  }
+
+  ngOnInit() {}
+
+  open(i: number) {
+    const modalRef = this.modalService.open(CarouselComponent);
+    modalRef.componentInstance.image = this.ArrayBs[i].image_url;
   }
 }

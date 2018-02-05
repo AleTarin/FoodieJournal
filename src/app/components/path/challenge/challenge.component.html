@@ -1,26 +1,29 @@
-<section *ngIf="ArrayBs" class="space-above">
-  <div id="accordion"  *ngFor="let business of ArrayBs; let i = index">
-    <div class="card space-above">
-      <div class="card-header" id="headingOne" data-toggle="collapse" [attr.data-target]="'#' + business.id" aria-expanded="false" [attr.aria-controls]="business.id">
-        <h5 class="mb-0">
+
+<section *ngIf="ArrayBs" class="space-above mt-2">
+  <ngb-accordion  id="accordion"  *ngFor="let business of ArrayBs; let i = index" #acc="ngbAccordion" [closeOthers]="true"  activeIds="ngb-panel-0">
+    <ngb-panel >
+      <ng-template ngbPanelTitle>
           <app-challenge-status class="inline" [id]="i + 1" [name]="business.name" [status]="false"></app-challenge-status>
-          <span class="inline">{{business.name}}</span>
-        </h5>
-      </div>
-      <div [id]="business.id" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body container">
-          <div class='row' >
-              <div class='col-lg-4 col-md-4'>
-                  <app-google-map [latitude]="business.coordinates.latitude" [longitude]="business.coordinates.longitude" [height]="'150px'" ></app-google-map>
-              </div>  
-              <div class='col-lg-4 col-md-4 .d-sm-none .d-md-block' >
-                  <img class="img-responsive" *ngIf='business.image_url' [src]="business.image_url" alt="business.name" data-toggle="modal" data-target="#myModal">
-                  <img class="img-responsive" *ngIf='!business.image_url' src="http://tutaki.org.nz/wp-content/uploads/2016/04/no-image-available.png" alt="business.name" data-toggle="modal" data-target="#myModal">
-              </div>
-          </div>
-          <app-modal [tipo]="'carousel'"></app-modal>
-        </div> 
-      </div>
-    </div>
-  </div>
+          <span class="inline ml-4 title-challenge">{{business.name}}</span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+            <div class='row' >
+                <div class='col-lg-3 col-md-6 ' >
+                    <app-star-rating [business]="business"></app-star-rating>
+                </div>
+                <div class='col-lg-3 col-md-6 ' >
+                    <app-contact-info [business]="business"></app-contact-info>
+                </div>
+                <div class='col-lg-3  d-none d-lg-block' >
+                    <img class="img-responsive" *ngIf='business.image_url' [src]="business.image_url" alt="business.name" (click)="open(i)">
+                    <img class="img-responsive" *ngIf='!business.image_url' src="http://tutaki.org.nz/wp-content/uploads/2016/04/no-image-available.png" alt="business.name"  (click)="open()">
+                </div>
+                <div class='col-lg-3 d-none d-lg-block'>
+                    <app-google-map [latitude]="business.coordinates.latitude" [longitude]="business.coordinates.longitude" [height]="'150px'" ></app-google-map>
+                </div>
+            </div>
+        </ng-template>
+      </ngb-panel>
+  </ngb-accordion>
+
 </section>
