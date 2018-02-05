@@ -36,6 +36,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TrackSummaryComponent } from './components/track-summary/track-summary.component';
 import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pie-progress-bar.component';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pi
     LoginService,
     PathsService,
     AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
