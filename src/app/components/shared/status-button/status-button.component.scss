@@ -1,6 +1,7 @@
-.solid {
+.btn-primary {
 
-    background-color:red;
+    background-color: #FE5140;
+    border-color: #FE5140;
     padding: 10px;
     display: flex;
     -webkit-box-pack: center;
@@ -20,7 +21,8 @@
     -moz-transition-timing-function: ease;
     -o-transition-timing-function: ease;
     transition-timing-function: ease; }
-    .follow:hover {
-    background-color: red;
+    .btn-primary::after {
+    background-color: #FE5140;
+    border-color: #FE5140;
     cursor: pointer; }
     

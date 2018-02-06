@@ -6,8 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./status-button.component.scss']
 })
 export class StatusButtonComponent implements OnInit {
+  hasJourney: boolean = true;
+  isCompleted: boolean = true;
+  buttonLabel: string = "";
 
-  constructor() { }
+  constructor() { 
+    this.checkCurrentStatus();
+  }
+
+  public checkCurrentStatus(){
+    if (!this.hasJourney && !this.isCompleted) {
+      this.buttonLabel = "Follow";
+    }
+
+    if (this.hasJourney && !this.isCompleted) {
+      this.buttonLabel = "Continue";
+    }
+
+    if (this.hasJourney && this.isCompleted) {
+      this.buttonLabel = "Completed";
+    }
+  }
 
   ngOnInit() {
   }
