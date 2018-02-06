@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { Track } from '../../interfaces/track';
 
 @Component({
   selector: 'app-list-dropdown',
@@ -7,18 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListDropdownComponent implements OnInit {
 
- //@Output() selectedPath= new EventEmitter();
-  //@Input()pathList;
-  hide=true;
-  pathSelected="American";
+  hide = true;
+  @Input() pathSelected: String;
+  @Input() paths: Track[];
 
-  pathList =[
-    {"name": "American" },
-    {"name": "Korean" },
-    {"name": "Italian" },
-    {"name": "Japanese" },
-    {"name": "Chinese" }
-  ]
+
+  // pathList =[
+  //   {"name": "American" },
+  //   {"name": "Korean" },
+  //   {"name": "Italian" },
+  //   {"name": "Japanese" },
+  //   {"name": "Chinese" }
+  // ]
 
   constructor() { }
 
@@ -27,17 +28,17 @@ export class ListDropdownComponent implements OnInit {
 
   }
 
-  pathClicked(name){
+  pathClicked(name) {
     console.log(name);
-    this.hide=true;
-    this.pathSelected=name;
+    this.hide = true;
+    this.pathSelected = name;
   }
 
-  showPaths(){
-    if(this.hide==true)
-      this.hide=false;
-    else{
-      this.hide=true;
+  showPaths() {
+    if (this.hide === true) {
+      this.hide = false;
+    } else {
+      this.hide = true;
     }
-      }
+  }
 }

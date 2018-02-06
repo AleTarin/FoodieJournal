@@ -1,5 +1,13 @@
-<app-list-dropdown></app-list-dropdown>
-<app-recent-dropdown></app-recent-dropdown>
+<section class="container" *ngIf="path">
+    <div class="row  align-self-left mb-3">
+      <div class="col-6 d-none d-md-block pull-left">
+          <app-list-paths [paths]="paths" ></app-list-paths>
+      </div>
+      <div class="col-6 d-block d-md-none">
+          <app-list-dropdown [paths]="paths" [pathSelected]="path.type"></app-list-dropdown>
+      </div>
+    </div>
+</section>
 <section class="container" *ngIf="path">
   <div class="row">
     <div class="col-3 col-md-1 align-self-center">
