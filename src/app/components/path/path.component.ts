@@ -21,6 +21,7 @@ export class PathComponent implements OnInit {
 
 
   ngOnInit() {
+
     const id = +this.route.snapshot.paramMap.get('id');
     this.pathService.getPathsInfo().subscribe(res => this.track = <Track>res[id]);
   }

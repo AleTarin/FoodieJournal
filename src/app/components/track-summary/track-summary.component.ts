@@ -48,8 +48,8 @@ this.width=this.styleBar();
 
   ngOnInit() {
     this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-this.setWidth();
-
-    }
+    this.setWidth();
+    localStorage.setItem('paths', JSON.stringify(this.trackArray));
+  }
 }
 
