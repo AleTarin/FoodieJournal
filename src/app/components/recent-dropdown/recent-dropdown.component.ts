@@ -25,11 +25,8 @@ export class RecentDropdownComponent implements OnInit {
 
   }
   pathClicked(name) {
-    console.log(name);
     this.hide = true;
     this.pathSelected = name;
-
-
   }
   showPaths() {
     this.hide = !this.hide;
