@@ -44,10 +44,6 @@ import { AuthGuard } from './services/auth.guard';
     HomeComponent,
     NavbarComponent,
     TrackSummaryComponent,
-
-    ListPathsComponent,
-    PieProgressBarComponent,
-    RecentDropdownComponent
   ],
   imports: [
     BrowserModule,
