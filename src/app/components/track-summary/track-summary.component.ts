@@ -13,6 +13,7 @@ export class TrackSummaryComponent implements OnInit {
   longitude: number;
   latitude: number;
   width: string;
+  zero: number;
 
 
  
@@ -28,28 +29,45 @@ getProgress(){
 }
 
 //aqui recibimos el progreso del usuario
-public styleBar(){
-  //por ahora esta hardcodeado
-  var letters = '40%'
-  
-  
-  return letters;
+public styleBar(i: number){
 
- 
 
+
+    this.width = this.trackArray[i].completenessPercentage + "%";
+
+    
+    return this.width;
+  
   
 }
+public isItZero(i: number){
 
-setWidth(){
-this.width=this.styleBar();
+
+if(this.trackArray[i].completenessPercentage==this.zero){
+return true;
 
 }
+else{
+  return false;
+}
+
+}
+
+//setWidth(){
+//this.width=this.styleBar();
+
+//}
 
 
   ngOnInit() {
     this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-    this.setWidth();
-    localStorage.setItem('paths', JSON.stringify(this.trackArray));
+    //this.setWidth();
+   localStorage.setItem('paths', JSON.stringify(this.trackArray));
+   this.zero=0;
+   
+  
+   
+
   }
 }
 

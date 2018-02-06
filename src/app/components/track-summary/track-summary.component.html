@@ -6,20 +6,16 @@
 </header>
 <section class="container">
 <div *ngIf='trackArray' class="row">
-  <article *ngFor='let track of trackArray' class="col-lg-3 col-md-6 col-12">
+  <article *ngFor='let track of trackArray; let i = index' class="col-lg-3 col-md-6 col-12">
       <div class="card" routerLink="/paths/{{track.id}}">
 
         <div class="card-img-container-square">
 
-          <div class="progress" ng-style="style(color)" [ngStyle]="{'width': width } "></div>
+          <div  class="progress" ng-style="style(color)" [ngStyle]="{'width': styleBar(i)} "></div>
             
             <img class="card-img-top" [src]="track.icon" [alt]="track.type" >
-          <p>{{track.type}}</p> 
-        
-        
-
-
-          
+          <p *ngIf="!isItZero(i)" class="pathDescription"> {{track.type}} <br>   {{ track.completenessPercentage + "%"}}   </p> 
+          <p *ngIf="isItZero(i)" class="pathDescription"> {{track.type}} <br>      </p> 
 
         </div>
 
