@@ -15,7 +15,7 @@ export class AuthService {
     domain: 'foddiejournal.auth0.com',
     responseType: 'token id_token',
     audience: 'https://foddiejournal.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/callback',
+    redirectUri: 'http://localhost:4200/paths',
     scope: 'openid'
   });
 
