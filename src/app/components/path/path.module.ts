@@ -16,6 +16,9 @@ import { ListPathsComponent } from '../list-paths/list-paths.component';
 import { PieProgressBarComponent } from '../shared/pie-progress-bar/pie-progress-bar.component';
 import { RecentDropdownComponent } from '../recent-dropdown/recent-dropdown.component';
 import { ListDropdownComponent } from '../list-dropdown/list-dropdown.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ContactInfoComponent } from '../contact-info/contact-info.component';
+
 
 @NgModule({
   imports: [
@@ -23,7 +26,8 @@ import { ListDropdownComponent } from '../list-dropdown/list-dropdown.component'
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
-    })
+    }),
+    NgbModule,
   ],
   declarations: [
     PathComponent,
@@ -38,8 +42,11 @@ import { ListDropdownComponent } from '../list-dropdown/list-dropdown.component'
     ListPathsComponent,
     ListDropdownComponent,
     PieProgressBarComponent,
-    RecentDropdownComponent
+    RecentDropdownComponent,
+    ContactInfoComponent,
   ],
-  exports: [PathComponent]
+  exports: [PathComponent],
+  entryComponents: [CarouselComponent]
+
 })
 export class PathModule { }
