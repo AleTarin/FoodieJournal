@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
 
   }
 
-
+}
 //   constructor(private loginServ: LoginService, private formBuild: FormBuilder) {
 //   }
 
