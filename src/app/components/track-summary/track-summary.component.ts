@@ -12,6 +12,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class TrackSummaryComponent implements OnInit {
   longitude: number;
   latitude: number;
+  width: string;
 
 
  
@@ -25,15 +26,30 @@ getProgress(){
 
 
 }
-styleBar(){
 
+//aqui recibimos el progreso del usuario
+public styleBar(){
+  //por ahora esta hardcodeado
+  var letters = '40%'
+  
+  
+  return letters;
+
+ 
 
   
+}
+
+setWidth(){
+this.width=this.styleBar();
+
 }
 
 
   ngOnInit() {
     this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
+this.setWidth();
+
     }
 }
 

@@ -11,7 +11,7 @@
 
         <div class="card-img-container-square">
 
-          <div class="progress" ng-style="style(color)" [styleBar]="height:51.51%;width:50% "></div>
+          <div class="progress" ng-style="style(color)" [ngStyle]="{'width': width } "></div>
             
             <img class="card-img-top" [src]="track.icon" [alt]="track.type" >
           <p>{{track.type}}</p> 
