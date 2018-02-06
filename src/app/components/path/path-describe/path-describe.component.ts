@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Track } from '../../../interfaces/track';
+import { PathsService } from '../../../services/paths.service';
 
 @Component({
   selector: 'app-path-describe',
@@ -8,10 +9,12 @@ import { Track } from '../../../interfaces/track';
 })
 export class PathDescribeComponent implements OnInit {
   @Input() path: Track;
+  paths: Track[];
 
-  constructor() { }
+  constructor(private pathService: PathsService) { }
 
   ngOnInit() {
+    this.pathService.getPathsInfo().subscribe(res => this.paths = <Track[]>res);
   }
 
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PathsService } from '../../services/paths.service';
+import { Track } from '../../interfaces/track';
 
 @Component({
   selector: 'app-list-paths',
@@ -6,15 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-paths.component.sass']
 })
 export class ListPathsComponent implements OnInit {
-//@Output() selectedPath= new EventEmitter();
-  //@Input()pathList;
-  pathList =[
-    {"name": "American" },
-    {"name": "Korean" },
-    {"name": "Mexican" },
-    {"name": "Italian" },
-    {"name": "Japanese" }
-  ]
+
+  @Input() paths: Track[];
 
   constructor() { }
 
@@ -22,11 +17,8 @@ export class ListPathsComponent implements OnInit {
   ngOnInit() {
 
   }
-  pathClicked(name ){
-console.log(name);
 
-
-
+  pathClicked(name ) {
   }
 
 }
