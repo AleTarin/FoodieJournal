@@ -23,7 +23,7 @@ export class AuthService {
 
   public login(): void {
     this.auth0.authorize();
-  } 
+  }
 
    // ...
    public handleAuthentication(): void {
@@ -53,7 +53,7 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/paths']);
+    this.router.navigate(['/home']);
   }
 
   public isAuthenticated(): boolean {
@@ -62,13 +62,17 @@ export class AuthService {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
-  
+
+  public isLoggedInCache(): boolean {
+    return this.isAuthenticated && !!localStorage.getItem('access_token');
+  }
+
   public getProfile(cb): void {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
       throw new Error('Access token must exist to fetch profile');
     }
-  
+
     const self = this;
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
