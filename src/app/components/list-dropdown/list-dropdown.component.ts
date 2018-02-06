@@ -26,19 +26,18 @@ export class ListDropdownComponent implements OnInit {
   ngOnInit() {
 
   }
+
   pathClicked(name){
-console.log(name);
-this.hide=true;
-this.pathSelected=name;
-
-
+    console.log(name);
+    this.hide=true;
+    this.pathSelected=name;
   }
+
   showPaths(){
     if(this.hide==true)
-  this.hide=false;
-else{
-  this.hide=true;
-}
-  }
-
+      this.hide=false;
+    else{
+      this.hide=true;
+    }
+      }
 }
