@@ -6,9 +6,19 @@ $verde: #99E79D;
 $amarillo: #F9D84F;
 $azul: #41B9FE;
 
+h2 {
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+}
+p{
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+}
+
 .icon{
     border-radius: 50px;
-    background-color: $naranja;
     height: 70px;
     width: 70px;
     display: flex;
@@ -39,4 +49,8 @@ $azul: #41B9FE;
 
 .container {
     background-color: white;
+}
+
+.margin {
+    margin-top: 8px;
 }

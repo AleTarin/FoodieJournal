@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-pie-progress-bar',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pie-progress-bar.component.scss']
 })
 export class PieProgressBarComponent implements OnInit {
+  @Input() imagen;
 
   constructor() { }
 

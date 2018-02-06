@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-3 col-md-1 align-self-center">
       <div class="icon">
-        <i class="far fa-lemon fa-2x"></i>
+        <app-pie-progress-bar [imagen]='path.icon'></app-pie-progress-bar>
       </div>
     </div>
     <div class="info col-9 col-md-6 align-self-center" > 
@@ -12,7 +12,8 @@
       <p>{{path.description}}</p>
     </div>
     <div class="col-10 col-md-3 offset-1">
-      <div class="row justify-content-around">
+      <div class="row justify-content-around margin ">
+        
         <div class="col-6 col-md-12 duration">
           <span class="bold-text">Duration: </span> {{path.duration}} weeks
         </div>
