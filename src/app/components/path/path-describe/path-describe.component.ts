@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Track } from '../../../interfaces/track';
 import { PathsService } from '../../../services/paths.service';
 
+
 @Component({
   selector: 'app-path-describe',
   templateUrl: './path-describe.component.html',
