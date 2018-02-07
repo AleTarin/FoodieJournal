@@ -4,12 +4,14 @@ import { YelpService } from './services/yelp.service';
 import { GoogleMapsService } from './services/google-maps.service';
 import { Business } from './interfaces/business';
 import { Review } from './interfaces/review';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
+  token: string;
 
   review: Review;
   businesses: Business[];
@@ -17,33 +19,11 @@ export class AppComponent implements OnInit {
   latitude: number;
   longitude: number;
 
-  constructor(private yelpService: YelpService, private mapsService: GoogleMapsService) {
+  constructor(private auth: AuthService) {
   }
 
   ngOnInit() {
-    this.getBusiness('mexican', 10000);
   }
-
-  private getBusiness(category: string, radius: number) {
-    /// locate the user
-    if (navigator.geolocation) {
-      //
-      navigator.geolocation.getCurrentPosition(position => {
-        this.searchBusiness(position.coords, category, radius);
-      });
-    }
-  }
-
- private searchBusiness(location: Coordinates, category: string, radius: number) {
-  this.latitude = location.latitude;
-  this.longitude = location.longitude;
-  this.yelpService.YelpSearch(this.latitude, this.longitude, 'mexican', 10000)
-  .subscribe(res => {
-      this.businesses = res;
-      // console.log(this.businesses);
-      this.yelpService.YelpBusiness(this.businesses[2].id).subscribe(res2 => this.business = res2);
-      this.yelpService.YelpReviews(this.businesses[1].id).subscribe(res3 => this.review = res3);
-  });
- }
-
 }
+
+
