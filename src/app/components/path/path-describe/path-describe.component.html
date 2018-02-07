@@ -1,10 +1,18 @@
-<app-list-dropdown></app-list-dropdown>
-<app-recent-dropdown></app-recent-dropdown>
+<section class="container" *ngIf="path">
+    <div class="row  align-self-left mb-3">
+      <div class="col-6 d-none d-md-block pull-left">
+          <app-list-paths [paths]="paths" ></app-list-paths>
+      </div>
+      <div class="col-12 d-block d-md-none">
+          <app-list-dropdown [paths]="paths" [pathSelected]="path.type"></app-list-dropdown>
+      </div>
+    </div>
+</section>
 <section class="container" *ngIf="path">
   <div class="row">
     <div class="col-3 col-md-1 align-self-center">
       <div class="icon">
-        <i class="far fa-lemon fa-2x"></i>
+        <app-pie-progress-bar [imagen]='path.icon'></app-pie-progress-bar>
       </div>
     </div>
     <div class="info col-9 col-md-6 align-self-center" > 
@@ -12,7 +20,8 @@
       <p>{{path.description}}</p>
     </div>
     <div class="col-10 col-md-3 offset-1">
-      <div class="row justify-content-around">
+      <div class="row justify-content-around margin ">
+        
         <div class="col-6 col-md-12 duration">
           <span class="bold-text">Duration: </span> {{path.duration}} weeks
         </div>

@@ -4,9 +4,14 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Http } from '@angular/http/src/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
+  API_KEY: string;
+  myHeaders: HttpHeaders;
 
   public userProfile: any;
 
@@ -15,11 +20,11 @@ export class AuthService {
     domain: 'foddiejournal.auth0.com',
     responseType: 'token id_token',
     audience: 'https://foddiejournal.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/callback',
+    redirectUri: 'http://localhost:4200/paths',
     scope: 'openid'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private http: HttpClient) {}
 
   public login(): void {
     this.auth0.authorize();
@@ -80,5 +85,22 @@ export class AuthService {
       }
       cb(err, profile);
     });
+  }
+
+  public getProfileInfo() {
+    const accessToken = localStorage.getItem('access_token');
+    const endPoint = 'https://foddieJournal.auth0.com/userinfo';
+    this.API_KEY = 'Bearer ' + accessToken ;
+    this.myHeaders = new HttpHeaders().set('Authorization', this.API_KEY);
+    return this.http.get(endPoint, {headers: this.myHeaders})
+    .map(res => {
+      return res;
+    })
+    .catch(this.handleError);
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    console.log(err.message);
+    return Observable.throw(err.message);
   }
 }

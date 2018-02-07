@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CallbackComponent } from './callback.component';
+import { InsideChallengeComponent } from './inside-challenge.component';
 
-describe('CallbackComponent', () => {
-  let component: CallbackComponent;
-  let fixture: ComponentFixture<CallbackComponent>;
+describe('InsideChallengeComponent', () => {
+  let component: InsideChallengeComponent;
+  let fixture: ComponentFixture<InsideChallengeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CallbackComponent ]
+      declarations: [ InsideChallengeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CallbackComponent);
+    fixture = TestBed.createComponent(InsideChallengeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
