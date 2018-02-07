@@ -21,7 +21,7 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'https://foddiejournal.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200/paths',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
   constructor(public router: Router, private http: HttpClient) {}
