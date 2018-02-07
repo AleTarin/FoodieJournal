@@ -8,7 +8,8 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.sass']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+
   // login: boolean = false;
   // loginForm: FormGroup;
   sidebar = false;
@@ -32,6 +33,10 @@ export class NavbarComponent {
 
   public showSidebar() {
     this.sidebar = !this.sidebar;
+  }
+
+  ngOnInit(): void {
+    this.auth.getProfileInfo().subscribe(res => console.log(JSON.stringify(res)));
   }
 
 }
