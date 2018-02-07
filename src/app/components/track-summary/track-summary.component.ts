@@ -14,60 +14,28 @@ export class TrackSummaryComponent implements OnInit {
   latitude: number;
   width: string;
   zero: number;
-
-
- 
-
   trackArray: Track[];
 
   constructor(private yelpService: YelpService, private pathService: PathsService ) { }
 
-getProgress(){
+  getProgress() {
+  }
 
-
-
-}
-
-//aqui recibimos el progreso del usuario
-public styleBar(i: number){
-
-
-
-    this.width = this.trackArray[i].completenessPercentage + "%";
-
-    
+  public styleBar(i: number){
+    this.width = this.trackArray[i].completenessPercentage + '%';
     return this.width;
-  
-  
-}
-public isItZero(i: number){
-
-
-if(this.trackArray[i].completenessPercentage==this.zero){
-return true;
-
-}
-else{
-  return false;
-}
-
-}
-
-//setWidth(){
-//this.width=this.styleBar();
-
-//}
-
-
+  }
+  public isItZero(i: number) {
+    if ( this.trackArray[i].completenessPercentage === this.zero) {
+      return true;
+    } else {
+    return false;
+    }
+  }
   ngOnInit() {
     this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-    //this.setWidth();
-   localStorage.setItem('paths', JSON.stringify(this.trackArray));
-   this.zero=0;
-   
-  
-   
-
+    localStorage.setItem('paths', JSON.stringify(this.trackArray));
+    this.zero = 0;
   }
 }
 
