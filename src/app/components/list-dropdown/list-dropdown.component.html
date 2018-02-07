@@ -2,10 +2,10 @@
   <button type="button" class="btn btn-danger btn-paths" (click)="showPaths()"><label class="text-drop">{{pathSelected}}  <i class="fas fa-caret-down"></i> </label></button>
 </div>
 <div *ngIf="!hide">
-  <div *ngFor="let path of paths; let i = index;" (click)="pathClicked(path.name)" >     
+  <div *ngFor="let path of paths; let i = index;" (click)="pathClicked(path.type, path.id)" >     
     <div  class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="pathSelected!=path.type" >  
       <label class="btn btn-danger">
-        <input routerLink="'paths/' + i" type="radio" name="options" id="option{{i}}" autocomplete="off" checked="" *ngIf="pathSelected!=path.type"> {{path.type}}
+        <input (click)="navigate(i)" type="radio" name="options" id="option{{i}}" autocomplete="off" checked="" *ngIf="pathSelected!=path.type"> {{path.type}}
       </label>   
     </div> 
   </div>
