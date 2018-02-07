@@ -22,7 +22,8 @@
         <button type="button" class="btn btn-danger previous mark" (click)="challengeClicked()" [ngStyle]="{'background-color': color ,'color': letterColor } "  ><i *ngIf="buttonState==2"  class="fas fa-check-circle"></i>{{buttonText}}</button>
       </div>
       <div class="col-2 col-sm-2">
-        <button type="button" class="btn btn-danger previous next" disabled="true">Next</button>
+          <button *ngIf="buttonState!=2" type="button" class="btn btn-danger previous next" disabled >Next</button>
+        <button *ngIf="buttonState==2" type="button" class="btn btn-danger previous next" >Next</button>
       </div>
 
       <div class="col-2 col-sm-2">

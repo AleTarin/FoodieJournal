@@ -11,6 +11,7 @@ export class PathControlsComponent implements OnInit {
   buttonText: string= "Mark as Started";
   color: string= "#FE5140";
   letterColor: string="black";
+  disabled: boolean= false;
 
 
   setText(){
@@ -35,17 +36,13 @@ export class PathControlsComponent implements OnInit {
       if(this.buttonState==2){
     
         text= " Way to go! Take the next challenge";
-        this.color="#f2f2f2"
+        this.color="#f2f2f2";
         return text;
        }
 }
 
 
-setColor(){
 
-  return "#41B9FE";
-
-}
 
 
 
@@ -55,6 +52,7 @@ if(this.buttonState==0){
 this.buttonState++;
 this.buttonText="Mark as completed";
 localStorage.setItem('prueva', JSON.stringify(this.buttonState));
+this.color="#41B9FE";
 
 return;
 }
@@ -62,6 +60,7 @@ if(this.buttonState==1){
 this.buttonState++;
 this.buttonText=" Way to go! Take the next challenge";
 localStorage.setItem('prueva', JSON.stringify(this.buttonState));
+this.color="#f2f2f2";
 
 }
 
