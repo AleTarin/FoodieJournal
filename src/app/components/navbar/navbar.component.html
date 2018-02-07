@@ -5,7 +5,7 @@
       </a>
 </nav>
 
-<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="isUserLoggedIn()">
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="isUserLoggedIn() && profile">
     <!-- burguer button -->
     <div>
         <a class="nav-link toggle-app  mr-3" (click)="showSidebar()" role="button">
@@ -14,13 +14,13 @@
             <a class="navbar-brand title-app" href="#">FoodieJournal</a>
     </div>
 
-    <div class="dropdown .align-middle">
+    <div class="dropdown align-middle">
 
         <div ngbDropdown class="d-inline-block pull-right .align-middle">
             <a  id="dropdownBasic1" ngbDropdownToggle>
 
-                Hi teamuno !
-                <img src="http://static4.businessinsider.com/image/51cdf71aeab8ea6b6000000a-1190-625/10-real-people-who-are-winning-their-fight-with-debt.jpg" class="rounded-circle" alt="my profile image">
+                {{profile.nickname}}
+                <img [src]="profile.picture" class="rounded-circle" alt="my profile image">
             </a>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <button class="dropdown-item" (click)="logout()">Sign out</button>
