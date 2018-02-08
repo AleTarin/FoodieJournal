@@ -34,10 +34,10 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.userProfile$.subscribe(res => {
+    this.auth.user$.subscribe(res => {
       this.profile = <User>res;
+    // localStorage.setItem('profile', JSON.stringify(recentProfile));
     });
-
   }
 
 }
