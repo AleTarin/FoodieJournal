@@ -4,11 +4,20 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Http } from '@angular/http/src/http';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class AuthService {
+  API_KEY: string;
+  myHeaders: HttpHeaders;
 
   public userProfile: any;
+  private observer: Observer<string>;
+  userProfile$: Observable<any> = new Observable(obs => this.observer = obs);
+
 
   auth0 = new auth0.WebAuth({
     clientID: 'zu4yaxCNKnBda1NAT0rn8lLM0qOB5q1V',
@@ -16,10 +25,10 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'https://foddiejournal.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200/paths',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private http: HttpClient) {}
 
   public login(): void {
     this.auth0.authorize();
@@ -36,6 +45,7 @@ export class AuthService {
         this.router.navigate(['/home']);
         console.log(err);
       }
+      this.getProfile();
     });
   }
 
@@ -67,18 +77,34 @@ export class AuthService {
     return this.isAuthenticated && !!localStorage.getItem('access_token');
   }
 
-  public getProfile(cb): void {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
-      throw new Error('Access token must exist to fetch profile');
+  public getUser(): void {
+    const profile = localStorage.getItem('profile');
+    if (profile === null) {
+      this.getProfile();
+    } else {
+      this.observer.next(JSON.parse(localStorage.getItem('profile')));
     }
+  }
 
-    const self = this;
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-      if (profile) {
-        self.userProfile = profile;
+  public getProfile(): void {
+
+      const accessToken = localStorage.getItem('access_token');
+      if (!accessToken) {
+        throw new Error('Access token must exist to fetch profile');
       }
-      cb(err, profile);
-    });
+
+      const self = this;
+      this.auth0.client.userInfo(accessToken, (err, profile) => {
+        if (profile) {
+          self.userProfile = profile;
+        }
+        localStorage.setItem('profile', JSON.stringify(profile));
+        this.observer.next(profile);
+      });
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    console.log(err.message);
+    return Observable.throw(err.message);
   }
 }
