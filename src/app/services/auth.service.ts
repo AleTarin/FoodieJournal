@@ -40,12 +40,15 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
+        this.getProfile();
         this.router.navigate(['/paths']);
       } else if (err) {
         this.router.navigate(['/home']);
         console.log(err);
       }
-      this.getProfile();
+       
+      
+       
     });
   }
 
@@ -60,6 +63,7 @@ export class AuthService {
   public logout(): void {
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
+    localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
