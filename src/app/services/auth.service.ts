@@ -21,9 +21,8 @@ export class AuthService {
 
   public userProfile: any;
   private observer: Observer<string>;
-  public paths: any;
-  userProfile$: Observable<any> = new Observable(obs => this.observer = obs);
   private userSubject: BehaviorSubject<User>;
+
   user$: Observable<User>;
   loggedIn$: Observable<boolean>;
   trackArray: Track[];
@@ -41,12 +40,15 @@ export class AuthService {
     const initialUser = JSON.parse(localStorage.getItem('profile') || null);
     this.userSubject = new BehaviorSubject(initialUser);
     this.user$ = this.userSubject.asObservable().do(user => {
-      console.log(user);
-      if (user) {
-        this.saveToLocalStorage(`users|${user.email}`, user);
-      } 
-      
       this.saveToLocalStorage('profile', user);
+      if (user) {
+        if (this.getfromLocalStorage(`users|${user.nickname}`)) {
+          const newUser: User = this.getfromLocalStorage(`users|${user.nickname}`);
+          this.saveToLocalStorage('profile', newUser);
+        } else {
+          this.saveToLocalStorage(`users|${user.nickname}`, user);
+        }
+      }
     });
 
     this.loggedIn$ = this.user$.map(user => user !== null).shareReplay(1);
@@ -54,6 +56,10 @@ export class AuthService {
 
   private saveToLocalStorage(key: string, data: any) {
     localStorage.setItem(key, JSON.stringify(data));
+  }
+
+  private getfromLocalStorage(key: string) {
+    return JSON.parse(localStorage.getItem(key));
   }
 
   public login(): void {
@@ -84,12 +90,17 @@ export class AuthService {
   }
 
   public logout(): void {
+    const profile: User = this.getfromLocalStorage('profile');
+    this.userSubject.asObservable().do(user => {
+      this.saveToLocalStorage(`users|${user.nickname}`, profile);
+    });
+
     this.userSubject.next(null);
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    
+
     // Go back to the home route
     this.router.navigate(['/home']);
   }
@@ -146,19 +157,12 @@ export class AuthService {
     this.userSubject.next(user);
   }
 
-  userStartedJourneyId(journeyId: number) {
-
-    this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-    
-
-
-
+  userPaths(startedJourney: boolean) {
     const user = {
       ...this.userSubject.getValue(),
-      journeyId: journeyId
+      journey: startedJourney
     };
 
     this.userSubject.next(user);
   }
-
 }
