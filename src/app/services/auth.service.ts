@@ -16,6 +16,7 @@ export class AuthService {
 
   public userProfile: any;
   private observer: Observer<string>;
+  public paths: any;
   userProfile$: Observable<any> = new Observable(obs => this.observer = obs);
 
 
@@ -99,6 +100,7 @@ export class AuthService {
           self.userProfile = profile;
         }
         localStorage.setItem('profile', JSON.stringify(profile));
+        //escribir los paths
         this.observer.next(profile);
       });
   }
