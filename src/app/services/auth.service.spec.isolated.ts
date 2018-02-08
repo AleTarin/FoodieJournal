@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-import 'rxjs/add/operator/filter';
-import { AuthService } from './auth.service';
-
-describe('AuthService', () => {
-    let authService: AuthService;
-    let router;
-=======
 import {} from "jasmine"
-
+import { Router } from "@angular/router";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import 'rxjs/add/operator/filter';
 import { AuthService } from './auth.service';
 
@@ -15,21 +8,12 @@ import { AuthService } from './auth.service';
     let authService: AuthService;
     let router;
     let http;
->>>>>>> 7711c348b74739316fd4dbb6b7e4be68d22b3c9e
     let mockAuth0;
 
     beforeEach(() =>{
         router = jasmine.createSpyObj('mockRouter', ['navigate']);
-<<<<<<< HEAD
-        const mockAuth0 =  {
-            isAuthenticated(): { true }
-        };
-        spyOn('isAuthenticated')
-        authService = new AuthService(router);
-=======
         mockAuth0 = jasmine.createSpyObj('mockAuth0', ['isLoggedInCache', 'logOut', 'isAuthenticated']);
         authService = new AuthService(router, http);
->>>>>>> 7711c348b74739316fd4dbb6b7e4be68d22b3c9e
     });
 
     describe('isLoggedInCache', () =>{
@@ -41,8 +25,35 @@ import { AuthService } from './auth.service';
             expect(mockAuth0.isAuthenticated).toBe(true);
         })
     })
-<<<<<<< HEAD
-})
-=======
 }) */
->>>>>>> 7711c348b74739316fd4dbb6b7e4be68d22b3c9e
+
+describe('AuthService', () => {
+    let authService: AuthService;
+    let router: Router;
+    let http;
+    let mockAuth0;
+    let spy: any;
+
+    beforeEach(() =>{
+        authService = new AuthService(router, http);
+        console.log(authService);
+        spy = spyOn(authService, 'isAuthenticated').and.returnValue(true);
+    });
+
+    describe('isLoggedInCache', () =>{
+        it('should be in the cache if the isAuthenticated is true', () =>{
+            
+            expect(authService.isAuthenticated).toBeTruthy();
+        })
+    });
+
+    describe('isLoggedInCache and navigate to paths' , () =>{
+        it('should be paths the redirecting url', () =>{
+            spy = spyOn(router,'navigate').and.returnValue('/paths');
+
+            expect(authService.isAuthenticated).toBeTruthy();
+            expect(router.navigate).toBe('/paths');
+
+        })
+    });
+})

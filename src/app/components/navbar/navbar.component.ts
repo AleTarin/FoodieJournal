@@ -37,7 +37,6 @@ export class NavbarComponent implements OnInit {
     this.auth.userProfile$.subscribe(res => {
       this.profile = <User>res;
     });
-
   }
 
 }
