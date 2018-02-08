@@ -1,17 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-// import { LoginService } from '../../services/login/login.service';
-// import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray } from '@angular/forms';
+import { Component, OnInit, OnChanges, Input,  SimpleChanges } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-
+import { User } from '../../user';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent implements OnInit {
-
-  // login: boolean = false;
-  // loginForm: FormGroup;
+  picture: string;
+  nickname: string;
+  profile: any;
   sidebar = false;
 
 
@@ -36,50 +34,10 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.getProfileInfo().subscribe(res => console.log(JSON.stringify(res)));
+    this.auth.userProfile$.subscribe(res => {
+      this.profile = <User>res;
+    });
+
   }
 
 }
-
-//   constructor(private loginServ: LoginService, private formBuild: FormBuilder) {
-//   }
-
-//   public showLogin() {
-//     this.login = !this.login;
-//   }
-
-//   /* loginTo(loginForm: FormGroup){
-//     console.log("logueando");
-//      //if (data.isLoggedIn === true) this.router.navigateByUrl('/admin/dashboard'):
-//   } */
-//   loginTo() {
-//     console.log('doing login...');
-//     this.loginServ.verifyUserStatus({
-//       loggedIn: true,
-//     });
-//     this.loginServ.status.subscribe((data) => {
-//       if (data.loggedIn === true) {
-//         if (this.loginServ.verifyUserForLogin(this.loginForm.get('userField').value,
-//           this.loginForm.get('passField').value)) {
-//           // Mover a la otra página
-//         }else{
-//           data.loggedIn = false;
-//         }
-//       }
-//       //if (data.isLoggedIn === true) this.router.navigateByUrl('/admin/dashboard');
-//     });
-//   }
-
-//   logout() {
-//     console.log('logout...');
-//     //this.loginServ.updateUserStatus({loggedIn: false});
-//   }
-
-//   ngOnInit() {
-//     this.loginForm = new FormGroup({
-//       userField: new FormControl('', [Validators.required, Validators.minLength(5)]),
-//       passField: new FormControl('', Validators.required)
-//     }, { updateOn: 'blur' });
-//   }
-
-// }
