@@ -41,11 +41,11 @@ export class AuthService {
         window.location.hash = '';
         this.setSession(authResult);
         this.router.navigate(['/paths']);
+        this.getProfile();
       } else if (err) {
         this.router.navigate(['/home']);
         console.log(err);
       }
-      this.getProfile();
     });
   }
 

@@ -28,6 +28,7 @@ export class StatusButtonComponent implements OnInit, OnChanges {
 
   public checkCurrentStatus(){
     if (!this.hasJourney && !this.isCompleted) {
+      console.log("Follow");
       this.buttonLabel = "Follow";
     }
 
@@ -41,14 +42,16 @@ export class StatusButtonComponent implements OnInit, OnChanges {
   }
 
   public journeyAssgned(){
-    this.auth.userProfile$.subscribe(profile => {
-      const myProfile = <User>profile;
-      if(!myProfile.last_challenge && !myProfile.journey){
+    console.log("dentro");
+    let myProfile: User = JSON.parse(localStorage.getItem('userNewProfile'));
+    myProfile.last_challenge = "challenge";
+    console.log(myProfile);
+      if(myProfile.last_challenge && !myProfile.journey){
         this.hasJourney = false; 
       }else{
+        console.log("no la he definido");
         this.hasJourney = true;
       }
-    });
   }
 
   public hasCompleted(){
@@ -62,27 +65,13 @@ export class StatusButtonComponent implements OnInit, OnChanges {
   public chooseJourney() {
     console.log("fdsfsds");
     //if(this.buttonLabel === "Follow"){
-      this.auth.userProfile$.subscribe(res => {
         console.log("dentro");
-        let myProfile: any = <User>res;
-        console.log(<User>res);
-        let userChoose = new User();
-        userChoose.name = myProfile.name;
-        userChoose.nickname = myProfile.nickname;
-        userChoose.picture = userChoose.picture;
-        userChoose.journey = true;
-        console.log(userChoose);
-        localStorage.setItem('profile2', JSON.stringify(userChoose));
-      //}
-    });
 
-    let userChoose = new User();
-        userChoose.name = "bla"
-        userChoose.nickname = "bla"
-        userChoose.picture = "pla"
+        let userChoose: User;
+        userChoose = JSON.parse(localStorage.getItem('userNewProfile'));
         userChoose.journey = true;
-        console.log(userChoose);
-        localStorage.setItem('profile', JSON.stringify(userChoose));
+        localStorage.setItem('userNewProfile', JSON.stringify(userChoose));
+      //}
   }
 
 
