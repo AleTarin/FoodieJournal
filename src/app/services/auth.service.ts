@@ -11,6 +11,8 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observer } from 'rxjs/Observer';
 import { User } from '../user';
+import { Track } from '../interfaces/track';
+import { PathsService } from './paths.service';
 
 @Injectable()
 export class AuthService {
@@ -24,6 +26,7 @@ export class AuthService {
   private userSubject: BehaviorSubject<User>;
   user$: Observable<User>;
   loggedIn$: Observable<boolean>;
+  trackArray: Track[];
 
   auth0 = new auth0.WebAuth({
     clientID: 'zu4yaxCNKnBda1NAT0rn8lLM0qOB5q1V',
@@ -34,7 +37,7 @@ export class AuthService {
     scope: 'openid profile'
   });
 
-  constructor(public router: Router, private http: HttpClient) {
+  constructor(public router: Router, private http: HttpClient, private pathService: PathsService) {
     const initialUser = JSON.parse(localStorage.getItem('profile') || null);
     this.userSubject = new BehaviorSubject(initialUser);
     this.user$ = this.userSubject.asObservable().do(user => {
@@ -142,4 +145,20 @@ export class AuthService {
 
     this.userSubject.next(user);
   }
+
+  userStartedJourneyId(journeyId: number) {
+
+    this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
+    
+
+
+
+    const user = {
+      ...this.userSubject.getValue(),
+      journeyId: journeyId
+    };
+
+    this.userSubject.next(user);
+  }
+
 }
