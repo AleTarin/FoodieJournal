@@ -28,7 +28,6 @@ export class StatusButtonComponent implements OnInit, OnChanges {
 
   public checkCurrentStatus(){
     if (!this.hasJourney && !this.isCompleted) {
-      console.log("Follow");
       this.buttonLabel = "Follow";
     }
 
@@ -42,14 +41,10 @@ export class StatusButtonComponent implements OnInit, OnChanges {
   }
 
   public journeyAssgned(){
-    console.log("dentro");
-    let myProfile: User = JSON.parse(localStorage.getItem('userNewProfile'));
-    myProfile.last_challenge = "challenge";
-    console.log(myProfile);
-      if(myProfile.last_challenge && !myProfile.journey){
+    let myProfile: User = JSON.parse(localStorage.getItem('profile'));
+      if(!myProfile.last_challenge && !myProfile.journey){
         this.hasJourney = false; 
       }else{
-        console.log("no la he definido");
         this.hasJourney = true;
       }
   }
@@ -63,25 +58,15 @@ export class StatusButtonComponent implements OnInit, OnChanges {
   }
 
   public chooseJourney() {
-    console.log("fdsfsds");
-    //if(this.buttonLabel === "Follow"){
-        console.log("dentro");
-
-        let userChoose: User;
-        userChoose = JSON.parse(localStorage.getItem('userNewProfile'));
-        userChoose.journey = true;
-        localStorage.setItem('userNewProfile', JSON.stringify(userChoose));
-      //}
+    if(this.buttonLabel === "Follow"){
+        // let userChoose = this.auth.userSubject.getValue();
+        // userChoose = JSON.parse(localStorage.getItem('profile'));
+        // userChoose.journey = true;
+        this.auth.userStartedJourney(true);
+        // localStorage.setItem('profile', JSON.stringify(userChoose));
+        this.buttonLabel = "Continue";
+      }
   }
 
-
-
-
-
-  
-
-  ngOnInit() {
-    
-
-}
+  ngOnInit() {}
 }

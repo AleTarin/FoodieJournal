@@ -34,13 +34,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.userProfile$.subscribe(res => {
+    this.auth.user$.subscribe(res => {
       this.profile = <User>res;
-      let recentProfile: User = new User();
-    recentProfile.name = this.profile.name;
-    recentProfile.nickname = this.profile.nickname;
-    recentProfile.picture = this.profile.picture;
-    localStorage.setItem('userNewProfile', JSON.stringify(recentProfile));
+    // localStorage.setItem('profile', JSON.stringify(recentProfile));
     });
   }
 
