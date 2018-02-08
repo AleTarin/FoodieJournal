@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="!isUserLoggedIn()">
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="!(auth.loggedIn$ | async)">
     <a class="navbar-brand" href="">FoodieJournal</a>
       <a class="nav-link" (click)="login()" role="button" ng-if="auth.isAuthenticated()">
         Login
       </a>
 </nav>
 
-<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="isUserLoggedIn() && profile">
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="(auth.loggedIn$ | async)">
     <!-- burguer button -->
     <div>
         <a class="nav-link toggle-app  mr-3" (click)="showSidebar()" role="button">
