@@ -21,6 +21,8 @@ export class AuthService {
 
   public userProfile: any;
   private observer: Observer<string>;
+  public paths: any;
+  userProfile$: Observable<any> = new Observable(obs => this.observer = obs);
   private userSubject: BehaviorSubject<User>;
 
   user$: Observable<User>;
@@ -157,10 +159,16 @@ export class AuthService {
     this.userSubject.next(user);
   }
 
-  userPaths(startedJourney: boolean) {
+  userStartedJourneyId(journeyId: number) {
+
+    this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
+    
+
+
+
     const user = {
       ...this.userSubject.getValue(),
-      journey: startedJourney
+      journeyId: journeyId
     };
 
     this.userSubject.next(user);
