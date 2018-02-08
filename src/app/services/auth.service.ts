@@ -69,12 +69,6 @@ export class AuthService {
         this.router.navigate(['/home']);
         console.log(err);
       }
-<<<<<<< HEAD
-       
-      
-       
-=======
->>>>>>> c6912e1a95480c03f74584fb3e68f26014657a40
     });
   }
 
