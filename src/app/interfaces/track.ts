@@ -1,3 +1,5 @@
+import { Business } from "./business";
+
 export interface Track {
     id?: number;
     categories: string;
@@ -6,4 +8,5 @@ export interface Track {
     description: string;
     duration: number;
     completenessPercentage: number;
+    businesses: Business[];
 }
