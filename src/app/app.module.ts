@@ -37,6 +37,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TrackSummaryComponent } from './components/track-summary/track-summary.component';
 import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pie-progress-bar.component';
 import { AuthGuard } from './services/auth.guard';
+import { InsideChallengeComponent } from './components/inside-challenge/inside-challenge.component';
 
 @NgModule({
   declarations: [
@@ -44,10 +45,7 @@ import { AuthGuard } from './services/auth.guard';
     HomeComponent,
     NavbarComponent,
     TrackSummaryComponent,
-
-    ListPathsComponent,
-    PieProgressBarComponent,
-    RecentDropdownComponent
+    InsideChallengeComponent,
   ],
   imports: [
     BrowserModule,

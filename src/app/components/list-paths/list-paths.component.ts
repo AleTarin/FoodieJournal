@@ -1,32 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { PathsService } from '../../services/paths.service';
+import { Track } from '../../interfaces/track';
 
 @Component({
   selector: 'app-list-paths',
   templateUrl: './list-paths.component.html',
   styleUrls: ['./list-paths.component.sass']
 })
-export class ListPathsComponent implements OnInit {
-//@Output() selectedPath= new EventEmitter();
-  //@Input()pathList;
-  pathList =[
-    {"name": "American" },
-    {"name": "Korean" },
-    {"name": "Mexican" },
-    {"name": "Italian" },
-    {"name": "Japanese" }
-  ]
+export class ListPathsComponent implements OnInit, OnChanges{
+
+
+
+  @Input() paths: Track[];
 
   constructor() { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    //console.log(changes.paths.currentValue);
+  }
 
   ngOnInit() {
-
   }
-  pathClicked(name ){
-console.log(name);
 
-
-
+  pathClicked(name ) {
   }
 
 }
