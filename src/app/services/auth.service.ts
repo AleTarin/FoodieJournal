@@ -39,7 +39,7 @@ export class AuthService {
     this.user$ = this.userSubject.asObservable().do(user => {
       console.log(user);
       if (user) {
-        this.saveToLocalStorage(`users|${user.email}`, user);
+        this.saveToLocalStorage(`users|${user.nickname}`, user);
       } 
       
       this.saveToLocalStorage('profile', user);
