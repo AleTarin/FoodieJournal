@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../user';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-controls',
@@ -12,13 +14,16 @@ export class ControlsComponent implements OnInit {
   color: string = "#FE5140";
   letterColor: string = "black";
   disabled: boolean = false;
+  myProfile: User;
+  @Input() idChallenge;
+  private userSubject: BehaviorSubject<User>;
 
 
   setText() {
 
     var text: string;
 
-    if (this.buttonState == 0) {
+    if (this.myProfile.status == 0) {
 
       text = "Mark as Started";
       this.color = "#FE5140";
@@ -26,14 +31,14 @@ export class ControlsComponent implements OnInit {
 
     }
 
-    if (this.buttonState == 1) {
+    if (this.myProfile.status == 1) {
 
       text = "Mark as Completed";
       this.color = "#41B9FE";
       return text;
     }
 
-    if (this.buttonState == 2) {
+    if (this.myProfile.status == 2) {
 
       text = " Way to go! Take the next challenge";
       this.color = "#f2f2f2";
@@ -48,11 +53,14 @@ export class ControlsComponent implements OnInit {
 
   challengeClicked() {
 
-    if (this.buttonState == 0) {
-      this.buttonState++;
+    if (this.myProfile.status == 0) {
+      this.myProfile.status++;
       this.buttonText = "Mark as completed";
-      localStorage.setItem('prueva', JSON.stringify(this.buttonState));
+      console.log("hi" + this.myProfile.status);
+      this.auth.setStatusChallenge(this.myProfile.journey, "dijon-san-pedro-garza-garcía", 76);
+      //localStorage.setItem('prueva', JSON.stringify(this.buttonState));
       this.color = "#41B9FE";
+
 
       return;
     }
@@ -70,25 +78,41 @@ export class ControlsComponent implements OnInit {
 
 
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {
+
+
+    this.myProfile = this.auth.getUserSubject().getValue();
+    console.log(this.myProfile);
+
+  }
 
   ngOnInit() {
     //localStorage.clear();
 
 
-    this.buttonState = JSON.parse(localStorage.getItem('prueva'));
-    console.log(this.buttonState);
 
 
-    if (this.buttonState) {
+
+
+
+
+
+    console.log("user status is" + this.myProfile.status);
+
+
+    if (this.myProfile.status) {
       console.log("button state found");
       // do something with the state
     }
     else {
       console.log("button state not found");
-      this.buttonState = 0;
-      // do something without the sideBar
+       
+      // console.log(this.auth.getUserSubject().getValue());
+       this.myProfile.status=0;
+
     }
+    
+    this.auth.setStatusChallenge(this.myProfile.journey, "dijon-san-pedro-garza-garcía", 78);
 
     this.buttonText = this.setText();
 
