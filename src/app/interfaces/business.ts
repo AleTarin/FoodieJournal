@@ -17,7 +17,7 @@ export class Business {
     status?: number;
 
     // New
-    status?: number;
+   
 
     constructor() {
         this.status = 0;

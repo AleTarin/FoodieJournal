@@ -22,6 +22,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { LeaveFeedbackComponent } from '../leave-feedback/leave-feedback.component';
 import { InsideChallengeComponent } from '../inside-challenge/inside-challenge.component';
+import { ControlsComponent } from '../inside-challenge/controls/controls.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { InsideChallengeComponent } from '../inside-challenge/inside-challenge.c
     ContactInfoComponent,
     LeaveFeedbackComponent,
     InsideChallengeComponent,
+    ControlsComponent,
   ],
   exports: [],
   entryComponents: [CarouselComponent, LeaveFeedbackComponent]

@@ -16,6 +16,7 @@ export class ControlsComponent implements OnInit {
   disabled: boolean = false;
   myProfile: User;
   @Input() idChallenge;
+
   private userSubject: BehaviorSubject<User>;
 
 
@@ -57,17 +58,17 @@ export class ControlsComponent implements OnInit {
       this.myProfile.status++;
       this.buttonText = "Mark as completed";
       console.log("hi" + this.myProfile.status);
-      this.auth.setStatusChallenge(this.myProfile.journey, "dijon-san-pedro-garza-garcía", 76);
+      this.auth.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
       //localStorage.setItem('prueva', JSON.stringify(this.buttonState));
       this.color = "#41B9FE";
 
 
       return;
     }
-    if (this.buttonState == 1) {
-      this.buttonState++;
+    if (this.myProfile.status == 1) {
+      this.myProfile.status++;
       this.buttonText = " Way to go! Take the next challenge";
-      localStorage.setItem('prueva', JSON.stringify(this.buttonState));
+      this.auth.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
       this.color = "#f2f2f2";
 
     }
@@ -82,7 +83,7 @@ export class ControlsComponent implements OnInit {
 
 
     this.myProfile = this.auth.getUserSubject().getValue();
-    console.log(this.myProfile);
+
 
   }
 
@@ -90,14 +91,8 @@ export class ControlsComponent implements OnInit {
     //localStorage.clear();
 
 
-
-
-
-
-
-
-
-    console.log("user status is" + this.myProfile.status);
+    console.log("the input is" + this.idChallenge);
+     console.log("user status is" + this.myProfile.status);
 
 
     if (this.myProfile.status) {
@@ -106,13 +101,15 @@ export class ControlsComponent implements OnInit {
     }
     else {
       console.log("button state not found");
-       
+
       // console.log(this.auth.getUserSubject().getValue());
-       this.myProfile.status=0;
+      this.myProfile.status = 0;
 
     }
-    
-    this.auth.setStatusChallenge(this.myProfile.journey, "dijon-san-pedro-garza-garcía", 78);
+
+    this.auth.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
+
+    console.log(this.auth.getUserSubject().getValue());
 
     this.buttonText = this.setText();
 
