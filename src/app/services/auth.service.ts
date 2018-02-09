@@ -40,8 +40,14 @@ export class AuthService {
     this.userSubject = new BehaviorSubject(initialUser);
     this.user$ = this.userSubject.asObservable().do(user => {
       if (user) {
+<<<<<<< HEAD
+        this.saveToLocalStorage(`users|${user.nickname}`, user);
+      } 
+      
+=======
           this.saveToLocalStorage(`users|${user.nickname}`, user);
       }
+>>>>>>> f6987e58a259994ad2cc7df5a1b74385e231bf56
       this.saveToLocalStorage('profile', user);
 
     });
@@ -66,6 +72,7 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
+        this.getProfile();
         this.router.navigate(['/paths']);
         this.getProfile();
       } else if (err) {
@@ -92,6 +99,7 @@ export class AuthService {
     this.userSubject.next(null);
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
+    localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
 
