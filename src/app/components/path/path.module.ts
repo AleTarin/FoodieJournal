@@ -18,7 +18,8 @@ import { RecentDropdownComponent } from '../recent-dropdown/recent-dropdown.comp
 import { ListDropdownComponent } from '../list-dropdown/list-dropdown.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ContactInfoComponent } from '../contact-info/contact-info.component';
-
+import { AppRoutingModule } from '../../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { ContactInfoComponent } from '../contact-info/contact-info.component';
       apiKey: environment.googleMapsKey
     }),
     NgbModule,
+    RouterModule,
   ],
   declarations: [
     PathComponent,
@@ -45,7 +47,7 @@ import { ContactInfoComponent } from '../contact-info/contact-info.component';
     RecentDropdownComponent,
     ContactInfoComponent,
   ],
-  exports: [PathComponent],
+  exports: [],
   entryComponents: [CarouselComponent]
 
 })
