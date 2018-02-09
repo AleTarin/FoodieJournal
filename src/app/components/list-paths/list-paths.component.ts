@@ -16,13 +16,10 @@ export class ListPathsComponent implements OnInit, OnChanges{
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    //console.log(changes.paths.currentValue);
+    // console.log(changes.paths.currentValue);
   }
 
   ngOnInit() {
-  }
-
-  pathClicked(name ) {
   }
 
 }

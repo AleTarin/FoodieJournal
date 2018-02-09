@@ -10,9 +10,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'inside', component: InsideChallengeComponent},
   {path: 'paths', canActivate: [ AuthGuard ], component: TrackSummaryComponent},
-  {path: 'paths/:id', canActivate: [ AuthGuard ], component: PathComponent , children: [
-    {path: '', component: PathComponent}
-  ]},
+  {path: 'paths/:id', canActivate: [ AuthGuard ], component: PathComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 

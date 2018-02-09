@@ -19,19 +19,17 @@ import { ListDropdownComponent } from '../list-dropdown/list-dropdown.component'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ContactInfoComponent } from '../contact-info/contact-info.component';
 import { AppRoutingModule } from '../../app-routing.module';
-import { Router, RouterLink} from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    NgModel,
-    Router,
-    RouterLink,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
     }),
     NgbModule,
+    RouterModule,
   ],
   declarations: [
     PathComponent,
@@ -49,7 +47,7 @@ import { Router, RouterLink} from '@angular/router';
     RecentDropdownComponent,
     ContactInfoComponent,
   ],
-  exports: [PathComponent],
+  exports: [],
   entryComponents: [CarouselComponent]
 
 })
