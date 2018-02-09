@@ -38,6 +38,7 @@ import { TrackSummaryComponent } from './components/track-summary/track-summary.
 import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pie-progress-bar.component';
 import { AuthGuard } from './services/auth.guard';
 import { InsideChallengeComponent } from './components/inside-challenge/inside-challenge.component';
+import { Routes, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { InsideChallengeComponent } from './components/inside-challenge/inside-c
     AppRoutingModule,
     HttpClientModule,
     PathModule,
+    RouterModule,
     NgbModule.forRoot()
   ],
   providers: [

@@ -18,11 +18,15 @@ import { RecentDropdownComponent } from '../recent-dropdown/recent-dropdown.comp
 import { ListDropdownComponent } from '../list-dropdown/list-dropdown.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ContactInfoComponent } from '../contact-info/contact-info.component';
-
+import { AppRoutingModule } from '../../app-routing.module';
+import { Router, RouterLink} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    NgModel,
+    Router,
+    RouterLink,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey

@@ -1,6 +1,7 @@
 <div  class="btn-group btn-group-toggle" data-toggle="buttons" >
   <label class="btn btn-danger" *ngFor="let path of paths; let i = index;" (click)="pathClicked(path.type)">
-    <a class="none-decoration" [href]="'/paths/' + i"><input type="radio"  name="options" id="option{{i}}" autocomplete="off" checked=""> {{path.type}}</a> 
+    <!-- <a class="none-decoration" href="'/paths/' + i"><input type="radio"  name="options" id="option{{i}}" autocomplete="off" checked=""> {{path.type}}</a>  -->
+    <button class="btn btn-block" [routerLink}="'[/paths']"><input type="radio"  name="options" id="option{{i}}" autocomplete="off" checked=""> {{path.type}}</button>
   </label>
 </div>  
 

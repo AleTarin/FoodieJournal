@@ -88,8 +88,11 @@ export class AuthService {
 
   public logout(): void {
     const profile: User = this.getfromLocalStorage('profile');
+    console.log(profile);
     this.userSubject.asObservable().do(user => {
-      this.saveToLocalStorage(`users|${user.nickname}`, profile);
+      //this.saveToLocalStorage(`users|${user.nickname}`, profile);
+      console.log("guardando");
+      console.log(user);
     });
 
     this.userSubject.next(null);
@@ -151,6 +154,7 @@ export class AuthService {
       journey: startedJourney
     };
 
+    console.log(user);
     this.userSubject.next(user);
   }
 
