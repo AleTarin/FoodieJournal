@@ -24,7 +24,8 @@ export class InsideChallengeComponent implements OnInit {
     ngOnInit() {
       this.route.paramMap.subscribe((params: ParamMap) => {
       this.auth.getUserSubject().subscribe(res => this.track = res.paths[params.get('id')]);
-      this.challenge = this.track.challenges[params.get('challenge')];
+      this.challenge = this.track.challenges.filter(bs => bs.id === params.get('challenge'))[0];
+      console.log(this.challenge);
       });
     }
 
