@@ -1,2 +1,2 @@
-<button type="button" class="btn btn-block solid" (click)="chooseJourney()">{{buttonLabel}}</button>
+<button type="button" class="btn btn-block solid" [ngClass]="{'disabled': getPathSelected()}" (click)="chooseJourney()">{{buttonLabel}}</button>
 

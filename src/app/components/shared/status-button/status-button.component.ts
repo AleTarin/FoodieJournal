@@ -65,5 +65,14 @@ export class StatusButtonComponent implements OnInit, OnChanges {
       }
   }
 
+  public getPathSelected(): boolean{
+    if(this.pathId !== this.auth.getUserSubject().getValue().journey){
+      this.buttonLabel = "Follow";
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   ngOnInit() {}
 }

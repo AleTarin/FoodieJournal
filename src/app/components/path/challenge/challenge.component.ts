@@ -50,6 +50,10 @@ export class ChallengeComponent implements OnInit, OnChanges {
     });
   }
 
+  public getPathSelected(): boolean{
+    return this.path.id === this.auth.getUserSubject().getValue().journey;
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.getLocation(changes);
   }

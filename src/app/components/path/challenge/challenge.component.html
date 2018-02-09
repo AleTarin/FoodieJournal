@@ -22,7 +22,7 @@
                     <app-google-map [latitude]="business.coordinates.latitude" [longitude]="business.coordinates.longitude" [height]="'150px'" ></app-google-map>
                 </div>
                 <div class="col align-middle arrow-container" [routerLink]="['/paths', path.id, business.id]">
-                    <i class="fas fa-angle-right align-middle arrow  d-none d-sm-block" ></i>
+                    <i *ngIf="getPathSelected()" class="fas fa-angle-right align-middle arrow  d-none d-sm-block" ></i>
                 </div>
             </div>
         </ng-template>
