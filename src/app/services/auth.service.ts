@@ -158,7 +158,7 @@ export class AuthService {
       ...this.userSubject.getValue(),
       journey: startedJourney
     };
-
+     console.log(startedJourney);
     this.userSubject.next(user);
     
 

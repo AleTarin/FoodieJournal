@@ -9,5 +9,5 @@ export interface Track {
     description: string;
     duration: number;
     completenessPercentage: number;
-    businesses: Business[];
+    
 }
