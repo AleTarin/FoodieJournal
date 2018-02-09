@@ -63,6 +63,7 @@ export class StatusButtonComponent implements OnInit, OnChanges {
         // userChoose = JSON.parse(localStorage.getItem('profile'));
         // userChoose.journey = true;
         this.auth.userStartedJourney(true);
+       
         //aqui guardare la lista de challenges del path especifico
         // localStorage.setItem('profile', JSON.stringify(userChoose));
         this.buttonLabel = "Continue";

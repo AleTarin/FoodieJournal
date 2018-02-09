@@ -1,6 +1,6 @@
 // src/app/auth/auth.service.ts
 
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/shareReplay';
@@ -28,6 +28,16 @@ export class AuthService {
   user$: Observable<User>;
   loggedIn$: Observable<boolean>;
   trackArray: Track[];
+
+  private pathId= new BehaviorSubject<number>(2);
+  currentId = this.pathId.asObservable();
+
+  changePathId(pathId: number){
+    this.pathId.next(pathId);
+
+  }
+  
+  
 
   auth0 = new auth0.WebAuth({
     clientID: 'zu4yaxCNKnBda1NAT0rn8lLM0qOB5q1V',
@@ -157,6 +167,8 @@ export class AuthService {
     };
 
     this.userSubject.next(user);
+    
+
   }
 
   userStartedJourneyId(journeyId: number) {
