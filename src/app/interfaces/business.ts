@@ -15,6 +15,9 @@ export class Business {
     url?: string;
     image_url?: string;
     status?: number;
+
+    // New
+    completed?: boolean;
 }
 
 export class Categories {

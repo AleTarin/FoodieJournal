@@ -5,6 +5,7 @@ export interface Track {
     categories: string;
     icon: string;
     type: string;
+    challenges: Business[];
     description: string;
     duration: number;
     completenessPercentage: number;
