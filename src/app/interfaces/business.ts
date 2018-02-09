@@ -17,7 +17,11 @@ export class Business {
     status?: number;
 
     // New
-    completed?: boolean;
+    status?: number;
+
+    constructor() {
+        this.status = 0;
+    }
 }
 
 export class Categories {
