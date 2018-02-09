@@ -197,9 +197,10 @@ export class AuthService {
     this.userSubject.next(user);
   }
 
-  setStatusChallenge(idPath: number, idChallenge: string, status: boolean) {
+  setStatusChallenge(idPath: number, idChallenge: string, status: number) {
     this.userSubject.getValue().paths[idPath].challenges
-      .filter(bs => bs.id === idChallenge)[0].completed = status;
+      .filter(bs => bs.id === idChallenge)[0].status = status;
+      
   }
 
   getPaths() {

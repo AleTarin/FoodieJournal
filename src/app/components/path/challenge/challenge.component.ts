@@ -46,7 +46,7 @@ export class ChallengeComponent implements OnInit, OnChanges {
       this.ArrayBs = res;
       this.path.challenges = res;
       this.auth.setPath(this.path);
-      this.auth.setStatusChallenge(this.path.id, this.path.challenges[0].id, true);
+      this.auth.setStatusChallenge(this.path.id, this.path.challenges[0].id, 0);
     });
   }
 
