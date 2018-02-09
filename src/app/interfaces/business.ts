@@ -16,7 +16,11 @@ export class Business {
     image_url?: string;
 
     // New
-    completed?: boolean;
+    status?: number;
+
+    constructor() {
+        this.status = 0;
+    }
 }
 
 export class Categories {
