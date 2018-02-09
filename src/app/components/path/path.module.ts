@@ -18,7 +18,7 @@ import { RecentDropdownComponent } from '../recent-dropdown/recent-dropdown.comp
 import { ListDropdownComponent } from '../list-dropdown/list-dropdown.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ContactInfoComponent } from '../contact-info/contact-info.component';
-import { PathControlsComponent } from './path-controls/path-controls.component';
+
 
 
 @NgModule({
@@ -45,7 +45,7 @@ import { PathControlsComponent } from './path-controls/path-controls.component';
     PieProgressBarComponent,
     RecentDropdownComponent,
     ContactInfoComponent,
-    PathControlsComponent,
+  
   ],
   exports: [PathComponent],
   entryComponents: [CarouselComponent]

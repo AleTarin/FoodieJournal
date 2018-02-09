@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-path-controls',
-  templateUrl: './path-controls.component.html',
-  styleUrls: ['./path-controls.component.sass']
+  selector: 'app-controls',
+  templateUrl: './controls.component.html',
+  styleUrls: ['./controls.component.scss']
 })
-export class PathControlsComponent implements OnInit {
-
+export class ControlsComponent implements OnInit {
   buttonState: number;
   buttonText: string = "Mark as Started";
   color: string = "#FE5140";
@@ -70,7 +70,7 @@ export class PathControlsComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
     //localStorage.clear();
