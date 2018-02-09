@@ -40,14 +40,9 @@ export class AuthService {
     this.userSubject = new BehaviorSubject(initialUser);
     this.user$ = this.userSubject.asObservable().do(user => {
       if (user) {
-<<<<<<< HEAD
         this.saveToLocalStorage(`users|${user.nickname}`, user);
       } 
       
-=======
-          this.saveToLocalStorage(`users|${user.nickname}`, user);
-      }
->>>>>>> f6987e58a259994ad2cc7df5a1b74385e231bf56
       this.saveToLocalStorage('profile', user);
 
     });

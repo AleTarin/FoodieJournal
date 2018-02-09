@@ -38,11 +38,7 @@ import { TrackSummaryComponent } from './components/track-summary/track-summary.
 import { PieProgressBarComponent } from './components/shared/pie-progress-bar/pie-progress-bar.component';
 import { AuthGuard } from './services/auth.guard';
 import { InsideChallengeComponent } from './components/inside-challenge/inside-challenge.component';
-<<<<<<< HEAD
 import { Routes, RouterModule } from '@angular/router';
-=======
-import { RanoutoftimemessageComponent } from './components/ranoutoftimemessage/ranoutoftimemessage.component';
->>>>>>> 56b66b6249ecafc462de29a2f75c6b599272a8f5
 
 @NgModule({
   declarations: [
@@ -51,7 +47,6 @@ import { RanoutoftimemessageComponent } from './components/ranoutoftimemessage/r
     NavbarComponent,
     TrackSummaryComponent,
     InsideChallengeComponent,
-    RanoutoftimemessageComponent,
   ],
   imports: [
     BrowserModule,
