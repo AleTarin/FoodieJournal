@@ -14,6 +14,9 @@ export class Business {
     review_count?: number;
     url?: string;
     image_url?: string;
+
+    // New
+    completed?: boolean;
 }
 
 export class Categories {
