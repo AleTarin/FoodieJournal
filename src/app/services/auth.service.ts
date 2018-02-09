@@ -41,8 +41,7 @@ export class AuthService {
     this.user$ = this.userSubject.asObservable().do(user => {
       if (user) {
         this.saveToLocalStorage(`users|${user.nickname}`, user);
-      } 
-      
+      }
       this.saveToLocalStorage('profile', user);
 
     });
@@ -87,11 +86,8 @@ export class AuthService {
 
   public logout(): void {
     const profile: User = this.getfromLocalStorage('profile');
-    console.log(profile);
     this.userSubject.asObservable().do(user => {
-      //this.saveToLocalStorage(`users|${user.nickname}`, profile);
-      console.log("guardando");
-      console.log(user);
+      this.saveToLocalStorage(`users|${user.nickname}`, profile);
     });
 
     this.userSubject.next(null);

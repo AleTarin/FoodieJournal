@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PathsService } from '../../services/paths.service';
 import { Location } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { Business } from '../../interfaces/business';
 
 @Component({
   selector: 'app-inside-challenge',
@@ -11,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./inside-challenge.component.scss']
 })
 export class InsideChallengeComponent implements OnInit {
+  challenge: Business;
 
     track: Track;
     constructor(
