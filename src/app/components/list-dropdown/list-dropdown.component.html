@@ -1,7 +1,9 @@
 <div class="col-6 d-block d-md-none">
-  <button type="button" class="btn btn-danger btn-paths" (click)="showPaths()"><label class="text-drop">{{pathSelected}}  <i class="fas fa-caret-down"></i> </label></button>
+  <button type="button" class="btn btn-paths row justify-content-between" (click)="showPaths()">
+    <label class="col-6 path-name">{{pathSelected}}</label>  <label class="col-1"><i class="fas fa-caret-down"></i> </label>
+  </button>
 </div>
-<div *ngIf="!hide">
+<div class="drop-options" *ngIf="!hide">
   <div *ngFor="let path of paths; let i = index;" (click)="pathClicked(path.type, path.id)" >     
     <div  class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="pathSelected!=path.type" >  
       <label class="btn btn-danger">
