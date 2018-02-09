@@ -8,6 +8,8 @@ import 'rxjs/add/operator/concatMap';
 
 
 import { Observable } from 'rxjs/Observable';
+import { AuthService } from '../../../services/auth.service';
+import { Path } from '@firebase/database/dist/esm/src/core/util/Path';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class ChallengeComponent implements OnInit, OnChanges {
   ArrayBs: Business[];
   @Input() path: Track;
 
-  constructor(private yelpService: YelpService, private modalService: NgbModal) { }
+  constructor(private yelpService: YelpService, private modalService: NgbModal, private auth: AuthService) { }
 
   getLocation(changes: SimpleChanges): void {
     if (changes.path.currentValue !== undefined) {
@@ -40,7 +42,12 @@ export class ChallengeComponent implements OnInit, OnChanges {
   yelpSearchAll(): void {
     // Save the bussinesses to use in the template
     this.yelpService.YelpSearch(this.latitude, this.longitude, this.path.categories, 10000)
-    .subscribe(res => this.ArrayBs = res);
+    .subscribe(res => {
+      this.ArrayBs = res;
+      this.path.challenges = res;
+      this.auth.setPath(this.path);
+      this.auth.setStatusChallenge(this.path.id, this.path.challenges[0].id, true);
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
