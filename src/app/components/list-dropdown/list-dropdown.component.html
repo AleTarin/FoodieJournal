@@ -4,11 +4,11 @@
   </button>
 </div>
 <div class="drop-options" *ngIf="!hide">
-  <div *ngFor="let path of paths; let i = index;" (click)="pathClicked(path.type, path.id)" >     
+  <div *ngFor="let path of paths; let i = index;" (click)="pathClicked(path.type, path.id)"  [routerLink]="['/paths', path.id]">     
     <div  class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="pathSelected!=path.type" >  
       <label class="btn btn-danger">
-        <input (click)="navigate(i)" type="radio" name="options" id="option{{i}}" autocomplete="off" checked="" *ngIf="pathSelected!=path.type"> {{path.type}}
-      </label>
-    </div>
+        <input  type="radio" name="options" id="option{{i}}" autocomplete="off" checked="" *ngIf="pathSelected!=path.type"> {{path.type}}
+      </label>   
+    </div> 
   </div>
 </div>
