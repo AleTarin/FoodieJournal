@@ -11,6 +11,8 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observer } from 'rxjs/Observer';
 import { User } from '../user';
+import { Track } from '../interfaces/track';
+import { Business } from '../interfaces/business';
 
 @Injectable()
 export class AuthService {
@@ -37,15 +39,17 @@ export class AuthService {
     const initialUser = JSON.parse(localStorage.getItem('profile') || null);
     this.userSubject = new BehaviorSubject(initialUser);
     this.user$ = this.userSubject.asObservable().do(user => {
-      this.saveToLocalStorage('profile', user);
       if (user) {
-        if (this.getfromLocalStorage(`users|${user.nickname}`)) {
-          const newUser: User = this.getfromLocalStorage(`users|${user.nickname}`);
-          this.saveToLocalStorage('profile', newUser);
-        } else {
+<<<<<<< HEAD
+        this.saveToLocalStorage(`users|${user.nickname}`, user);
+      } 
+      
+=======
           this.saveToLocalStorage(`users|${user.nickname}`, user);
-        }
       }
+>>>>>>> f6987e58a259994ad2cc7df5a1b74385e231bf56
+      this.saveToLocalStorage('profile', user);
+
     });
 
     this.loggedIn$ = this.user$.map(user => user !== null).shareReplay(1);
@@ -63,12 +67,12 @@ export class AuthService {
     this.auth0.authorize();
   }
 
-  // ...
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
+        this.getProfile();
         this.router.navigate(['/paths']);
         this.getProfile();
       } else if (err) {
@@ -98,6 +102,7 @@ export class AuthService {
     this.userSubject.next(null);
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
+    localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
 
@@ -116,15 +121,6 @@ export class AuthService {
     return this.isAuthenticated && !!localStorage.getItem('access_token');
   }
 
-  public getUser(): void {
-    const profile = localStorage.getItem('profile');
-    if (profile === null) {
-      this.getProfile();
-    } else {
-      this.observer.next(JSON.parse(localStorage.getItem('profile')));
-    }
-  }
-
   public getProfile(): void {
 
     const accessToken = localStorage.getItem('access_token');
@@ -137,10 +133,16 @@ export class AuthService {
       if (profile) {
         self.userProfile = profile;
       }
-      // localStorage.setItem('profile', JSON.stringify(profile));
-      // this.observer.next(profile);
+      const user = this.getfromLocalStorage(`users|${profile.nickname}`);
+      if (user) {
+        profile = user;
+      }
       this.userSubject.next(profile);
     });
+  }
+
+  public getUserSubject() {
+    return this.userSubject;
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -148,7 +150,7 @@ export class AuthService {
     return Observable.throw(err.message);
   }
 
-  userStartedJourney(startedJourney: boolean) {
+  public userStartedJourney(startedJourney: number) {
     const user = {
       ...this.userSubject.getValue(),
       journey: startedJourney
@@ -158,12 +160,39 @@ export class AuthService {
     this.userSubject.next(user);
   }
 
-  userPaths(startedJourney: boolean) {
-    const user = {
-      ...this.userSubject.getValue(),
-      journey: startedJourney
-    };
-
+  setPath(path: Track ) {
+    let user = this.userSubject.getValue();
+    if (this.userSubject.getValue().paths) {
+     if ( !this.containsObject(path, user.paths, 'id')) { user.paths.push(path); }
+    } else {
+      user = {
+        ...this.userSubject.getValue(),
+        paths: [path]
+      };
+    }
+    console.log(user);
     this.userSubject.next(user);
+  }
+
+  setStatusChallenge(idPath: number, idChallenge: string, status: boolean) {
+    this.userSubject.getValue().paths[idPath].challenges
+      .filter(bs => bs.id === idChallenge)[0].completed = status;
+  }
+
+  getPaths() {
+    return this.userSubject.getValue().paths;
+  }
+
+  // Utils functions
+
+  containsObject(obj: any, list: any[], st: string) {
+    let i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i][st] === obj[st]) {
+            return obj;
+        }
+    }
+
+    return false;
   }
 }
