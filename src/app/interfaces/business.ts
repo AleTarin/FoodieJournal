@@ -23,6 +23,8 @@ export class Business {
     }
 }
 
+
+
 export class Categories {
     alias?: string;
     title: string;
