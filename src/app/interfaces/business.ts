@@ -14,9 +14,10 @@ export class Business {
     review_count?: number;
     url?: string;
     image_url?: string;
+    status?: number;
 
     // New
-    status?: number;
+   
 
     constructor() {
         this.status = 0;

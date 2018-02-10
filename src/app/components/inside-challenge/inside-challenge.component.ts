@@ -41,5 +41,4 @@ export class InsideChallengeComponent implements OnInit {
     const modalRef = this.modalService.open(LeaveFeedbackComponent);
     // modalRef.componentInstance.image = this.ArrayBs[i].image_url;
   }
-
 }

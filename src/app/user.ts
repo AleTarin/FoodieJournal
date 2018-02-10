@@ -9,6 +9,7 @@ export class User {
     journey?: number;
     last_challenge?: string;
     time_started?: string;
+    status?: number;
 
     constructor() {
         this.paths = [];
