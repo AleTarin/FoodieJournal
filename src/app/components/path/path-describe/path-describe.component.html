@@ -27,7 +27,7 @@
           <span class="bold-text pr-2">Duration: </span> {{path.duration}} weeks
         </div>
         <div class="col-6 col-md-12 pad">
-            <app-status-button></app-status-button>
+            <app-status-button [progress]="path.completenessPercentage" [pathId]="path.id"></app-status-button>
           </div>
       </div>
     </div>

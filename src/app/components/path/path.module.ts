@@ -16,8 +16,13 @@ import { ListPathsComponent } from '../list-paths/list-paths.component';
 import { PieProgressBarComponent } from '../shared/pie-progress-bar/pie-progress-bar.component';
 import { RecentDropdownComponent } from '../recent-dropdown/recent-dropdown.component';
 import { ListDropdownComponent } from '../list-dropdown/list-dropdown.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactInfoComponent } from '../contact-info/contact-info.component';
+import { AppRoutingModule } from '../../app-routing.module';
+import { RouterModule } from '@angular/router';
+import { LeaveFeedbackComponent } from '../leave-feedback/leave-feedback.component';
+import { InsideChallengeComponent } from '../inside-challenge/inside-challenge.component';
+import { ControlsComponent } from '../inside-challenge/controls/controls.component';
 
 
 @NgModule({
@@ -28,6 +33,7 @@ import { ContactInfoComponent } from '../contact-info/contact-info.component';
       apiKey: environment.googleMapsKey
     }),
     NgbModule,
+    RouterModule,
   ],
   declarations: [
     PathComponent,
@@ -44,9 +50,12 @@ import { ContactInfoComponent } from '../contact-info/contact-info.component';
     PieProgressBarComponent,
     RecentDropdownComponent,
     ContactInfoComponent,
+    LeaveFeedbackComponent,
+    InsideChallengeComponent,
+    ControlsComponent,
   ],
-  exports: [PathComponent],
-  entryComponents: [CarouselComponent]
+  exports: [],
+  entryComponents: [CarouselComponent, LeaveFeedbackComponent]
 
 })
 export class PathModule { }

@@ -1,6 +1,9 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Track } from '../../interfaces/track';
 import { Router } from '@angular/router';
+import { EventListener } from '@angular/core/src/debug/debug_node';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-list-dropdown',
@@ -12,6 +15,7 @@ export class ListDropdownComponent implements OnInit {
   hide = true;
   @Input() pathSelected: String;
   @Input() paths: Track[];
+  
 
 
   // pathList =[
@@ -22,16 +26,20 @@ export class ListDropdownComponent implements OnInit {
   //   {"name": "Chinese" }
   // ]
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: AuthService) { }
 
 
   ngOnInit() {
+    
+    //this.auth.changePathId.suscribe
+    
 
   }
 
   pathClicked(name, id) {
     this.hide = true;
     this.pathSelected = name;
+
     console.log(id);
     // this.router.navigate(['paths/', id]);
   }
