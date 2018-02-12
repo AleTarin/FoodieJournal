@@ -30,16 +30,15 @@ export class AuthService {
   loggedIn$: Observable<boolean>;
   trackArray: Track[];
 
-  private pathId= new BehaviorSubject<number>(2);
+  private pathId = new BehaviorSubject<number>(2);
   currentId = this.pathId.asObservable();
 
-  changePathId(pathId: number){
+  changePathId(pathId: number) {
     this.pathId.next(pathId);
 
   }
-  
-  
 
+  // tslint:disable-next-line:member-ordering
   auth0 = new auth0.WebAuth({
     clientID: 'zu4yaxCNKnBda1NAT0rn8lLM0qOB5q1V',
     domain: 'foddiejournal.auth0.com',
@@ -49,7 +48,7 @@ export class AuthService {
     scope: 'openid profile'
   });
 
-  constructor(public router: Router, private http: HttpClient, private pathService: PathsService) {
+  constructor(public router: Router, private http: HttpClient) {
     const initialUser = JSON.parse(localStorage.getItem('profile') || null);
     this.userSubject = new BehaviorSubject(initialUser);
     this.user$ = this.userSubject.asObservable().do(user => {
@@ -163,14 +162,12 @@ export class AuthService {
 
     console.log(user);
     this.userSubject.next(user);
-    
 
   }
 
   // userStartedJourneyId(journeyId: number) {
 
   //   this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-    
 
 
 
@@ -178,43 +175,7 @@ export class AuthService {
   //     ...this.userSubject.getValue(),
   //     journeyId: journeyId
   //   };
-
-  setPath(path: Track ) {
-    let user = this.userSubject.getValue();
-    if (this.userSubject.getValue().paths) {
-     if ( !this.containsObject(path, user.paths, 'id')) { user.paths.push(path); }
-    } else {
-      user = {
-        ...this.userSubject.getValue(),
-        paths: [path]
-      };
-    }
-    console.log(user);
-    this.userSubject.next(user);
-  }
-
-  setStatusChallenge(idPath: number, idChallenge: string, status: number) {
-    const user = this.userSubject.getValue();
-    user.paths[idPath].challenges
-      .filter(bs => bs.id === idChallenge)[0].status = status;
-
-    this.userSubject.next(user);
-  }
-
-  getPaths() {
-    return this.userSubject.getValue().paths;
-  }
-
   // Utils functions
 
-  containsObject(obj: any, list: any[], st: string) {
-    let i;
-    for (i = 0; i < list.length; i++) {
-        if (list[i][st] === obj[st]) {
-            return obj;
-        }
-    }
 
-    return false;
-  }
 }

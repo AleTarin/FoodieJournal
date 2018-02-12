@@ -21,7 +21,7 @@ export class TrackSummaryComponent implements OnInit {
   getProgress() {
   }
 
-  public styleBar(i: number){
+  public styleBar(i: number) {
     this.width = this.trackArray[i].completenessPercentage + '%';
     return this.width;
   }
@@ -34,7 +34,6 @@ export class TrackSummaryComponent implements OnInit {
   }
   ngOnInit() {
     this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-    localStorage.setItem('paths', JSON.stringify(this.trackArray));
     this.zero = 0;
   }
 }

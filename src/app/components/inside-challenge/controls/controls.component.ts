@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { PathsService } from '../../../services/paths.service';
 
 @Component({
   selector: 'app-controls',
@@ -58,7 +59,7 @@ export class ControlsComponent implements OnInit {
       this.myProfile.status++;
       this.buttonText = "Mark as completed";
       console.log("hi" + this.myProfile.status);
-      this.auth.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
+      this.pathService.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
       //localStorage.setItem('prueva', JSON.stringify(this.buttonState));
       this.color = "#41B9FE";
 
@@ -68,7 +69,7 @@ export class ControlsComponent implements OnInit {
     if (this.myProfile.status == 1) {
       this.myProfile.status++;
       this.buttonText = " Way to go! Take the next challenge";
-      this.auth.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
+      this.pathService.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
       this.color = "#f2f2f2";
 
     }
@@ -79,7 +80,7 @@ export class ControlsComponent implements OnInit {
 
 
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private pathService: PathsService) {
 
 
     this.myProfile = this.auth.getUserSubject().getValue();
@@ -107,7 +108,7 @@ export class ControlsComponent implements OnInit {
 
     }
 
-    this.auth.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
+    this.pathService.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
 
     console.log(this.auth.getUserSubject().getValue());
 
