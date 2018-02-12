@@ -16,8 +16,9 @@ export class StatusButtonComponent implements OnInit, OnChanges {
   @Input() pathId: number;
 
   ngOnChanges(changes: SimpleChanges): void {
-      if (changes.progress.currentValue !== undefined) {
-        console.log(changes.progress.currentValue);
+      if (changes.progress.currentValue !== undefined && changes.pathId.currentValue !== undefined ) {
+        this.pathId = changes.pathId.currentValue;
+        this.progress = changes.progress.currentValue;
       }
     }
 
@@ -43,7 +44,7 @@ export class StatusButtonComponent implements OnInit, OnChanges {
 
   public journeyAssgned() {
     const myProfile: User = JSON.parse(localStorage.getItem('profile'));
-      if (!myProfile.last_challenge && !myProfile.journey) {
+      if (!myProfile.journey) {
         this.hasJourney = false;
       } else {
         this.hasJourney = true;
@@ -65,11 +66,11 @@ export class StatusButtonComponent implements OnInit, OnChanges {
       }
   }
 
-  public getPathSelected(): boolean{
-    if(this.pathId !== this.auth.getUserSubject().getValue().journey){
-      this.buttonLabel = "Follow";
+  public getPathSelected(): boolean {
+    if (this.pathId !== this.auth.getUserSubject().getValue().journey) {
+      this.buttonLabel = 'Follow';
       return true;
-    }else{
+    } else {
       return false;
     }
   }
