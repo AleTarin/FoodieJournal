@@ -34,7 +34,7 @@ export class PathsService {
 
   setPath(path: Track ) {
     let user = this.auth.getUserSubject().getValue();
-    if (user.paths) {
+    if ( user && user.paths) {
      if ( !this.containsObject(path, user.paths, 'id')) { user.paths.push(path); }
     } else {
       user = {

@@ -3,6 +3,7 @@ import { Track } from '../../interfaces/track';
 import { YelpService } from '../../services/yelp.service';
 import { PathsService } from '../../services/paths.service';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-track-summary',
@@ -16,7 +17,7 @@ export class TrackSummaryComponent implements OnInit {
   zero: number;
   trackArray: Track[];
 
-  constructor(private yelpService: YelpService, private pathService: PathsService ) { }
+  constructor(private yelpService: YelpService, private pathService: PathsService, private location: Location ) { }
 
   getProgress() {
   }
