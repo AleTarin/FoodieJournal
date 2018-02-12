@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { Track } from '../../interfaces/track';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PathsService } from '../../services/paths.service';
