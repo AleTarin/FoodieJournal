@@ -44,7 +44,7 @@ export class InsideChallengeComponent implements OnInit {
       });
     }
 
-    goBack(): void {
+    goBack() {
       this.location.back();
     }
 

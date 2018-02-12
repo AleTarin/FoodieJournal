@@ -10,6 +10,7 @@ import 'rxjs/add/operator/concatMap';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../../services/auth.service';
 import { Path } from '@firebase/database/dist/esm/src/core/util/Path';
+import { PathsService } from '../../../services/paths.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class ChallengeComponent implements OnInit, OnChanges {
   ArrayBs: Business[];
   @Input() path: Track;
 
-  constructor(private yelpService: YelpService, private modalService: NgbModal, private auth: AuthService) { }
+  constructor(private yelpService: YelpService, private modalService: NgbModal,
+     private auth: AuthService, private pathService: PathsService) { }
 
   getLocation(changes: SimpleChanges): void {
     if (changes.path.currentValue !== undefined) {
@@ -45,12 +47,12 @@ export class ChallengeComponent implements OnInit, OnChanges {
     .subscribe(res => {
       this.ArrayBs = res;
       this.path.challenges = res;
-      this.auth.setPath(this.path);
+      this.pathService.setPath(this.path);
       // this.auth.setStatusChallenge(this.path.id, this.path.challenges[0].id, 1);
     });
   }
 
-  public getPathSelected(): boolean{
+  public getPathSelected(): boolean {
     return this.path.id === this.auth.getUserSubject().getValue().journey;
   }
 
