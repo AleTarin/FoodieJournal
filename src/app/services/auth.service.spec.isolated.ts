@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import 'rxjs/add/operator/filter';
 import { AuthService } from './auth.service';
+import { PathsService } from './paths.service';
 
 /* describe('AuthService', () => {
     let authService: AuthService;
@@ -30,12 +31,13 @@ import { AuthService } from './auth.service';
 describe('AuthService', () => {
     let authService: AuthService;
     let router: Router;
-    let http;
+    let httpClient;
+    let mockPathService;
     let mockAuth0;
     let spy: any;
 
     beforeEach(() =>{
-        authService = new AuthService(router, http);
+        authService = new AuthService(router, httpClient, mockPathService);
         console.log(authService);
         spy = spyOn(authService, 'isAuthenticated').and.returnValue(true);
     });
