@@ -1,18 +1,17 @@
 <section class="container">
   <nav class= "row">
-      <div class="journey col-xs-12">
-        <p><b>Journeys /</b>  American </p>
+      <div class="journey col-12 m-3">
+          <p> <span class="back"><i class="fas fa-arrow-left" (click)="goBack()"></i> Journeys /</span>   American </p>
       </div>
   </nav>
 </section>
 
-
 <section class="container background2">
-  <div class="row title">
-    <div class="col-xs-12" (click)="open()">
-      <header class="type"> American <small>STARTED</small></header>
-    </div>
-  </div>
+  <header class="row title">
+    <span class="col-1 p-1"><app-challenge-status></app-challenge-status> </span>
+    <span class="col-10 type align-middle " (click)="open()">     
+          American <small>STARTED</small></span>
+    </header>
 
   <div class="row">
     <div class="col-md-6 padding-0">
@@ -42,6 +41,22 @@
       </div>
     </div>
   </section>
+
+ <!-- review -->
+  <section class="container pt-5">
+    <div class="row">
+      <div class="col-4" *ngIf="dish">
+        <img class="dish-img"[src]="dish.dishImage" alt="dish.dishName">
+      </div>
+      <div class="col-8">
+          <p *ngIf="review" class="dish-review">
+            "{{review.text}}"
+          </p>
+      </div>
+    </div>
+  </section>
+
+
 </section>
  <app-controls [idChallenge]="challenge.id"></app-controls> 
 

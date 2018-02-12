@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 
 
 @Component({
@@ -6,14 +6,19 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './challenge-status.component.html',
   styleUrls: ['./challenge-status.component.scss']
 })
-export class ChallengeStatusComponent implements OnInit {
+export class ChallengeStatusComponent implements OnInit, OnChanges {
+
   @Input('id') id: number;
   @Input('status') status: boolean;
+  @Input() statusId: string;
   @Input('name') name: string;
 
   constructor() { }
-  ngOnInit() {
 
+  ngOnChanges(changes: SimpleChanges): void {
+  }
+
+  ngOnInit() {
   }
 
 }
