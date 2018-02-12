@@ -1,7 +1,7 @@
-<section class="container top">
+<section class="container top" >
   <nav class= "row">
-      <div class="journey col-xs-12">
-        <p><b>Journeys /</b>  American </p>
+      <div class="journey col up">
+          <p> <span class="back"><i class="fas fa-arrow-left" (click)="goBack()"></i> Journeys /</span>   American </p>
       </div>
       <div class="button col">Leave Feedback</div>
 
@@ -9,19 +9,19 @@
 </section>
 
 <section class="container background2">
-  <div class="row title">
-    <div class="col-xs-12" (click)="open()">
-      <header class="type"> American <small>STARTED</small></header>
-    </div>
-
-  </div>
+  <header class="row title">
+    <span class="col-1 p-1"><app-challenge-status></app-challenge-status> </span>
+    <span class="col-10 type align-middle " (click)="open()">     
+          American <small>STARTED</small></span>
+    </header>
 
   <div class="row">
     <div class="col-md-6 padding-0">
+        <span class="col-1 p-1"><app-star-rating></app-star-rating> </span>
       <img class="img-responsive" *ngIf='challenge.image_url' [src]="challenge.image_url" alt="business.name">
       <img class="img-responsive" *ngIf='!challenge.image_url' src="http://tutaki.org.nz/wp-content/uploads/2016/04/no-image-available.png" alt="business.name"  (click)="open()">
     </div>
-    <div class="col-md-6 padding-0">
+    <div class="col-md-6 padding">
       <app-google-map [latitude]="challenge.coordinates.latitude" [longitude]="challenge.coordinates.longitude" [height]="'300px'" ></app-google-map>
     </div>
   </div>
@@ -44,6 +44,21 @@
       </div>
     </div>
   </section>
+
+ <!-- review -->
+  <section class="container pt-5">
+    <div class="row">
+      <div class="col-4" *ngIf="dish">
+        <img class="dish-img"[src]="dish.dishImage" alt="dish.dishName">
+      </div>
+      <div class="col-8">
+          <p *ngIf="review" class="dish-review">
+            "{{review.text}}"
+          </p>
+      </div>
+    </div>
+  </section>
+
 
 </section>
  <app-controls [idChallenge]="challenge.id"></app-controls> 
