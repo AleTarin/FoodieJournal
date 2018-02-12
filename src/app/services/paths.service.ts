@@ -17,18 +17,16 @@ export class PathsService {
   getPathsInfo() {
      const user: User = this.auth.getUserSubject().getValue();
 
-     if (user.paths) {
-       console.log('Memory');
+     if ( user && user.paths) {
        return Observable.of(user.paths);
      } else {
-       console.log('Setting');
       return this.http.get(this.url_paths )
       .map(res => {
         this.paths = <Track[]> res;
         for (let index = 0; index < this.paths.length; index++) {
           this.setPath(this.paths[index]);
         }
-        return Observable.of(user.paths);
+        return this.paths;
       })
       .catch(this.handleError);
      }
