@@ -16,8 +16,6 @@ export class Business {
     image_url?: string;
     status?: number;
 
-    // New
-   
 
     constructor() {
         this.status = 0;

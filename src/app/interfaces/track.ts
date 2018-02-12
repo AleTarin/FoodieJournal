@@ -9,12 +9,12 @@ export interface Track {
     description: string;
     duration: number;
     completenessPercentage: number;
-    dishes?: dish[];
+    dishes?: Dish[];
 
 }
 
-export class dish {
+export class Dish {
     dishDescription: string;
-    dishImage:string;
-    dishName:string;
+    dishImage: string;
+    dishName: string;
 }
