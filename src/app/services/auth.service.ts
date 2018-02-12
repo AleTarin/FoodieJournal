@@ -1,6 +1,6 @@
 // src/app/auth/auth.service.ts
 
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/shareReplay';
@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observer } from 'rxjs/Observer';
 import { User } from '../user';
 import { Track } from '../interfaces/track';
+import { PathsService } from './paths.service';
 import { Business } from '../interfaces/business';
 
 @Injectable()
@@ -21,10 +22,23 @@ export class AuthService {
 
   public userProfile: any;
   private observer: Observer<string>;
+  public paths: any;
+  userProfile$: Observable<any> = new Observable(obs => this.observer = obs);
   private userSubject: BehaviorSubject<User>;
 
   user$: Observable<User>;
   loggedIn$: Observable<boolean>;
+  trackArray: Track[];
+
+  private pathId= new BehaviorSubject<number>(2);
+  currentId = this.pathId.asObservable();
+
+  changePathId(pathId: number){
+    this.pathId.next(pathId);
+
+  }
+  
+  
 
   auth0 = new auth0.WebAuth({
     clientID: 'zu4yaxCNKnBda1NAT0rn8lLM0qOB5q1V',
@@ -35,7 +49,7 @@ export class AuthService {
     scope: 'openid profile'
   });
 
-  constructor(public router: Router, private http: HttpClient) {
+  constructor(public router: Router, private http: HttpClient, private pathService: PathsService) {
     const initialUser = JSON.parse(localStorage.getItem('profile') || null);
     this.userSubject = new BehaviorSubject(initialUser);
     this.user$ = this.userSubject.asObservable().do(user => {
@@ -149,7 +163,21 @@ export class AuthService {
 
     console.log(user);
     this.userSubject.next(user);
+    
+
   }
+
+  // userStartedJourneyId(journeyId: number) {
+
+  //   this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
+    
+
+
+
+  //   const user = {
+  //     ...this.userSubject.getValue(),
+  //     journeyId: journeyId
+  //   };
 
   setPath(path: Track ) {
     let user = this.userSubject.getValue();

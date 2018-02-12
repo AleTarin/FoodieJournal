@@ -1,4 +1,4 @@
-import { Business } from "./business";
+import { Business } from './business';
 
 export interface Track {
     id?: number;
@@ -9,4 +9,12 @@ export interface Track {
     description: string;
     duration: number;
     completenessPercentage: number;
+    dishes?: dish[];
+
+}
+
+export class dish {
+    dishDescription: string;
+    dishImage:string;
+    dishName:string;
 }
