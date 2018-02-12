@@ -197,8 +197,16 @@ export class AuthService {
     const user = this.userSubject.getValue();
     user.paths[idPath].challenges
       .filter(bs => bs.id === idChallenge)[0].status = status;
+   if(status=2){
+    user.paths[idPath].completenessPercentage+=10;
+
+   }
+    user.last_challenge = idChallenge;
 
     this.userSubject.next(user);
+
+
+
   }
 
   getPaths() {
