@@ -8,8 +8,6 @@
   },
   "exclude": [
     "test.ts",
-    "**/*.spec.ts",
-    "**/*.spec.isolated.ts",
-    "**/*.spec.integrated.ts"
+    "**/*.spec.ts"
   ]
 }

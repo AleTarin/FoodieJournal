@@ -1,6 +1,8 @@
 import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { User } from '../../../user';
 import { AuthService } from '../../../services/auth.service';
+import { ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-status-button',
@@ -16,13 +18,16 @@ export class StatusButtonComponent implements OnInit, OnChanges {
   @Input() pathId: number;
 
   ngOnChanges(changes: SimpleChanges): void {
-      if (changes.progress.currentValue !== undefined && changes.pathId.currentValue !== undefined ) {
+      if (changes.progress && changes.progress.currentValue && changes.pathId && changes.pathId.currentValue  ) {
         this.pathId = changes.pathId.currentValue;
         this.progress = changes.progress.currentValue;
+        if (changes.pathId.currentValue !== changes.pathId.previousValue) {
+          this.checkCurrentStatus();
+        }
       }
     }
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private route: ActivatedRoute ) {
     this.journeyAssgned();
     this.hasCompleted();
     this.checkCurrentStatus();
@@ -75,5 +80,6 @@ export class StatusButtonComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

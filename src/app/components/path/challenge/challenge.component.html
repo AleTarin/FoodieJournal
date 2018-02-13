@@ -1,9 +1,9 @@
 
-<section *ngIf="ArrayBs" class="mt-1">
+<section *ngIf="ArrayBs" class="mt-5">
   <ngb-accordion  class="m-3" id="accordion"  *ngFor="let business of ArrayBs; let i = index" #acc="ngbAccordion" [closeOthers]="true"  activeIds="ngb-panel-0">
     <ngb-panel >
       <ng-template ngbPanelTitle>
-          <app-challenge-status class="inline" [id]="i + 1" [name]="business.name" [status]="false"></app-challenge-status>
+          <app-challenge-status class="inline" [id]="i + 1" [name]="business.name" [status]="business.status === 2"></app-challenge-status>
           <span class="inline ml-4 title-challenge">{{business.name}}</span>
         </ng-template>
         <ng-template ngbPanelContent>
@@ -21,8 +21,8 @@
                 <div class='col-lg-3 d-none d-lg-block'>
                     <app-google-map [latitude]="business.coordinates.latitude" [longitude]="business.coordinates.longitude" [height]="'150px'" ></app-google-map>
                 </div>
-                <div class="col align-middle arrow-container" [routerLink]="['/paths', path.id, business.id]">
-                    <i *ngIf="getPathSelected()" class="fas fa-angle-right align-middle arrow  d-none d-sm-block" ></i>
+                <div class="col-1 align-middle arrow-container" [routerLink]="['/paths', path.id, business.id]">
+                    <i *ngIf="getPathSelected()" class="fas fa-angle-right align-middle arrow " ></i>
                 </div>
             </div>
         </ng-template>

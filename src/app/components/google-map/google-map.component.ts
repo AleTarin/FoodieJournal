@@ -1,4 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
+import { SimpleChange } from '@angular/core/src/change_detection/change_detection_util';
 
 @Component({
   selector: 'app-google-map',
@@ -13,17 +14,7 @@ export class GoogleMapComponent implements OnInit {
     @Input() height = '300px';
 
     constructor() { }
-    ngOnInit() {
-      this.getUserLocation();
 
+    ngOnInit() {
     }
-    private getUserLocation() {
-     /// locate the user
-     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-         this.lat = position.coords.latitude;
-         this.lng = position.coords.longitude;
-       });
-     }
-   }
- }
+  }

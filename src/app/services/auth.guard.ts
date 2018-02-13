@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
 
   alreadyLoggedIn(urlToNavigate: string): boolean {
     if(this.authService.isLoggedInCache()){
-      console.log(urlToNavigate);
+      // console.log(urlToNavigate);
       return true;
     } else {
       this.router.navigate(['/home']);

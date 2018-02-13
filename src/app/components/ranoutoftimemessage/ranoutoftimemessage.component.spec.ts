@@ -1,25 +1,25 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { RanoutoftimemessageComponent } from './ranoutoftimemessage.component';
+import { RanoutoftimemessageComponent } from './ranoutoftimemessage.component';
 
-// describe('RanoutoftimemessageComponent', () => {
-//   let component: RanoutoftimemessageComponent;
-//   let fixture: ComponentFixture<RanoutoftimemessageComponent>;
+describe('RanoutoftimemessageComponent', () => {
+  let component: RanoutoftimemessageComponent;
+  let fixture: ComponentFixture<RanoutoftimemessageComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ RanoutoftimemessageComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ RanoutoftimemessageComponent ]
+    })
+    .compileComponents();
+  }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(RanoutoftimemessageComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(RanoutoftimemessageComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
