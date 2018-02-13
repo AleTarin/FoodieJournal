@@ -6,14 +6,16 @@ $verde: #99E79D;
 $amarillo: #F9D84F;
 $azul: #41B9FE;
 
-
+.row {
+  margin-top: -2rem;
+  margin-left: -1rem;
+}
 
 .previous{
   border-radius: 0;
   background-color: $gris-oscuro;
   border-color: $gris-oscuro;
-  padding-right: 30px;
-  padding-left: 30px;
+  margin-left: 6rem;
   }
   
 
@@ -22,6 +24,8 @@ $azul: #41B9FE;
   border-color: $naranja;
   width: 21em;
   border-color: white;
+  margin-left: 0rem;
+  margin-top: 0rem;
 }
 .next{
 
@@ -29,6 +33,7 @@ $azul: #41B9FE;
   color: $gris-oscuro;
   padding-left: 50px;
   padding-right: 50px;  
+  margin-left: 0rem;
 }
 
 .fa-check-circle{
