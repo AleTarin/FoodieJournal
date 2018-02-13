@@ -21,14 +21,13 @@ export class PathsService {
        console.log('Memory');
        return Observable.of(user.paths);
      } else {
-       console.log('Setting');
       return this.http.get(this.url_paths )
       .map(res => {
         this.paths = <Track[]> res;
         for (let index = 0; index < this.paths.length; index++) {
           this.setPath(this.paths[index]);
         }
-        return res;
+        return this.paths;
       })
       .catch(this.handleError);
      }

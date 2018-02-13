@@ -8,16 +8,16 @@
       </div>
 
       <div class="col-2 col-sm-2">
-        <button type="button" class="btn btn-danger previous">Previous</button>
+        <button type="button" class="btn btn-danger previous d-none d-lg-block">Previous</button>
       </div>
       <div class="col-4 col-sm-4">
 
-        <button type="button" class="btn btn-danger previous mark" (click)="challengeClicked()" [ngStyle]="{'background-color': color ,'color': letterColor } ">
+        <button type="button" class="btn btn-danger previous mark d-none d-lg-block" (click)="challengeClicked()" [ngStyle]="{'background-color': color ,'color': letterColor } ">
           <i *ngIf="buttonState==2" class="fas fa-check-circle"></i>{{buttonText}}</button>
       </div>
       <div class="col-2 col-sm-2">
-        <button *ngIf="myProfile.status!=2" type="button" class="btn btn-danger previous next blueNext" disabled>Next</button>
-        <button *ngIf="myProfile.status==2" type="button" class="btn btn-danger previous next">Next</button>
+        <button *ngIf="myProfile.status!=2" type="button" class="btn btn-danger previous next blueNext d-none d-lg-block" disabled>Next</button>
+        <button *ngIf="myProfile.status==2" type="button" class="btn btn-danger previous next d-none d-lg-block">Next</button>
       </div>
 
       <div class="col-2 col-sm-2">
