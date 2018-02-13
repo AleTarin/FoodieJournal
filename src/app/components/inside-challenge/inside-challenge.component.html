@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col contact">
+      <div class="col">
         <app-contact-info [business]="challenge"></app-contact-info>
       </div>
       <div class=" col notification">
@@ -51,6 +51,9 @@
       <div class="col-8">
           <p *ngIf="review" class="dish-review">
             "{{review.text}}"
+          </p>
+          <p *ngIf="!review" class="dish-review">
+            No reviews for this business
           </p>
       </div>
     </div>
