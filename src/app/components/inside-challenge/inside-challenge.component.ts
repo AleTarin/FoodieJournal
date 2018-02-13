@@ -38,6 +38,7 @@ export class InsideChallengeComponent implements OnInit {
       this.auth.getUserSubject().subscribe(res => this.track = res.paths[params.get('id')]);
 
       if (this.track) {
+
         this.challenge = this.track.challenges.filter(bs => bs.id === params.get('challenge'))[0];
         this.dish = this.track.dishes[this.RandomInt(0, 2)];
         this.yelp.YelpReviews(this.challenge.id).subscribe(review => this.review = review);
@@ -68,7 +69,6 @@ export class InsideChallengeComponent implements OnInit {
     goBack() {
       this.router.navigate(['/paths', this.track.id]);
     }
-
 
   open() {
     const modalRef = this.modalService.open(LeaveFeedbackComponent);
