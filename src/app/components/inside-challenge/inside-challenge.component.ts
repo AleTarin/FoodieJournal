@@ -33,8 +33,6 @@ export class InsideChallengeComponent implements OnInit {
     ngOnInit() {
       this.route.paramMap.subscribe((params: ParamMap) => {
       this.auth.getUserSubject().subscribe(res => this.track = res.paths[params.get('id')]);
-<<<<<<< HEAD
-       console.log(this.track);
 
       if (this.track) {
         this.challenge = this.track.challenges.filter(bs => bs.id === params.get('challenge'))[0];
@@ -44,17 +42,6 @@ export class InsideChallengeComponent implements OnInit {
           this.yelp.YelpReviews(this.challenge.id).subscribe(review => this.review = review);
           console.log(this.review);
         }
-
-=======
-
-      if (this.track) {
-        this.challenge = this.track.challenges.filter(bs => bs.id === params.get('challenge'))[0];
-        this.dish = this.track.dishes[0];
-        this.yelp.YelpReviews(this.challenge.id).subscribe(review => this.review = review);
-        console.log(this.challenge);
->>>>>>> cc0ccb3acb1547d06bac87ad1eeed47bcaf91c74
-      }
-
       });
     }
 

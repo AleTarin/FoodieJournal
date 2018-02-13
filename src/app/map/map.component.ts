@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { MouseEvent } from '@agm/core';
 
 @Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  selector: 'app-map',
+  templateUrl: './map.component.html',
+  styleUrls: [ './map.component.sass' ]
 })
 export class MapComponent  {
   // google maps zoom level
