@@ -3,6 +3,7 @@ import { Track } from '../../interfaces/track';
 import { YelpService } from '../../services/yelp.service';
 import { PathsService } from '../../services/paths.service';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Location } from '@angular/common';
 import { User } from '../../user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AuthService } from '../../services/auth.service';
