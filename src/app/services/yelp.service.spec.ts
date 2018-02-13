@@ -1,15 +1,15 @@
-// import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
-// import { YelpService } from './yelp.service';
+import { YelpService } from './yelp.service';
 
-// describe('YelpService', () => {
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       providers: [YelpService]
-//     });
-//   });
+describe('YelpService', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [YelpService]
+    });
+  });
 
-//   it('should be created', inject([YelpService], (service: YelpService) => {
-//     expect(service).toBeTruthy();
-//   }));
-// });
+  it('should be created', inject([YelpService], (service: YelpService) => {
+    expect(service).toBeTruthy();
+  }));
+});

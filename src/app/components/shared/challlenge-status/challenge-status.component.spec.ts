@@ -1,25 +1,25 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { ChallengeStatusComponent } from './challenge-status.component';
+import { ChallengeStatusComponent } from './challenge-status.component';
 
-// describe('ChallengeStatusComponent', () => {
-//   let component: ChallengeStatusComponent;
-//   let fixture: ComponentFixture<ChallengeStatusComponent>;
+describe('ChallengeStatusComponent', () => {
+  let component: ChallengeStatusComponent;
+  let fixture: ComponentFixture<ChallengeStatusComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ChallengeStatusComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ChallengeStatusComponent ]
+    })
+    .compileComponents();
+  }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(ChallengeStatusComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ChallengeStatusComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

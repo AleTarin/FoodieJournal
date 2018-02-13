@@ -1,44 +1,51 @@
-<section class="container top" >
+<section class="container pt-2">
   <nav class= "row">
-      <div class="journey col up">
-          <p> <span class="back"><i class="fas fa-arrow-left" (click)="goBack()"></i> Journeys /</span> American </p>
+      <div class="journey col" (click)="goBack()">
+          <p> <span class="back"><i class="fas fa-arrow-left" ></i> Journeys /</span>{{track.type}} </p>
       </div>
       <div class="button col">Leave Feedback</div>
+
   </nav>
 </section>
 
 <section class="container background2">
   <header class="row title">
-    <span class="col-1 p-1"><app-challenge-status></app-challenge-status> </span>
+    <span class="col-1 p-1"><app-challenge-status class="inline" [id]="getIndex(challenge) + 1" [name]="challenge.name" [status]="challenge.status === 2"></app-challenge-status>
+    </span>
     <span class="col-10 type align-middle " (click)="open()">     
-          American <small>STARTED</small></span>
+          {{dish.dishName}} <small>{{statusText(challenge.status)}} </small></span>
     </header>
 
   <div class="row">
-    <div class="col-md-6 padding-0">
-        <span class="col-1 p-1"><app-star-rating></app-star-rating> </span>
-      <img class="img-responsive" *ngIf='challenge.image_url' [src]="challenge.image_url" alt="business.name">
+    <div class="col-md-6 padding-0 p-2">
+      <img class="img-responsive" (click)="openImg()" *ngIf='challenge.image_url' [src]="challenge.image_url" alt="business.name">
       <img class="img-responsive" *ngIf='!challenge.image_url' src="http://tutaki.org.nz/wp-content/uploads/2016/04/no-image-available.png" alt="business.name"  (click)="open()">
     </div>
-    <div class="col-md-6 padding">
+    <div class="col-md-6 padding-0 p-2">
       <app-google-map [latitude]="challenge.coordinates.latitude" [longitude]="challenge.coordinates.longitude" [height]="'300px'" ></app-google-map>
     </div>
   </div>
   
   <section class="container information">
-    <div class="row">
-      <div class=" col-md-12 description">
-        <p class="text2"> 
-
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid odit maiores incidunt adipisci? Eos, amet repellendus nobis quas, reprehenderit, laudantium consequatur aperiam debitis doloremque soluta cum nemo. In, eligendi nulla
+  <div class="row">
+      <div class=" col-12 description">
+        <p class="textBold"> 
+          Go ahead and try {{dish.dishName}} !
         </p>
       </div>
     </div>
     <div class="row">
-      <div class="col contact">
+      <div class=" col-12 description">
+        <p class="text2"> 
+          {{dish.dishDescription}}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
         <app-contact-info [business]="challenge"></app-contact-info>
       </div>
-      <div class=" col notification " href="default.asp" target="_blank">
+      <div class=" col notification">
         Resend text notification
       </div>
     </div>
@@ -48,11 +55,14 @@
   <section class="container pt-5">
     <div class="row">
       <div class="col-4" *ngIf="dish">
-        <img class="dish-img"[src]="dish.dishImage" alt="dish.dishName">
+        <img class="dish-img" (click)="openImg()" [src]="dish.dishImage" alt="dish.dishName">
       </div>
       <div class="col-8">
           <p *ngIf="review" class="dish-review">
             "{{review.text}}"
+          </p>
+          <p *ngIf="!review" class="dish-review">
+            No reviews for this business
           </p>
       </div>
     </div>
@@ -60,7 +70,7 @@
 
 
 </section>
- <app-controls [idChallenge]="challenge.id"></app-controls> 
+ <app-controls class= "hidden-xl-down" [idChallenge]="challenge.id" [track]="track"></app-controls> 
 
 
   

@@ -1,25 +1,25 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { LeaveFeedbackComponent } from './leave-feedback.component';
+import { LeaveFeedbackComponent } from './leave-feedback.component';
 
-// describe('LeaveFeedbackComponent', () => {
-//   let component: LeaveFeedbackComponent;
-//   let fixture: ComponentFixture<LeaveFeedbackComponent>;
+describe('LeaveFeedbackComponent', () => {
+  let component: LeaveFeedbackComponent;
+  let fixture: ComponentFixture<LeaveFeedbackComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ LeaveFeedbackComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ LeaveFeedbackComponent ]
+    })
+    .compileComponents();
+  }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(LeaveFeedbackComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(LeaveFeedbackComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

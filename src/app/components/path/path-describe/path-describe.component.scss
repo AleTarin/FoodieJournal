@@ -28,8 +28,7 @@ $azul: #41B9FE;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    margin-left: 2rem!important;
+    color: white
 }
 .proccess{
     display: flex;
@@ -54,9 +53,16 @@ $azul: #41B9FE;
 
 .container {
     background-color: white;
-    margin-top: 5%;
 }
 
 .margin {
-    margin-top: 4%;
+    margin-top: 8px;
+}
+
+small{
+    font-size: .9rem;
+    font-style: italic;
+    font-weight: bold;
+    color: #8d8c8c;
+    display: inline;
 }

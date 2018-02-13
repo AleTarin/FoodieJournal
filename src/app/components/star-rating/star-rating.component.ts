@@ -23,20 +23,16 @@ myProfile: User;
   stars: boolean[] = [true, true, true, true, true, true];
 
   constructor(private auth: AuthService) {
-
-
-    this.myProfile = this.auth.getUserSubject().getValue();
-
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.address = changes.business.currentValue.location.display_address.join(' ');
-    this.checa();
+    this.checa(changes);
   }
 
-  checa() {
-    let h = this.myProfile.paths[0].challenges[0].rating;
+  checa(changes: SimpleChanges) {
+    let h = changes.business.currentValue.rating;
+    console.log(h);
     for (let i = 0.5; i < 2; i++) {
       this.stars[i - .5] = true;
       h--;
@@ -47,10 +43,7 @@ myProfile: User;
   }
 
   ngOnInit() {
-    console.log("hola");
-    console.log(this.myProfile.paths[0].challenges[0].rating);
-    console.log(this.stars);
-    //console.log(this.myProfile.paths[0].challenges[0].price);
+    // console.log(this.myProfile.paths[0].challenges[0].price);
 
   }
 }
