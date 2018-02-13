@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { User } from '../../user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-track-summary',
@@ -26,19 +27,20 @@ export class TrackSummaryComponent implements OnInit {
 
     this.myProfile = this.auth.getUserSubject().getValue();
     this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
+
     this.zero = 0;
    }
 
   public styleBar(i: number) {
-    this.width = this.myProfile.paths[i].completenessPercentage + '%';
+    this.width = this.myProfile && this.myProfile.paths[i].completenessPercentage + '%' || '0%';
     return this.width;
   }
 
   public isItZero(i: number) {
-    if ( this.myProfile.paths[i].completenessPercentage === this.zero) {
+    if (this.myProfile && this.myProfile.paths[i].completenessPercentage === this.zero) {
       return true;
     } else {
-    return false;
+      return false;
     }
   }
 
