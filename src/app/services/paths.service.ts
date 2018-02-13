@@ -24,9 +24,7 @@ export class PathsService {
       return this.http.get(this.url_paths )
       .map(res => {
         this.paths = <Track[]> res;
-        for (let index = 0; index < this.paths.length; index++) {
-          this.setPath(this.paths[index]);
-        }
+        this.setPaths(this.paths);
         return this.paths;
       })
       .catch(this.handleError);
@@ -36,7 +34,11 @@ export class PathsService {
   setPath(path: Track ) {
     let user = this.auth.getUserSubject().getValue();
     if (user.paths) {
-     if ( !this.containsObject(path, user.paths, 'id')) { user.paths.push(path); }
+      if ( !this.containsObject(path, user.paths, 'id')) {
+        user.paths.push(path);
+      } else {
+        user.paths[path.id] = path;
+      }
     } else {
       user = {
         ...this.auth.getUserSubject().getValue(),
@@ -47,12 +49,27 @@ export class PathsService {
     this.auth.getUserSubject().next(user);
   }
 
+  setPaths(paths: Track[] ) {
+    let user = this.auth.getUserSubject().getValue();
+    if (!user.paths) {
+      user = {
+        ...this.auth.getUserSubject().getValue(),
+        paths: paths
+      };
+    }
+    this.auth.getUserSubject().next(user);
+  }
+
   setStatusChallenge(idPath: number, idChallenge: string, status: number) {
     const user = this.auth.getUserSubject().getValue();
     user.paths[idPath].challenges
       .filter(bs => bs.id === idChallenge)[0].status = status;
-
+    user.paths[idPath].completenessPercentage += 10;
       this.auth.getUserSubject().next(user);
+  }
+
+  getStatusChallenge(idPath: number, index: number) {
+    return (this.auth.getUserSubject().getValue().paths[idPath].challenges[index].status === 2);
   }
 
   getPaths() {

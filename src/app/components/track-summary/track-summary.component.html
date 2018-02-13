@@ -14,7 +14,7 @@
           <div  class="progress" ng-style="style(color)" [ngStyle]="{'width': styleBar(i)} "></div>
             
             <img class="card-img-top" [src]="track.icon" [alt]="track.type" >
-          <p *ngIf="!isItZero(i)" class="pathDescription"> {{track.type}} <br>   {{  + "%"}}   </p> 
+          <p *ngIf="!isItZero(i)" class="pathDescription"> {{track.type}} <br>   {{  styleBar(i)}}   </p> 
           <p *ngIf="isItZero(i)" class="pathDescription"> {{track.type}} <br>      </p> 
 
         </div>

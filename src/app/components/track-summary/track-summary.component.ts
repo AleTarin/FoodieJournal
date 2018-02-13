@@ -24,16 +24,15 @@ export class TrackSummaryComponent implements OnInit {
   constructor(private yelpService: YelpService, private pathService: PathsService, private auth: AuthService) {
 
     this.myProfile = this.auth.getUserSubject().getValue();
-
+    this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
+    this.zero = 0;
    }
 
-  getProgress() {
-  }
-
-  public styleBar(i: number){
+  public styleBar(i: number) {
     this.width = this.myProfile.paths[i].completenessPercentage + '%';
     return this.width;
   }
+
   public isItZero(i: number) {
     if ( this.myProfile.paths[i].completenessPercentage === this.zero) {
       return true;
@@ -41,15 +40,8 @@ export class TrackSummaryComponent implements OnInit {
     return false;
     }
   }
-  ngOnInit() {
-    
-    
-    
-    this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-    
-    this.zero = 0;
 
-    console.log(this.myProfile.paths[0].completenessPercentage);
+  ngOnInit() {
   }
 }
 

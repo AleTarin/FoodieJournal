@@ -40,14 +40,17 @@ export class YelpService {
     .catch(this.handleError);
   }
 
-  YelpSearch(lat: number , long: number , cat: string, radius: number ): Observable<Business[]> {
-    // const user = this.auth.getUserSubject().getValue();
-    // let path: Track;
-    // if (path = this.containsObject(cat, user.paths)) {
-    //   console.log('por memoria');
-    //   return Observable.of(<Business[]>path.challenges);
-    // } else {
-    //   console.log('Buscando en api .. ');
+  YelpSearch(lat: number , long: number , cat: string, radius: number, idPath: number ): Observable<Business[]> {
+    const user = this.auth.getUserSubject().getValue();
+    const challenges: Business[] = user.paths[idPath].challenges;
+
+    console.log(user.paths[idPath].challenges);
+    if (user.paths[idPath].challenges) {
+      console.log('por memoria');
+      console.log(Observable.of(<Business[]>challenges));
+      return Observable.of(<Business[]>challenges);
+    } else {
+      console.log('Buscando en api .. ');
       this.url_yelp = 'https://api.yelp.com/v3/businesses/search';
       this.myParams = new HttpParams().append('term', '"food","restaurants"')
         .append('categories', cat)
@@ -61,7 +64,7 @@ export class YelpService {
         return res['businesses'];
       })
       .catch(this.handleError);
-    // }
+     }
   }
 
   YelpBusiness(id: string): Observable<Business> {

@@ -15,24 +15,11 @@ export class ListDropdownComponent implements OnInit {
   hide = true;
   @Input() pathSelected: String;
   @Input() paths: Track[];
-  
-
-
-  // pathList =[
-  //   {"name": "American" },
-  //   {"name": "Korean" },
-  //   {"name": "Italian" },
-  //   {"name": "Japanese" },
-  //   {"name": "Chinese" }
-  // ]
 
   constructor(private router: Router, private auth: AuthService) { }
 
 
   ngOnInit() {
-    
-    //this.auth.changePathId.suscribe
-    
 
   }
 

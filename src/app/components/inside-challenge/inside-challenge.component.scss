@@ -13,6 +13,8 @@ $azul: #41B9FE;
 .back{
     color: $naranja;
     font-weight: bold;
+    cursor: pointer;
+
 }
 
 .background2{
@@ -32,9 +34,18 @@ small{
     font-style: italic;
 }
 
+.textBold {
+    font-weight: bold;
+}
+
 img {
     width: 100%;
     height: 300px;
+}
+
+imagen-dish {
+    width: 100%;
+    height: 250px;
 }
 
 .background {
@@ -97,7 +108,8 @@ img {
 
 .dish-img{
     width: 100%;
-    height: auto;
+    height: 250px;
+    cursor: pointer;
 }
 
 .dish-review{
