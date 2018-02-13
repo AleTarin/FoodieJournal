@@ -24,3 +24,4 @@ context.keys().map(context);
 import './app/1st.spec.ts';
 //import './app/components/navbar/navbar.component.spec.isolated.ts';
 import './app/components/home/home.component.spec.isolated.ts';
+import './app/components/navbar/navbar.component.spec.isolated.ts';

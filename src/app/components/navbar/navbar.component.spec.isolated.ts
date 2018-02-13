@@ -6,7 +6,7 @@ import { NavbarComponent } from './navbar.component';
 import { AuthService } from '../../services/auth.service';
 
 export class authServiceMock{
-
+    handleAuthentication: true;
 }
 
 describe('NavbarComponent', () => {
@@ -30,12 +30,25 @@ describe('NavbarComponent', () => {
             fixture = TestBed.createComponent(NavbarComponent);
             component = fixture.componentInstance
 
-            de = fixture.debugElement.query(By.css('nav'));
-            el = de.;
+            de = fixture.debugElement.query(By.css('#dropdownBasic1'));
+            el = de.nativeElement;
             authService = fixture.debugElement.injector.get(AuthService);
         })
         
-        it('should display original ', () => {
+        it('should be logged in ', () => {
+            
+        });
+
+        it('should not be logged in ', () => {
+            
+        });
+
+        it('should appear profile.nickname ', () => {
+            const spyNav = spyOn(authService,'handleAuthentication').and.returnValue(true);
+            expect(el.textContent).toContain('');
+        });
+
+        it('should not appear profile.nickname ', () => {
             
         });
     });
