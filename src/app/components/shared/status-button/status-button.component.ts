@@ -18,7 +18,7 @@ export class StatusButtonComponent implements OnInit, OnChanges {
   @Input() pathId: number;
 
   ngOnChanges(changes: SimpleChanges): void {
-      if (changes.progress.currentValue !== undefined && changes.pathId.currentValue !== undefined ) {
+      if (changes.progress && changes.progress.currentValue && changes.pathId && changes.pathId.currentValue  ) {
         this.pathId = changes.pathId.currentValue;
         this.progress = changes.progress.currentValue;
         if (changes.pathId.currentValue !== changes.pathId.previousValue) {

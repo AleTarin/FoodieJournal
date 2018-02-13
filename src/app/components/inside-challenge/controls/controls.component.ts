@@ -33,12 +33,12 @@ export class ControlsComponent implements OnInit, OnChanges {
     if (status === 1) {
       this.buttonText = 'Mark as Completed';
       this.color = '#41B9FE';
-      this.buttonState=1;
+      this.buttonState = 1;
     }
     if (status === 2) {
       this.buttonText = ' Way to go! Take the next challenge';
       this.color = '#f2f2f2';
-      this.buttonState=2;
+      this.buttonState = 2;
     }
   }
   previous() {

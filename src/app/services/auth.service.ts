@@ -81,7 +81,6 @@ export class AuthService {
         this.setSession(authResult);
         this.getProfile();
         this.router.navigate(['/paths']);
-        this.getProfile();
       } else if (err) {
         this.router.navigate(['/home']);
         // console.log(err);

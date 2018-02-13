@@ -21,7 +21,7 @@ myProfile: User;
   constructor(private auth: AuthService) {
   }
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes.business.currentValue){
+    if (changes.business.currentValue) {
       this.address = changes.business.currentValue.location.display_address.join(' ');
       this.checa(changes);
     }

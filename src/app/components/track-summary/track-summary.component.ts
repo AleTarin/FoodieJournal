@@ -8,6 +8,7 @@ import { User } from '../../user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-track-summary',
@@ -23,12 +24,17 @@ export class TrackSummaryComponent implements OnInit {
   myProfile: User;
   private userSubject: BehaviorSubject<User>;
 
-  constructor(private yelpService: YelpService, private pathService: PathsService, private auth: AuthService) {
+  constructor(private yelpService: YelpService, private pathService: PathsService, private auth: AuthService, private router: Router) {
 
     this.myProfile = this.auth.getUserSubject().getValue();
     this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-
     this.zero = 0;
+
+    // if (this.myProfile) {
+    //   console.log('')
+    //   this.router.navigate(['/paths', this.myProfile.journey, this.myProfile.last_challenge]);
+    // }
+
    }
 
   public styleBar(i: number) {
@@ -45,6 +51,8 @@ export class TrackSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 }
+
 

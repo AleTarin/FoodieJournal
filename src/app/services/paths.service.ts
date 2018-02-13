@@ -37,12 +37,8 @@ export class PathsService {
 
   setPath(path: Track) {
     let user = this.auth.getUserSubject().getValue();
-    if (user.paths) {
-      if (!this.containsObject(path, user.paths, 'id')) {
-        user.paths.push(path);
-      } else {
+    if (user && user.paths) {
         user.paths[path.id] = path;
-      }
     } else {
       user = {
         ...this.auth.getUserSubject().getValue(),
@@ -71,7 +67,10 @@ export class PathsService {
       bs => bs.id === idChallenge
     )[0].status = status;
     if (status === 2) {
-      user.paths[idPath].completenessPercentage += 10;
+      user.paths[idPath].completenessPercentage += Math.round(100 / user.paths.length);
+      if (user.paths[idPath].completenessPercentage > 100) {
+        user.paths[idPath].completenessPercentage = 100;
+      }
     }
     user.last_challenge = idChallenge;
     this.auth.getUserSubject().next(user);
