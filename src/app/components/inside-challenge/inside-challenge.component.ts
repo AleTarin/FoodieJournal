@@ -35,22 +35,24 @@ export class InsideChallengeComponent implements OnInit {
       this.auth.getUserSubject().subscribe(res => this.track = res.paths[params.get('id')]);
 
       if (this.track) {
+
         this.challenge = this.track.challenges.filter(bs => bs.id === params.get('challenge'))[0];
         this.dish = this.track.dishes[0];
         this.yelp.YelpReviews(this.challenge.id).subscribe(review => this.review = review);
         console.log(this.challenge);
       }
-
-      });
+    });
     }
+     goBack() {
 
-    goBack(): void {
       this.location.back();
     }
 
+      open() {
 
-  open() {
-    const modalRef = this.modalService.open(LeaveFeedbackComponent);
-    // modalRef.componentInstance.image = this.ArrayBs[i].image_url;
-  }
-}
+        const modalRef = this.modalService.open(LeaveFeedbackComponent);
+         // modalRef.componentInstance.image = this.ArrayBs[i].image_url;
+        
+        }
+        
+      } 
