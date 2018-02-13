@@ -58,7 +58,7 @@ export class ChallengeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.location.subscribe(x => console.log(x));
+    // this.location.subscribe(x => console.log(x));
 
     if (window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(position => {

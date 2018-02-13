@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LeaveFeedbackComponent } from '../leave-feedback/leave-feedback.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Track, Dish } from '../../interfaces/track';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { PathsService } from '../../services/paths.service';
 import { Location } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
@@ -27,6 +27,7 @@ export class InsideChallengeComponent implements OnInit {
     constructor(
       private modalService: NgbModal,
       private route: ActivatedRoute,
+      private router: Router ,
       private location: Location,
       private auth: AuthService,
       private yelp: YelpService,
@@ -65,7 +66,7 @@ export class InsideChallengeComponent implements OnInit {
     }
 
     goBack() {
-      this.location.back();
+      this.router.navigate(['/paths', this.track.id]);
     }
 
 

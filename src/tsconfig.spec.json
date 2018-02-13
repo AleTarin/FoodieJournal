@@ -10,10 +10,10 @@
     ]
   },
   "files": [
-    "test.ts"
+    "test.ts",
+    "app/services/auth.service.spec.isolated.ts"
   ],
   "include": [
     "**/*.spec.ts",
-    "**/*.d.ts"
-  ]
+    "**/*.d.ts"  ]
 }

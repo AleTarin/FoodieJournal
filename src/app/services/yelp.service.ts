@@ -11,6 +11,7 @@ import { Review } from '../interfaces/review';
 import { Business } from '../interfaces/business';
 import { AuthService } from './auth.service';
 import { Track } from '../interfaces/track';
+import { PathsService } from './paths.service';
 
 @Injectable()
 export class YelpService {
@@ -26,7 +27,7 @@ export class YelpService {
   private longitude: number;
   private latitude: number;
 
-  constructor(private http: HttpClient, private auth: AuthService) {
+  constructor(private http: HttpClient, private auth: AuthService, private pathService: PathsService) {
     this.myHeaders = new HttpHeaders().set('Authorization', this.API_KEY);
   }
 
@@ -44,13 +45,13 @@ export class YelpService {
     const user = this.auth.getUserSubject().getValue();
     const challenges: Business[] = user.paths[idPath].challenges;
 
-    console.log(user.paths[idPath].challenges);
+    // console.log(user.paths[idPath].challenges);
     if (user.paths[idPath].challenges) {
-      console.log('por memoria');
-      console.log(Observable.of(<Business[]>challenges));
+      // console.log('por memoria');
+      // console.log(Observable.of(<Business[]>challenges));
       return Observable.of(<Business[]>challenges);
     } else {
-      console.log('Buscando en api .. ');
+      // console.log('Buscando en api .. ');
       this.url_yelp = 'https://api.yelp.com/v3/businesses/search';
       this.myParams = new HttpParams().append('term', '"food","restaurants"')
         .append('categories', cat)
@@ -61,6 +62,7 @@ export class YelpService {
 
       return this.http.get<Business[]>(this.url_yelp , { params: this.myParams, headers: this.myHeaders})
       .map(res => {
+        this.pathService.setPath(res['businesses']);
         return res['businesses'];
       })
       .catch(this.handleError);

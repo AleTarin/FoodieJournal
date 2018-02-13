@@ -18,7 +18,7 @@ export class PathsService {
      const user: User = this.auth.getUserSubject().getValue();
 
      if ( user && user.paths) {
-       console.log('Memory');
+      //  console.log('Memory');
        return Observable.of(user.paths);
      } else {
       return this.http.get(this.url_paths )
@@ -45,7 +45,7 @@ export class PathsService {
         paths: [path]
       };
     }
-    console.log(user);
+    // console.log(user);
     this.auth.getUserSubject().next(user);
   }
 
@@ -61,15 +61,24 @@ export class PathsService {
   }
 
   setStatusChallenge(idPath: number, idChallenge: string, status: number) {
+    console.log(idChallenge);
     const user = this.auth.getUserSubject().getValue();
     user.paths[idPath].challenges
       .filter(bs => bs.id === idChallenge)[0].status = status;
-    user.paths[idPath].completenessPercentage += 10;
+      if (status === 2) {
+        user.paths[idPath].completenessPercentage += 10;
+      }
+      user.last_challenge = idChallenge;
       this.auth.getUserSubject().next(user);
   }
 
   getStatusChallenge(idPath: number, index: number) {
-    return (this.auth.getUserSubject().getValue().paths[idPath].challenges[index].status === 2);
+    const challenge = this.auth.getUserSubject().getValue().paths[idPath].challenges[index];
+    if ( challenge.status ) {
+      return (this.auth.getUserSubject().getValue().paths[idPath].challenges[index].status);
+    } else {
+      return 0;
+    }
   }
 
   getPaths() {

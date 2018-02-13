@@ -1,20 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PathsService } from '../../../services/paths.service';
-import { Router } from '@angular/router';
+import { Router, ParamMap } from '@angular/router';
 import { Track } from '../../../interfaces/track';
 import { Business } from '../../../interfaces/business';
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { ActivatedRoute } from '@angular/router';
+import { stat } from 'fs';
 
 @Component({
   selector: 'app-controls',
   templateUrl: './controls.component.html',
   styleUrls: ['./controls.component.scss']
 })
-export class ControlsComponent implements OnInit {
-  buttonState: number;
-  buttonText = 'Mark as Started';
+export class ControlsComponent implements OnInit, OnChanges {
+
+  buttonState = 0;
+  buttonText = 'Mark as started';
   color = '#FE5140';
   letterColor = 'black';
   disabled = false;
@@ -25,30 +29,21 @@ export class ControlsComponent implements OnInit {
   private userSubject: BehaviorSubject<User>;
 
 
-  setText() {
+  setText(status: number) {
 
-    let text: string;
-
-    if (this.myProfile.status === 0) {
-
-      text = 'Mark as Started';
+    if (status === 0) {
+      this.buttonText = 'Mark as Started';
       this.color = '#FE5140';
-      return text;
-
     }
 
-    if (this.myProfile.status === 1) {
-
-      text = 'Mark as Completed';
+    if (status === 1) {
+      this.buttonText = 'Mark as Completed';
       this.color = '#41B9FE';
-      return text;
     }
 
-    if (this.myProfile.status === 2) {
-
-      text = ' Way to go! Take the next challenge';
+    if (status === 2) {
+      this.buttonText = ' Way to go! Take the next challenge';
       this.color = '#f2f2f2';
-      return text;
     }
   }
 
@@ -63,10 +58,10 @@ export class ControlsComponent implements OnInit {
 
   next() {
     const indexChallenge = this.getIndex(this.idChallenge);
-    if (indexChallenge > this.track.challenges.length - 1) {
+    if (indexChallenge < 9) {
       this.router.navigate(['/paths', this.track.id, this.track.challenges[indexChallenge + 1].id]);
     } else {
-      this.router.navigate(['/paths', this.track.id, this.track.challenges[this.track.challenges.length - 1].id]);
+      this.router.navigate(['/paths', this.track.id, this.track.challenges[0].id]);
     }
   }
 
@@ -75,37 +70,43 @@ export class ControlsComponent implements OnInit {
   }
 
   challengeClicked() {
-
-    if (this.myProfile.status === 0) {
-      this.myProfile.status++;
+    if (this.buttonState === 0) {
+      this.buttonState++;
       this.buttonText = 'Mark as completed';
-      this.pathService.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
+      this.pathService.setStatusChallenge(this.track.id, this.idChallenge, this.buttonState);
       this.color = '#41B9FE';
       return;
     }
-    if (this.myProfile.status === 1) {
-      this.myProfile.status++;
+    if (this.buttonState === 1) {
+      this.buttonState++;
       this.buttonText = ' Way to go! Take the next challenge';
-      this.pathService.setStatusChallenge(this.myProfile.journey, this.idChallenge, this.myProfile.status);
+      this.pathService.setStatusChallenge(this.track.id, this.idChallenge, this.buttonState);
       this.color = '#f2f2f2';
     }
   }
 
-  constructor(private auth: AuthService, private pathService: PathsService, private router: Router) {
+  constructor(private auth: AuthService, private pathService: PathsService, private router: Router, private ActiveRoute: ActivatedRoute) {
     this.myProfile = this.auth.getUserSubject().getValue();
+
   }
 
   ngOnInit() {
 
-    if (this.myProfile.status) {
-      console.log('button state found');
-      // do something with the state
-    } else {
-      console.log('button state not found');
-      // console.log(this.auth.getUserSubject().getValue());
-      this.myProfile.status = 0;
-    }
+    this.ActiveRoute.paramMap.subscribe((params: ParamMap) => {
+      this.pathService.getPathsInfo().subscribe(paths => {
+        const indexChallenge = this.getIndex(this.idChallenge);
+        this.track = <Track>paths[params.get('id')];
+        this.idChallenge = params.get('challenge');
+        console.log(this.track.id + " " + this.idChallenge);
+        const status = this.pathService.getStatusChallenge(this.track.id, indexChallenge);
+        console.log(status)
+        this.setText(status);
+        });
+    });
 
-    this.buttonText = this.setText();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
   }
 }
