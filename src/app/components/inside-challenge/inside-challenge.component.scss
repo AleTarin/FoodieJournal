@@ -6,10 +6,41 @@ $verde: #99E79D;
 $amarillo: #F9D84F;
 $azul: #41B9FE;
 
+.journey {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 5rem;
+}
+.top {
+    margin-right: 2rem;
+}
+.nav {
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
 .header {
     margin-top: -6%;
 }
 
+.button {
+    background-color: #d4d0d0;
+    border: none;
+    color: black;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 20px;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-right: 3rem;
+    height: 0%;
+}
+.back{
+    color: $naranja;
+    font-weight: bold;
+    margin-left: -4rem;
 .back{
     color: $naranja;
     font-weight: bold;
@@ -17,7 +48,7 @@ $azul: #41B9FE;
 
 .background2{
     background: white;
-    margin-top: 0%;
+    margin-top: 4%;
     padding: 50px;
     margin-bottom: 12%;
 }
@@ -38,25 +69,25 @@ img {
 }
 
 .background {
-    background: #f2f2f2;
+    background: #969696;
 }
 
-.images{
-    justify-content: center;
-    align-items: center;
-    margin-top: -1%;
-}
+.padding-0 {
+    padding: 0;
+    margin-top: 3%;
+
       .food {
-       width: 100%;
+       width: 90%;
        height: 189px;
-       margin-left: -9px;
-}
+       margin-left: 16px;
+       margin-top: -6rem;
+   }
       .map {
-        width: 100%;
+        width: 90%;
         height: 189px;
-        margin-left: 9px;
+        margin-left: 16px;
+   }
 }
-
 .information {
     padding-top: 6%;
 }
@@ -69,16 +100,16 @@ img {
     height: 89px;
     font-size: 11px;
     text-align: start;
-    margin-left: 6%;
+    margin-left: 2%;
 }
 .notification {
     background: #f2f2f2;
+    color: blue; 
     width: 36%;
     height: 89px;
-    font-size: 14px;
-    text-align: start;
-    margin-left: 6%;
-    color: #41B9FE;
+    font-size: 15px;
+    margin-left: 37px;
+    text-decoration: underline;
 }
 .text3 {
     background: #f2f2f2;
@@ -107,5 +138,18 @@ img {
 }
 
 
-
-
+.dish-review{
+    font-weight: 600;
+    color: $gris-oscuro;
+    display: inline-block;
+}
+.span {
+    z-index: 30;
+}
+.img-responsive {
+    margin-top: -6rem;
+}
+.padding {
+    margin-top: 16px;
+}
+}
