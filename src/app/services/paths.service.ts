@@ -17,7 +17,7 @@ export class PathsService {
   getPathsInfo() {
      const user: User = this.auth.getUserSubject().getValue();
 
-     if (user.paths) {
+     if ( user && user.paths) {
        console.log('Memory');
        return Observable.of(user.paths);
      } else {
@@ -28,7 +28,7 @@ export class PathsService {
         for (let index = 0; index < this.paths.length; index++) {
           this.setPath(this.paths[index]);
         }
-        return Observable.of(user.paths);
+        return res;
       })
       .catch(this.handleError);
      }
