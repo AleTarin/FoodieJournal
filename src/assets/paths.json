@@ -32,7 +32,7 @@
         "type":"Italian",
         "description":"Italian track",
         "duration":3,
-        "completenessPercentage":50,
+        "completenessPercentage":0,
         "dishes": [
             {
                 "dishName": "Pasta with Lamb Ragù",
@@ -58,7 +58,7 @@
         "type":"Japanese",
         "description":"Japanese track",
         "duration":2,
-        "completenessPercentage":15,
+        "completenessPercentage":0,
         "dishes": [
             {
                 "dishName": "Ramen",
@@ -84,7 +84,7 @@
         "type":"Mexican",
         "description":"Mexican track",
         "duration":1,
-        "completenessPercentage":60,
+        "completenessPercentage":0,
         "dishes": [
             {
                 "dishName": "Chilaquiles",

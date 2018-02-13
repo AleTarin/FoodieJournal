@@ -84,7 +84,7 @@ export class AuthService {
         this.getProfile();
       } else if (err) {
         this.router.navigate(['/home']);
-        console.log(err);
+        // console.log(err);
       }
     });
   }
@@ -160,7 +160,7 @@ export class AuthService {
       journey: startedJourney
     };
 
-    console.log(user);
+    // console.log(user);
     this.userSubject.next(user);
 
   }

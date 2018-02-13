@@ -11,6 +11,10 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../../services/auth.service';
 import { Path } from '@firebase/database/dist/esm/src/core/util/Path';
 import { PathsService } from '../../../services/paths.service';
+import { ParamMap, NavigationStart, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Event, Router} from '@angular/router/';
+import {Location} from '@angular/common';
+
 
 
 @Component({
@@ -18,37 +22,33 @@ import { PathsService } from '../../../services/paths.service';
   templateUrl: './challenge.component.html',
   styleUrls: ['./challenge.component.scss']
 })
-export class ChallengeComponent implements OnInit, OnChanges {
+export class ChallengeComponent implements OnInit {
 
   latitude: number;
   longitude: number;
   ArrayBs: Business[];
   @Input() path: Track;
 
-  constructor(private yelpService: YelpService, private modalService: NgbModal,
-     private auth: AuthService, private pathService: PathsService) { }
-
-  getLocation(changes: SimpleChanges): void {
-    if (changes.path.currentValue !== undefined) {
-      if (window.navigator.geolocation) {
-        window.navigator.geolocation.getCurrentPosition(position => {
-          // Save the latitude to use
-          this.latitude = position.coords.latitude;
-          this.longitude = position.coords.longitude;
-          this.yelpSearchAll();
-        });
-      }
-    }
-  }
+  constructor(
+    private yelpService: YelpService,
+    private modalService: NgbModal,
+    private auth: AuthService,
+    private pathService: PathsService,
+    private route: ActivatedRoute,
+    private location: Location,
+    ) { }
 
   yelpSearchAll(): void {
-    // Save the bussinesses to use in the template
-    this.yelpService.YelpSearch(this.latitude, this.longitude, this.path.categories, 10000)
-    .subscribe(res => {
-      this.ArrayBs = res;
-      this.path.challenges = res;
-      this.pathService.setPath(this.path);
-      // this.auth.setStatusChallenge(this.path.id, this.path.challenges[0].id, 1);
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.pathService.getPathsInfo().subscribe(paths => {
+        this.path = <Track>paths[params.get('id')];
+        this.yelpService.YelpSearch(this.latitude, this.longitude, this.path.categories, 10000, this.path.id)
+        .subscribe(res => {
+          this.ArrayBs = res;
+          this.path.challenges = res;
+          this.pathService.setPath(this.path);
+        });
+      });
     });
   }
 
@@ -56,11 +56,20 @@ export class ChallengeComponent implements OnInit, OnChanges {
     return this.path.id === this.auth.getUserSubject().getValue().journey;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.getLocation(changes);
-  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.location.subscribe(x => console.log(x));
+
+    if (window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(position => {
+        // Save the latitude to use
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.yelpSearchAll();
+      });
+    }
+
+  }
 
   open(i: number) {
     const modalRef = this.modalService.open(CarouselComponent);

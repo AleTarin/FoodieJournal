@@ -6,7 +6,7 @@ export class Business {
     price?: string;
     display_phone?: string;
     categories?: Categories[];
-    coordinates?: Coord[];
+    coordinates?: Coord;
     is_claimed?: boolean;
     is_closed?: boolean;
     location?: Locat[];

@@ -4,6 +4,9 @@ import { YelpService } from '../../services/yelp.service';
 import { PathsService } from '../../services/paths.service';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Location } from '@angular/common';
+import { User } from '../../user';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-track-summary',
@@ -16,26 +19,30 @@ export class TrackSummaryComponent implements OnInit {
   width: string;
   zero: number;
   trackArray: Track[];
+  myProfile: User;
+  private userSubject: BehaviorSubject<User>;
 
-  constructor(private yelpService: YelpService, private pathService: PathsService, private location: Location ) { }
+  constructor(private yelpService: YelpService, private pathService: PathsService, private auth: AuthService) {
 
-  getProgress() {
-  }
+    this.myProfile = this.auth.getUserSubject().getValue();
+    this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
+    this.zero = 0;
+   }
 
   public styleBar(i: number) {
-    this.width = this.trackArray[i].completenessPercentage + '%';
+    this.width = this.myProfile.paths[i].completenessPercentage + '%';
     return this.width;
   }
+
   public isItZero(i: number) {
-    if ( this.trackArray[i].completenessPercentage === this.zero) {
+    if ( this.myProfile.paths[i].completenessPercentage === this.zero) {
       return true;
     } else {
     return false;
     }
   }
+
   ngOnInit() {
-    this.pathService.getPathsInfo().subscribe(res => this.trackArray = <Track[]>res);
-    this.zero = 0;
   }
 }
 
