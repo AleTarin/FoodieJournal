@@ -41,6 +41,9 @@ $azul: #41B9FE;
     color: $naranja;
     font-weight: bold;
     margin-left: -4rem;
+.back{
+    color: $naranja;
+    font-weight: bold;
 }
 
 .background2{
@@ -72,19 +75,19 @@ img {
 .padding-0 {
     padding: 0;
     margin-top: 3%;
-}
+
       .food {
        width: 90%;
        height: 189px;
        margin-left: 16px;
        margin-top: -6rem;
-}
+   }
       .map {
         width: 90%;
         height: 189px;
         margin-left: 16px;
+   }
 }
-
 .information {
     padding-top: 6%;
 }
@@ -126,8 +129,14 @@ img {
 .dish-img{
     width: 100%;
     height: auto;
-    margin-top: -6rem;
 }
+
+.dish-review{
+    font-weight: 600;
+    color: $gris-oscuro;
+    display: inline-block;
+}
+
 
 .dish-review{
     font-weight: 600;
@@ -142,4 +151,5 @@ img {
 }
 .padding {
     margin-top: 16px;
+}
 }
