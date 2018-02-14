@@ -27,8 +27,8 @@ export class ListDropdownComponent implements OnInit {
     this.hide = true;
     this.pathSelected = name;
 
-    // console.log(id);
-    // this.router.navigate(['paths/', id]);
+    console.log(id);
+    this.router.navigate(['paths/', id]);
   }
 
   showPaths() {

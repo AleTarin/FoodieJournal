@@ -44,7 +44,7 @@ export class InsideChallengeComponent implements OnInit {
       if (this.track) {
         this.challenge = this.track.challenges.filter(bs => bs.id === params.get('challenge'))[0];
         this.dish = this.track.dishes[this.RandomInt(0, 2)];
-        this.yelp.YelpReviews(this.challenge.id).subscribe(review => this.review = review);
+        this.yelp.YelpReviews(this.challenge.id).subscribe(review => this.review = review)
       }
       });
     }
