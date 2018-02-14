@@ -67,7 +67,7 @@ export class PathsService {
       bs => bs.id === idChallenge
     )[0].status = status;
     if (status === 2) {
-      user.paths[idPath].completenessPercentage += Math.round(100 / user.paths.length);
+      user.paths[idPath].completenessPercentage += Math.round(100 / user.paths[idPath].challenges.length);
       if (user.paths[idPath].completenessPercentage > 100) {
         user.paths[idPath].completenessPercentage = 100;
       }

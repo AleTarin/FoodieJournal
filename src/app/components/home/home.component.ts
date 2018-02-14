@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   constructor(private yelpService: YelpService) { }
 
   ngOnInit(): void {
+    localStorage.setItem('newLoggin', '1');
+
    }
 
 }

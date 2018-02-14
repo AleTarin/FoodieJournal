@@ -57,6 +57,7 @@ export class ControlsComponent implements OnInit, OnChanges {
       this.router.navigate(['/paths', this.track.id, this.track.challenges[0].id]);
     }
   }
+
   getIndex(ch: string) {
     return this.track.challenges.findIndex(challenge => challenge.id === ch);
   }

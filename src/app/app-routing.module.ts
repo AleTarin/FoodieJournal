@@ -8,7 +8,7 @@ import { InsideChallengeComponent } from './components/inside-challenge/inside-c
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'paths/:id/:challenge', component: InsideChallengeComponent},
+  {path: 'paths/:id/:challenge' , canActivate: [ AuthGuard ], component: InsideChallengeComponent},
   {path: 'paths', canActivate: [ AuthGuard ], component: TrackSummaryComponent},
   {path: 'paths/:id', canActivate: [ AuthGuard ], component: PathComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},

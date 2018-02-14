@@ -7,7 +7,8 @@
         <div class="col-6">
   
           <button type="button"  class="btn btn-danger previous mark d-none d-md-block" (click)="challengeClicked()" [ngStyle]="{'background-color': color ,'color': letterColor } ">
-            <i *ngIf="buttonState==2" class="fas fa-check-circle"></i>{{buttonText}}</button>
+            <!-- <i *ngIf="buttonState==2" class="fas fa-check-circle"></i> -->
+            {{buttonText}}</button>
         </div>
         <div class="col-3">
           <button *ngIf="buttonState!=2" type="button" class="btn btn-danger previous next blueNext d-none d-lg-block" disabled>Next</button>
