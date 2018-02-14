@@ -61,7 +61,6 @@ export class PathsService {
   }
 
   setStatusChallenge(idPath: number, idChallenge: string, status: number) {
-    console.log(idChallenge);
     const user = this.auth.getUserSubject().getValue();
     user.paths[idPath].challenges.filter(
       bs => bs.id === idChallenge

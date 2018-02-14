@@ -101,7 +101,6 @@ export class AuthService {
     this.userSubject.asObservable().do(user => {
       this.saveToLocalStorage(`users|${user.nickname}`, profile);
     });
-    console.log('onLogout');
 
 
     // Remove tokens and expiry time from localStorage

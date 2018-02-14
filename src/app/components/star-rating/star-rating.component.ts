@@ -28,7 +28,6 @@ myProfile: User;
   }
   checa(changes: SimpleChanges) {
     let h = 0;
-    console.log(h);
     for (let i = 0.5; i < changes.business.currentValue.rating; i++) {
       this.stars[i - .5] = true;
       h--;
