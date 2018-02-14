@@ -1,0 +1,60 @@
+$naranja: #FE5140;
+$naranja-oscuro: #CB3729;
+$gris: #f2f2f2;
+$gris-oscuro: #969696;
+$verde: #99E79D;
+$amarillo: #F9D84F;
+$azul: #41B9FE;
+
+.info {
+    padding-left: 7rem!important;
+
+   h2 {
+    display: inline-grid;
+    justify-content: center;
+    align-items: center;
+
+   }
+    p{
+    display: inline-grid;
+    justify-content: center;
+    align-items: center;
+   }
+}
+.icon{
+    border-radius: 50px;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white
+}
+.proccess{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%
+}
+.duration{
+    background-color: $gris;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+.red{
+    background-color: $naranja-oscuro;
+}
+.pad{
+    padding: 0;
+}
+
+.container {
+    background-color: white;
+}
+
+.margin {
+    margin-top: 8px;
+}

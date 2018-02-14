@@ -1,0 +1,10 @@
+<!-- Trigger the modal with a button -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+      <app-carousel *ngIf="tipo=='carousel'"></app-carousel>
+      <app-google-map *ngIf="tipo=='map'" [height]="'300px'" [latitude]="latitude" [longitude]="longitude" ></app-google-map>
+      <!--<app-ranoutoftimemessage *ngIf=""></app-ranoutoftimemessage> -->
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="circule complet" *ngIf="status else incomplet">
+  <i class="fas fa-check"></i>
+</div>
+<ng-template #incomplet>
+  <div class="circule incomplet">
+    {{id}}
+  </div>
+</ng-template>

@@ -1,0 +1,106 @@
+[
+    {
+        "id":0,
+        "icon":"https://burgerjointhtx.com/wp-content/uploads/2015/07/burger-icon-tight-white.png",
+        "categories": "newamerican,tradamerican,chicken_wings,hotdogs",
+        "type":"American",
+        "description":"American track",
+        "duration":2,
+        "completenessPercentage":0,
+        "dishes": [
+                    {
+                        "dishName": "Smoked Pork Jowl with Pickles",
+                        "dishDescription": "Slowly smoked cured pork jowl over pecan wood and serves thin slices of the luscious meat as an appetizer with as many pickled ingredients as possible, including house-made half-sour pickles, pickled chiles and pickled mustard seeds stirred into the blackstrap-molasses garnish.",
+                        "dishImage": "https://i.pinimg.com/236x/df/f5/48/dff548dfb53ff4bfca60b2c8385fd914--smoke-restaurant-restaurant-dishes.jpg"
+                    },
+                    {
+                        "dishName": "Malted Custard French Toast",
+                        "dishDescription": "Brioche slices dipped in a vanilla-and-malt-spiked custard. Then the slices sous vide are cooked in a hot-water bath so that every inch of the brioche absorbs the custard. Just before serving, the French toast is caramelized in a hot pan, then serves it with marinated fruit, sweet citrus-flavored whipped cream and a sprinkling of pink peppercorns.",
+                        "dishImage": "https://static1.squarespace.com/static/5a35be7e7131a5daca2e591c/5a381c4171c10b467b59751b/5a3820ca53450a16511bdcf5/1517024737832/Malted+Custard+French+Toast.jpg?format=1000w"
+                    },
+                    {
+                        "dishName": "Canyon Creek Burger",
+                        "dishDescription": "This burger has bacon, egg, fried jalapeños on a cheesy, beefy patty and then tops it off with a slick of blackberry jam or grape jelly.",
+                        "dishImage": "https://i0.wp.com/www.creative-culinary.com/wp-content/uploads/canyou-creek-burger-1.jpg?resize=645%2C879"
+                    }
+        ]
+    },
+    {
+        "id":1,
+        "icon":"https://d30y9cdsu7xlg0.cloudfront.net/png/7914-200.png",
+        "categories": "italian",
+        "type":"Italian",
+        "description":"Italian track",
+        "duration":3,
+        "completenessPercentage":0,
+        "dishes": [
+            {
+                "dishName": "Pasta with Lamb Ragù",
+                "dishDescription": " A large hollow pasta tubes (paccheri) is tossed with chunks of lamb, tomato ragù and grated Pecorino. Bissonnette finishes the dish with mint from the same pasture where the lamb grazed.",
+                "dishImage": "http://img.taste.com.au/G3CSlm8_/w354-h236-cfill-q80/taste/2016/11/mid-week-lamb-ragu-92302-1.jpeg"
+            },
+            {
+                "dishName": "Pasta Carbonara",
+                "dishDescription": "This simple Roman pasta dish derives its name from 'carbone' meaning coal. It was a pasta popular with the coal miners. The original recipe calls for guanciale, which is pig's cheek, but since its not easily available, the chef has used bacon instead.",
+                "dishImage": "http://cdn-image.myrecipes.com/sites/default/files/styles/medium_2x/public/image/recipes/su/03142008/spaghetti-carbonara-su-1598630-x.jpg?itok=7r0UrdIl"
+            },
+            {
+                "dishName": "Panna Cotta With Raspberry Coulis",
+                "dishDescription": "A dessert is made with gelatine, cream and milk. Chilled and served with whole raspberries and raspberry coulis. Panna Cotta, in Italian, means 'cooked cream.",
+                "dishImage": "https://driscolls.imgix.net/-/media/assets/recipes/eggnog-panna-cotta-with-balsamic-raspberries.ashx?ixlib=imgixjs-3.1.0"
+            }
+        ]
+    },    
+    {
+        "id":2,
+        "icon":"https://openclipart.org/image/2400px/svg_to_png/283405/Japanese-Rice-Bowl---Monochrome.png",
+        "categories": "japanese",
+        "type":"Japanese",
+        "description":"Japanese track",
+        "duration":2,
+        "completenessPercentage":0,
+        "dishes": [
+            {
+                "dishName": "Ramen",
+                "dishDescription": "Egg noodles in a salty broth. There are four major soup styles: tonkotsu (pork bone), miso, soy sauce and salt.",
+                "dishImage": "http://40aprons.com/wp-content/uploads/2016/01/bacon-ramen-6.jpg"
+            },
+            {
+                "dishName": "Tempura",
+                "dishDescription": "The batter-coated seafood and vegetables are traditionally fried in sesame oil and served with either a tiny pool of salt or a dish of soy sauce-flavoured broth spiked with grated radish for dipping.",
+                "dishImage": "http://img.taste.com.au/ZT9GGty1/taste/2016/11/tempura-49031-1.jpeg"
+            },
+            {
+                "dishName": "Soba",
+                "dishDescription": "The noodles are served in either a hot, soy sauce-flavoured broth or at room temperature on a bamboo mat with broth on the side for dipping.",
+                "dishImage": "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/6/16/1/DH0204H_So-Good-Soba-Noodle-Salad_s4x3.jpg.rend.hgtvcom.616.462.suffix/1434629145249.jpeg"
+            }
+        ]
+    },
+    {
+        "id":3,
+        "icon":"https://png.icons8.com/metro/1600/taco.png",
+        "categories": "mexican",
+        "type":"Mexican",
+        "description":"Mexican track",
+        "duration":1,
+        "completenessPercentage":0,
+        "dishes": [
+            {
+                "dishName": "Chilaquiles",
+                "dishDescription": "This popular traditional breakfast dish features lightly fried corn tortillas cut into quarters and topped with green or red salsa (the red is slightly spicier). Scrambled or fried eggs and pulled chicken are usually added on top, as well as cheese and cream.",
+                "dishImage": "https://scm-assets.constant.co/scm/unilever/a6798e909fa57bfd19c3e7f00737e5d6/d73e60cc-7b35-4e11-b1b5-9a16f7c741ec.jpg"
+            },
+            {
+                "dishName": "Mole",
+                "dishDescription": "There are myriad types of mole but all contain around 20 or so ingredients, including one or more varieties of chilli peppers, and all require constant stirring over a long period of time. Perhaps the best-known mole is mole poblano, a rusty red sauce typically served over turkey or chicken.",
+                "dishImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ChickRedMole.JPG/1200px-ChickRedMole.JPG"
+            },
+            {
+                "dishName": "Tostadas",
+                "dishDescription": "Tostadas are a simple but delicious dish involving corn tortillas fried in boiling oil until they become crunchy and golden. These are then served alone or piled high with any number of garnishes. Popular toppings include frijoles, cheese, cooked meat, seafood and ceviche.",
+                "dishImage": "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/12/9/0/FNK_Chicken-Tostadas_s4x3.jpg.rend.hgtvcom.616.462.suffix/1386712333241.jpeg"
+            }
+        ]
+    }
+]

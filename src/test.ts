@@ -18,3 +18,10 @@ getTestBed().initTestEnvironment(
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
+
+
+// This file is required by karma.conf.js and loads recursively all the .spec and framework files
+import './app/1st.spec.ts';
+//import './app/components/navbar/navbar.component.spec.isolated.ts';
+import './app/components/home/home.component.spec.isolated.ts';
+import './app/components/navbar/navbar.component.spec.isolated.ts';

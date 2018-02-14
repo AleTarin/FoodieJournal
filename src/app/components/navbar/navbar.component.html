@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="!(auth.loggedIn$ | async)">
+    <a class="navbar-brand" href="">FoodieJournal</a>
+      <a class="nav-link" (click)="login()" role="button" ng-if="auth.isAuthenticated()">
+        Login
+      </a>
+</nav>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" *ngIf="(auth.loggedIn$ | async)">
+    <!-- burguer button -->
+    <div>
+        <a class="nav-link toggle-app  mr-3" (click)="showSidebar()" role="button">
+            <i class="fas fa-bars fa-lg"></i>
+        </a>
+            <a class="navbar-brand title-app" href="#">FoodieJournal</a>
+    </div>
+
+    <div class="dropdown align-middle">
+
+        <div ngbDropdown class="d-inline-block pull-right .align-middle">
+            <a  id="dropdownBasic1" ngbDropdownToggle>
+
+                {{profile.nickname}}
+                <img [src]="profile.picture" class="rounded-circle" alt="my profile image">
+            </a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item" (click)="logout()">Sign out</button>
+                <button class="dropdown-item">Profile</button>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+<aside [ngClass]="{'showing': sidebar, 'colapsing': false === sidebar}">
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+        <div class="burger-item">
+            <p>item</p>
+        </div>
+</aside>
+
+                 
+<!-- <div >
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hi teamuno !
+            <img src="https://vignette.wikia.nocookie.net/vsbattles/images/1/1e/135Jolteon_AG_anime_2.png/revision/latest?cb=20160927151641" class="img-rounded" alt="Cinque Terre">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item menu-right" >Sign Out</a>
+            <a class="dropdown-item menu-right" href="">Profile</a>
+        </div>
+    </div> -->
