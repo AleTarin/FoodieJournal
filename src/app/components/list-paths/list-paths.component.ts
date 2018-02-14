@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { PathsService } from '../../services/paths.service';
 import { Track } from '../../interfaces/track';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-paths',

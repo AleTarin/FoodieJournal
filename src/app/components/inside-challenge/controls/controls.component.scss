@@ -12,7 +12,8 @@ $azul: #41B9FE;
   border-radius: 0;
   background-color: $gris-oscuro;
   border-color: $gris-oscuro;
-  width: 11em; 
+  padding-right: 30px;
+  padding-left: 30px;
   }
   
 
@@ -21,13 +22,13 @@ $azul: #41B9FE;
   border-color: $naranja;
   width: 21em;
   border-color: white;
-  
 }
 .next{
 
   background-color: white;
   color: $gris-oscuro;
-  width: 11em; 
+  padding-left: 50px;
+  padding-right: 50px;  
 }
 
 .fa-check-circle{

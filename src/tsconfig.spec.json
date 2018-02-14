@@ -15,5 +15,6 @@
   ],
   "include": [
     "**/*.spec.ts",
+    "**/*.spec.isolated.ts",
     "**/*.d.ts"  ]
 }
