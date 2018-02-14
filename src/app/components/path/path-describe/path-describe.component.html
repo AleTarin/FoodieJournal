@@ -1,35 +1,35 @@
 <section class="container" *ngIf="path">
-    <div class="row  align-self-left mb-3">
-      <div class="col-6 d-none d-md-block pull-left">
-          <app-list-paths [paths]="paths" ></app-list-paths>
-      </div>
-      <div class="col-12 d-block d-md-none">
-          <app-list-dropdown [paths]="paths" [pathSelected]="path.type"></app-list-dropdown>
-      </div>
+  <div class="row  align-self-left mb-3">
+    <div class="col-6 d-none d-md-block pull-left">
+        <app-list-paths [paths]="paths" ></app-list-paths>
     </div>
-</section>
-<section class="container" *ngIf="path">
-  <div class="row align-items-center">
-    <div class="col-3 col-md-1 ">
-      <div class="icon" >
-        <app-pie-progress-bar [imagen]='path.icon' class="ml-5 mr-5"></app-pie-progress-bar>
-      </div>
-    </div>
-    <div class="info col-9 col-md-6 align-self-right pl-5" > 
-      <h2>{{path.type}} </h2> <small>{{path.completenessPercentage}} %</small> 
-      <br> 
-      <p>{{path.description}}</p>
-    </div>
-    <div class="col-10 col-md-3 offset-1">
-      <div class="row justify-content-around align-items-center margin ">
-        
-        <div class="col-6 col-md-12 duration">
-          <span class="bold-text pr-2">Duration: </span> {{path.duration}} weeks
-        </div>
-        <div class="col-6 col-md-12 pad">
-            <app-status-button [progress]="path.completenessPercentage" [pathId]="path.id"></app-status-button>
-          </div>
-      </div>
+    <div class="col-12 d-block d-md-none">
+        <app-list-dropdown [paths]="paths" [pathSelected]="path.type"></app-list-dropdown>
     </div>
   </div>
+</section>
+<section class="container" *ngIf="path">
+<div class="row align-items-center">
+  <div class="col-3 col-md-1 ">
+    <div class="icon" >
+      <app-pie-progress-bar [progress]='path.completenessPercentage' [pathId]="path.id" [imagen]='path.icon' class="ml-5 mr-5"></app-pie-progress-bar>
+    </div>
+  </div>
+  <div class="info col-9 col-md-6 align-self-right pl-5" > 
+    <h2>{{path.type}} </h2> <small>{{path.completenessPercentage}} %</small> 
+    <br> 
+    <p>{{path.description}}</p>
+  </div>
+  <div class="col-10 col-md-3 offset-1">
+    <div class="row justify-content-around align-items-center margin ">
+      
+      <div class="col-6 col-md-12 duration">
+        <span class="bold-text pr-2">Duration: </span> {{path.duration}} weeks
+      </div>
+      <div class="col-6 col-md-12 pad">
+          <app-status-button [progress]="path.completenessPercentage" [pathId]="path.id"></app-status-button>
+        </div>
+    </div>
+  </div>
+</div>
 </section>

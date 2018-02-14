@@ -35,10 +35,13 @@ export class InsideChallengeComponent implements OnInit {
 
     ngOnInit() {
       this.route.paramMap.subscribe((params: ParamMap) => {
-      this.auth.getUserSubject().subscribe(res => this.track = res.paths[params.get('id')]);
+      this.auth.getUserSubject().subscribe(res => { 
+        if (res) {
+          this.track = res.paths[params.get('id')];
+        }
+       });
 
       if (this.track) {
-
         this.challenge = this.track.challenges.filter(bs => bs.id === params.get('challenge'))[0];
         this.dish = this.track.dishes[this.RandomInt(0, 2)];
         this.yelp.YelpReviews(this.challenge.id).subscribe(review => this.review = review);

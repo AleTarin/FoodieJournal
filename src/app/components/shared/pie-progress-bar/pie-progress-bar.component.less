@@ -1,17 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:700);
-
 .size(@w, @h) {
   height: @h;
   width: @w;
 }
-
 // --
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
-
 html,
 body {
   background: #ecf0f1;
@@ -20,20 +17,16 @@ body {
   font-size: 16px;
   padding: 10px;
 }
-
 .set-size {
   font-size: 10em;
 }
-
 .charts-container:after {
   clear: both;
   content: "";
   display: table;
 }
-
 @bg: #CB3729;
 @size: 1em;
-
 .pie-wrapper {
   .size(@size, @size);
   float: left;
@@ -46,14 +39,12 @@ body {
   &:nth-child(3n+1) {
     clear: both;
   }
-
   .pie {
     .size(100%, 100%);
     clip: rect(0, @size, @size, @size / 2);
     left: 0;
     position: absolute;
     top: 0;
-
     .half-circle {
       .size(100%, 100%);
       border: @size / 10 solid #3498db;
@@ -64,11 +55,9 @@ body {
       top: 0;
     }
   }
-
   .label {
     @font-size: @size / 4;
     @font-size-redo: @size * 4;
-
     background: @bg;
     border-radius: 50%;
     bottom: @font-size-redo / 10;
@@ -82,7 +71,6 @@ body {
     right: @font-size-redo / 10;
     text-align: center;
     top: @font-size-redo / 10;
-
     .smaller {
       color: #CB3729;
       font-size: .45em;
@@ -90,53 +78,42 @@ body {
       vertical-align: super;
     }
   }
-
   .shadow {
     .size(100%, 100%);
     border: @size / 10 solid #CB3729;
     border-radius: 50%;
   }
-
   &.style-2 {
     .label {
       background: none;
       color: #CB3729;
-
       .smaller {
         color: #CB3729;
       }
     }
   }
-
   &.progress-30 {
     .draw-progress(30, #e74c3c);
   }
-
   &.progress-60 {
     .draw-progress(60, #e74c3c);
   }
-
   &.progress-90 {
     .draw-progress(90, #e74c3c);
   }
-
   &.progress-45 {
     .draw-progress(45, #e74c3c);
   }
-
   &.progress-75 {
     .draw-progress(75, #e74c3c);
   }
-
   &.progress-95 {
     .draw-progress(95, #e74c3c);
   }
 }
-
 .pie-wrapper--solid {
   border-radius: 50%;
   overflow: hidden;
-
   &:before {
     border-radius: 0 100% 100% 0 / 50%;
     content: '';
@@ -148,6 +125,36 @@ body {
   
   .label {
     background: transparent;
+  }
+  &.progress-90 {
+    .draw-progress--solid(10, #e74c3c, @bg);
+  }
+  &.progress-80 {
+    .draw-progress--solid(20, #e74c3c, @bg);
+  }
+  &.progress-70 {
+    .draw-progress--solid(30, #e74c3c, @bg);
+  }
+  &.progress-60 {
+    .draw-progress--solid(40, #e74c3c, @bg);
+  }
+  &.progress-50 {
+    .draw-progress--solid(50, #e74c3c, @bg);
+  }
+  &.progress-40 {
+    .draw-progress--solid(60, #e74c3c, @bg);
+  }
+  &.progress-30 {
+    .draw-progress--solid(70, #e74c3c, @bg);
+  }
+  &.progress-20 {
+    .draw-progress--solid(80, #e74c3c, @bg);
+  }
+  &.progress-10 {
+    .draw-progress--solid(90, #e74c3c, @bg);
+  }
+  &.progress-0 {
+    .draw-progress--solid(100, #e74c3c, @bg);
   }
   
   &.progress-65 {
@@ -162,7 +169,6 @@ body {
     .draw-progress--solid(88, #e74c3c, @bg);
   }
 }
-
 // --
 .draw-progress(@progress, @color) when (@progress <= 50) {
   .pie {
@@ -171,48 +177,40 @@ body {
     }
   }
 }
-
 .draw-progress(@progress, @color) when (@progress > 50) {
   .pie {
     clip: rect(auto, auto, auto, auto);
-
     .right-side {
       transform: rotate(180deg);
     }
   }
 }
-
 .draw-progress(@progress, @color) {
   .pie {
     .half-circle {
       border-color: @color;
     }
-
     .left-side {
       @rotate: @progress * 3.6;
       transform: rotate(~'@{rotate}deg');
     }
   }
 }
-
 .draw-progress--solid(@progress, @color, @bg) when (@progress <= 50) {
   &:before {
     background: @bg;
     transform: rotate((100 - (50 - @progress)) / 100 * 360deg * -1);
   }
 }
-
 .draw-progress--solid(@progress, @color, @bg) when (@progress > 50) {
   &:before {
     background: @color;
     transform: rotate((100 - @progress) / 100 * 360deg);
   }
 }
-
 .draw-progress--solid(@progress, @color, @bg) {
   background: linear-gradient(to right, @color 50%, @bg 50%);
 }
-
 .little-img {
   width: 80%;
   height: auto;

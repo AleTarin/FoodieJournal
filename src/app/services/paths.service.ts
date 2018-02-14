@@ -61,13 +61,12 @@ export class PathsService {
   }
 
   setStatusChallenge(idPath: number, idChallenge: string, status: number) {
-    console.log(idChallenge);
     const user = this.auth.getUserSubject().getValue();
     user.paths[idPath].challenges.filter(
       bs => bs.id === idChallenge
     )[0].status = status;
     if (status === 2) {
-      user.paths[idPath].completenessPercentage += Math.round(100 / user.paths.length);
+      user.paths[idPath].completenessPercentage += Math.round(100 / user.paths[idPath].challenges.length);
       if (user.paths[idPath].completenessPercentage > 100) {
         user.paths[idPath].completenessPercentage = 100;
       }
