@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'paths', canActivate: [ AuthGuard ], component: TrackSummaryComponent},
   {path: 'paths/:id', canActivate: [ AuthGuard ], component: PathComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 @NgModule({
