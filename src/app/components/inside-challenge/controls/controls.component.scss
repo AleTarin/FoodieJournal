@@ -12,23 +12,24 @@ $azul: #41B9FE;
   border-radius: 0;
   background-color: $gris-oscuro;
   border-color: $gris-oscuro;
-  padding-right: 30px;
-  padding-left: 30px;
+  width: 100%; 
+
   }
   
 
 .mark{
   background-color: $naranja;
   border-color: $naranja;
-  width: 21em;
   border-color: white;
+  width: 100%; 
+
+  
 }
 .next{
 
   background-color: white;
-  color: $gris-oscuro;
-  padding-left: 50px;
-  padding-right: 50px;  
+  color: black;
+  width: 100%; 
 }
 
 .fa-check-circle{

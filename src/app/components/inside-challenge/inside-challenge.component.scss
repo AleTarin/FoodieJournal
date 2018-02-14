@@ -15,14 +15,16 @@ $azul: #41B9FE;
 }
 
 .button {
-    margin-bottom: 2rem;
-    margin-top: 1rem;
-    background-color: gray;
+    margin: auto;
+    padding: 2px;
+    background: white;
+    border: black 1px solid;
     color: black;
-    padding: 13px 1px;
+    max-width: 400px;
     text-align: center;
     display: inline-block;
-    font-size: 21px;
+    font-size: 1rem;
+    
 }
 .back{
     color: $naranja;
@@ -100,7 +102,7 @@ imagen-dish {
     width: 36%;
     height: 89px;
     font-size: 11px;
-    text-align: start;
+    text-align: center;
     margin-left: 6%;
 }
 .notification {
